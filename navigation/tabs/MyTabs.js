@@ -3,9 +3,9 @@
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import MapScreen from '../../screens/MapScreen';
-import NewsScreen from '../../screens/NewsScreen';
 import HomeStack from '../stacks/HomeStack';
+import MapStack from '../stacks/MapStack';
+import NewsStack from '../stacks/NewsStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -43,8 +43,8 @@ const MyTabs = () => {
                 headerTitleAlign: 'center',
             }}
             />
-          <Tab.Screen name="MapStack" component={MapScreen} />
-          <Tab.Screen name='NewsStack' component={NewsScreen} />
+          <Tab.Screen name="MapStack" component={MapStack} />
+          <Tab.Screen name='NewsStack' component={NewsStack} />
         </Tab.Navigator>
     );
 }

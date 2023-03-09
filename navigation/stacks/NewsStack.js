@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 const NewsStack = () => {
     return (
         <Stack.Navigator>
-          <Stack.Screen name="New" component={NewsScreen} options={{ headerTitleAlign: 'center' }} />
+          <Stack.Screen name="NewsScreen" component={NewsScreen} options={{ headerTitleAlign: 'center' }} />
         </Stack.Navigator>
     );
 }

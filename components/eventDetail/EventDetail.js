@@ -5,21 +5,8 @@ import { HeaderBackButton } from '@react-navigation/elements';
 
 const EventDetail = () => {
     const route = useRoute()
-    const navigation = useNavigation()
 
-    const { eqId, origin_time, ml, depth, description } =route.params
-
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerLeft: () => (
-                <HeaderBackButton 
-                    tintColor='black'
-                    onPress={() => navigation.goBack()}
-                    style={{paddingRight: 100}}
-                />
-            )
-        })
-    }, [])
+    const { eqId, origin_time, ml, depth, description } = route.params
 
     return (
         <View style={styles.screen}>

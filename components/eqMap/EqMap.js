@@ -3,19 +3,6 @@ import React from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { EQ_DATA } from '../../data/EqData';
 
-const locations = [
-  { latitude:  41.9211, longitude: 42.6545 },
-  { latitude: 42.4861, longitude: 41.2193 },
-  { latitude: 42.7463, longitude: 44.89 },
-  { latitude: 41.965, longitude: 46.0151 },
-  { latitude: 41.7155, longitude: 45.851 },
-  { latitude: 42.592, longitude: 43.4471 },
-  { latitude: 43.2536, longitude: 41.4971 },
-  { latitude: 41.33, longitude: 46.3945 },
-  { latitude: 41.5056, longitude: 45.0466 },
-  { latitude:  41.143, longitude: 43.9198 },
-];
-
 const Map = () => {
   return (
     <MapView 
@@ -30,16 +17,27 @@ const Map = () => {
         showsMyLocationButton={true}
         showsUserLocation={true}
     >
-      {EQ_DATA.map((location, index) => (
+      {EQ_DATA.map((event, index) => (
         <Marker 
           key={index} 
           coordinate={{
-            latitude:location.latitude,
-            longitude:location.longitude,
+            latitude:event.latitude,
+            longitude:event.longitude,
           }}
         >
           <Callout>
-            <Text>working</Text>
+            <Text>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>დრო(UTC): </Text>{event.origin_time}
+              </Text>
+              <Text>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>გან/გრძ: </Text>{event.latitude} / {event.longitude}
+              </Text>
+              <Text>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>მაგნიტუდა: </Text>{event.ml}
+              </Text>
+              <Text>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>DEPTH: </Text>{event.depth}
+              </Text>
           </Callout>
         </Marker>
       ))}

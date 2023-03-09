@@ -2,10 +2,10 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-const EqItem = ({id, origin_time, ml, depth, description}) => {
+const EqItem = ({eqId, origin_time, ml, depth, description}) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("EventDetailScreen", {eqId: id, origin_time, ml, depth, description})}>
+    <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("EventDetailScreen", {eqId, origin_time, ml, depth, description})}>
       <Text>დრო(UTC)</Text>
       <Text>{origin_time}</Text>
     </TouchableOpacity>

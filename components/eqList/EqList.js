@@ -1,12 +1,12 @@
 import { FlatList, RefreshControl } from 'react-native';
 import React from 'react';
 import { EQ_DATA } from '../../data/EqData';
-import EventItem from './EqItem';
+import EqItem from './EqItem';
 
 const EqList = () => {
 
     const renderItem = ({item}) => {
-        return <EventItem id={item.id} origin_time={item.origin_time} ml={item.ml} depth={item.depth} description={item.description}/>
+        return <EqItem eqId={item.id} origin_time={item.origin_time} ml={item.ml} depth={item.depth} description={item.description}/>
     }
     return (
         <FlatList 

@@ -9,10 +9,18 @@ const EventDetail = () => {
 
     return (
         <View style={styles.screen}>
-          <Text style={styles.text}>Origin Time : {origin_time}</Text>
-          <Text style={styles.text}>Magnitudes : {ml}</Text>
-          <Text style={styles.text}>Depth : {depth}</Text>
-          <Text style={styles.description}>Description : {description}</Text>
+            <Text>
+                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Origin Time : </Text>{origin_time}
+            </Text>
+            <Text>
+                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Magnitudes : </Text>{ml}
+            </Text>
+            <Text>
+                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Depth : </Text>{depth}
+            </Text>
+            <Text>
+                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Description : </Text>{description}
+            </Text>
         </View>
     )
 }
@@ -22,7 +30,7 @@ const styles = StyleSheet.create({
         padding:1
     },
     text: {
-        fontSize: 15
+        fontSize:15
     },
     description: {
         fontSize: 15

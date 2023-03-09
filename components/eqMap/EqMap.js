@@ -1,6 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet,Text } from 'react-native';
 import React from 'react';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Callout, Marker } from 'react-native-maps';
+import { EQ_DATA } from '../../data/EqData';
 
 const locations = [
   { latitude:  41.9211, longitude: 42.6545 },
@@ -29,8 +30,18 @@ const Map = () => {
         showsMyLocationButton={true}
         showsUserLocation={true}
     >
-      {locations.map((location, index) => (
-        <Marker key={index} coordinate={location} />
+      {EQ_DATA.map((location, index) => (
+        <Marker 
+          key={index} 
+          coordinate={{
+            latitude:location.latitude,
+            longitude:location.longitude,
+          }}
+        >
+          <Callout>
+            <Text>working</Text>
+          </Callout>
+        </Marker>
       ))}
   </MapView>
   );

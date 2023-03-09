@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
-import React, { useLayoutEffect } from 'react';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { HeaderBackButton } from '@react-navigation/elements';
+import React from 'react';
+import { useRoute } from '@react-navigation/native';
 
 const EventDetail = () => {
     const route = useRoute()
@@ -20,7 +19,7 @@ const EventDetail = () => {
     
 const styles = StyleSheet.create({
     screen: {
-    padding: 20,
+        padding:1
     },
     text: {
         fontSize: 15

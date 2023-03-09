@@ -2,9 +2,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import EqMap from '../../components/eqMap/EqMap';
 import HomeScreen from '../../screens/HomeScreen';
 import { useNavigation } from '@react-navigation/native';
-import EventDetail from '../../components/eventDetail/EventDetail';
+import EqDetail from '../../components/eqDetail/EqDetail';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { HeaderBackButton } from '@react-navigation/elements';
+import EventDetailScreen from '../../screens/EventDetailScreen';
 
 
 const Stack = createStackNavigator();
@@ -40,10 +41,10 @@ const HomeStack = () => {
                 }} 
             />
             <Stack.Screen 
-                name="EventDetail" 
-                component={EventDetail} 
+                name="EventDetailScreen" 
+                component={EventDetailScreen} 
                 options={{ 
-                    headerTitle: 'EventDetail',
+                    headerTitle: 'EqDetail',
                     headerTitleAlign: 'center',
                     headerRight: () => null,
                     headerLeft: () => (

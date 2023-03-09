@@ -25,7 +25,7 @@ const Map = () => {
         latitudeDelta: 10,
         longitudeDelta: 10,
         }}
-        mapType="hybrid"
+        mapType="standard"
         showsMyLocationButton={true}
         showsUserLocation={true}
     >

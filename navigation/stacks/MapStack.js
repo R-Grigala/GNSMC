@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import EqMap from '../../components/EqMap';
+import EqMap from '../../components/eqMap/EqMap';
 import MapScreen from '../../screens/MapScreen';
 
 

@@ -6,7 +6,7 @@ export const HomeOptions = (nav) => {
     const navigation = useNavigation();
 
     const handleLogoPress = () => {
-        navigation.navigate('HomeStack');
+        navigation.navigate('Home');
     };
 
     return {

@@ -1,8 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import EqMap from '../../components/EqMap';
+import EqMap from '../../components/eqMap/EqMap';
 import HomeScreen from '../../screens/HomeScreen';
 import { useNavigation } from '@react-navigation/native';
 import { HomeOptions } from '../options/HomeOption';
+import EventDetail from '../../components/eventDetail/EventDetail';
 
 
 const Stack = createStackNavigator();

@@ -1,9 +1,11 @@
-import { StyleSheet,Text } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { EQ_DATA } from '../../data/EqData';
+import { useNavigation } from '@react-navigation/native';
 
 const Map = () => {
+  const navigation = useNavigation();
   return (
     <MapView 
         style={styles.mapview}
@@ -26,7 +28,13 @@ const Map = () => {
           }}
         >
           <Callout>
-            <Text>
+            <TouchableOpacity 
+              onPress={()=> navigation.navigate(
+                "EventDetailScreen", 
+                {eqId: event.id, origin_time: event.origin_time, ml: event.ml, depth: event.depth, description: event.description}
+              )}
+              >
+              <Text>
                   <Text style={{ fontSize: 15, fontWeight: 'bold' }}>დრო(UTC): </Text>{event.origin_time}
               </Text>
               <Text>
@@ -38,6 +46,7 @@ const Map = () => {
               <Text>
                   <Text style={{ fontSize: 15, fontWeight: 'bold' }}>DEPTH: </Text>{event.depth}
               </Text>
+            </TouchableOpacity>
           </Callout>
         </Marker>
       ))}

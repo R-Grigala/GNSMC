@@ -1,34 +1,33 @@
 // Possibly the most common style of navigation in mobile apps is tab-based navigation. 
 // This can be tabs on the bottom of the screen or on the top below the header (or even instead of a header).
 
-import { useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import HomeScreen from '../../screens/HomeScreen';
 import MapScreen from '../../screens/MapScreen';
 import NewsScreen from '../../screens/NewsScreen';
-import { navOptions } from '../Options/HeaderOption';
+import HomeStack from '../stacks/HomeStack';
 
 const Tab = createBottomTabNavigator();
 
 const MyTabs = () => {
-    const navigation = useNavigation()
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
+                headerShown: false,
+                tabBarShowLabel: false,
                 tabBarStyle: {
                     backgroundColor: '#fff',
                 },
                 tabBarActiveTintColor: 'red',
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;
-                    if (route.name === 'Home') {
+                    if (route.name === 'HomeStack') {
                         iconName = focused ? 'list' : 'list-outline'
                     }
-                    else if (route.name === 'Map') {
+                    else if (route.name === 'MapStack') {
                         iconName = focused ? 'earth' : 'earth-outline'
                     }
-                    else if (route.name === 'News') {
+                    else if (route.name === 'NewsStack') {
                         iconName = focused ? 'newspaper' : 'newspaper-outline'
                     }
     
@@ -37,15 +36,15 @@ const MyTabs = () => {
             })}
         >
           <Tab.Screen 
-            name="Home" 
-            component={HomeScreen} 
+            name="HomeStack" 
+            component={HomeStack} 
             options={{ 
                 title: 'Timeline',
                 headerTitleAlign: 'center',
             }}
             />
-          <Tab.Screen name="Map" component={MapScreen} />
-          <Tab.Screen name='News' component={NewsScreen} />
+          <Tab.Screen name="MapStack" component={MapScreen} />
+          <Tab.Screen name='NewsStack' component={NewsScreen} />
         </Tab.Navigator>
     );
 }

@@ -1,6 +1,6 @@
 import { FlatList, RefreshControl } from 'react-native';
 import React from 'react';
-import { DUMMY_DATA } from '../../data/dummy';
+import { EQ_DATA } from '../../data/EqData';
 import EventItem from './EqItem';
 
 const EqList = () => {
@@ -10,7 +10,7 @@ const EqList = () => {
     }
     return (
         <FlatList 
-            data={DUMMY_DATA}
+            data={EQ_DATA}
             keyExtractor={item => item.id}
             renderItem={renderItem}
             refreshControl = {

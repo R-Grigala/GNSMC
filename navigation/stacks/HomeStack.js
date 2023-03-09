@@ -1,8 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import EqMap from '../../components/eqMap/EqMap';
 import HomeScreen from '../../screens/HomeScreen';
 import { useNavigation } from '@react-navigation/native';
-import EqDetail from '../../components/eqDetail/EqDetail';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { HeaderBackButton } from '@react-navigation/elements';
 import EventDetailScreen from '../../screens/EventDetailScreen';
@@ -24,7 +22,7 @@ const HomeStack = () => {
                 name="HomeScreen" 
                 component={HomeScreen} 
                 options={{
-                    headerTitle: 'Earthquakes',
+                    headerTitle: 'EARTHQUAKES',
                     headerTitleAlign: 'center',
                     headerRight: () => null,
                     headerLeft:  () => (
@@ -37,14 +35,14 @@ const HomeStack = () => {
                             </View>
                         </TouchableOpacity>
                     )
-
                 }} 
             />
+            
             <Stack.Screen 
                 name="EventDetailScreen" 
                 component={EventDetailScreen} 
                 options={{ 
-                    headerTitle: 'EqDetail',
+                    headerTitle: 'EARTHQUAKE',
                     headerTitleAlign: 'center',
                     headerRight: () => null,
                     headerLeft: () => (

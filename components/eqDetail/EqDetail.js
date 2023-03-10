@@ -9,25 +9,54 @@ const EventDetail = () => {
 
     return (
         <View style={styles.screen}>
-            <Text>
-                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Origin Time : </Text>{origin_time}
-            </Text>
-            <Text>
-                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Magnitudes : </Text>{ml}
-            </Text>
-            <Text>
-                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Depth : </Text>{depth}
-            </Text>
-            <Text>
-                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Description : </Text>{description}
-            </Text>
+            <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'row',  alignItems: 'center'}}>
+                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold'}}>დრო(UTC): </Text>
+                </View>
+                <View style={{ flex:1.5, borderBottomWidth: 0.5, flexDirection: 'column'}}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold'}}>{origin_time}</Text>
+                </View>
+            </View>
+
+            <View style={{flex:1, borderBottomWidth: 0.5, flexDirection: 'row'}}>
+
+                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold'}}>მაგნიტუდა(ML): </Text>
+                </View>
+                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold'}}>{ml}</Text>
+                </View>
+
+            </View>
+            <View style={{flex:1, borderBottomWidth: 0.5, flexDirection: 'row'}}>
+
+                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold'}}>სიღრმე(კმ): </Text>
+                </View>
+                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold'}}>{depth}</Text>
+                </View>
+
+            </View>
+            <View style={{flex:2, flexDirection: 'row', alignItems: 'center'}}>
+
+                <View style={{ flex:1, flexDirection: 'column'}}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold'}}>რეგიონი: </Text>
+                </View>
+                <View style={{ flex:2, flexDirection: 'column'}}>
+                    <Text style={{ fontSize: 10, fontWeight: 'bold'}}>{description}</Text>
+                </View>
+
+            </View>
         </View>
     )
 }
     
 const styles = StyleSheet.create({
     screen: {
-        padding:10
+        flex:1,
+        padding:10,
+        borderBottomWidth: 0.5
     },
     text: {
         fontSize:15

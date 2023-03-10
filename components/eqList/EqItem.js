@@ -3,8 +3,11 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 const EqItem = ({eqId, origin_time, ml, latitude, longitude, depth, description}) => {
+
   const navigation = useNavigation();
+
   return (
+
     <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("EventDetailScreen", {eqId, origin_time, ml, depth, description})}>
       <View style={{ flexDirection: 'column', width: '100%', height:75}}>
         <View style={{flex:2, flexDirection: 'row', alignItems: 'center'}}>
@@ -54,7 +57,7 @@ const EqItem = ({eqId, origin_time, ml, latitude, longitude, depth, description}
                 </View>
               </View>
           </View>
-          
+
       </View>
     </TouchableOpacity>
   );
@@ -71,11 +74,12 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth:0.5
+    borderBottomWidth: 0.5
   },
   mlContent: {
     fontSize: 28,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'red'
   }
 })
 

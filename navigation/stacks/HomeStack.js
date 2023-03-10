@@ -53,7 +53,7 @@ const HomeStack = () => {
                 name="EventDetailScreen" 
                 component={EventDetailScreen} 
                 options={{ 
-                    headerTitle: 'EARTHQUAKE',
+                    headerTitle: 'სეისმური აქტივობა',
                     headerTitleAlign: 'center',
                     headerRight: () => null,
                     headerLeft: () => (

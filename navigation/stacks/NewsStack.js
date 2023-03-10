@@ -19,7 +19,7 @@ const NewsStack = () => {
           name="NewsScreen" 
           component={NewsScreen} 
           options={{
-            headerTitle:'News',
+            headerTitle:'სიახლეები',
             headerStyle: {
               backgroundColor: 'rgb(212, 212, 212)',
               shadowColor: '#000',

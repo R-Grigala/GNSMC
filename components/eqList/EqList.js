@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import { EQ_DATA } from '../../data/EqData';
 import EqItem from './EqItem';
 
-function EqList (){
+function EqList(){
 
     const [refreshing, setRefreshing] = useState(false);
 

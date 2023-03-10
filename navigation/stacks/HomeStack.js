@@ -26,7 +26,7 @@ const HomeStack = () => {
                 name="HomeScreen" 
                 component={HomeScreen} 
                 options={{
-                    headerTitle: 'EARTHQUAKES',
+                    headerTitle: 'სეისმური აქტივობა',
                     headerStyle: {
                         backgroundColor: 'rgb(212, 212, 212)',
                         shadowColor: '#000',

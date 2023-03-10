@@ -35,7 +35,7 @@ const EqMap = () => {
                 {eqId: event.id, origin_time: event.origin_time, ml: event.ml, depth: event.depth, description: event.description}
               )}
               >
-              <View style={{ flexDirection: 'row',alignItems: 'center', width:290, height:75}}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', width:290, height:75}}>
                 <Text style={{padding:0, margin:0}}>
                   <Text style={{ fontSize: 15, fontWeight: 'bold' }}>დრო(UTC): </Text>{event.origin_time}
                   <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{'\n'}გან/გრძ: </Text>{event.latitude} / {event.longitude}

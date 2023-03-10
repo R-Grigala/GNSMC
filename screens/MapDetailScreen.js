@@ -1,7 +1,7 @@
-import { View, StyleSheet} from 'react-native'
-import React from 'react'
-import EqMapDetail from '../components/eqMap/EqMapDetail'
-import EqDetail from '../components/eqDetail/EqDetail'
+import { View, StyleSheet} from 'react-native';
+import React from 'react';
+import EqMapDetail from '../components/eqMap/EqMapDetail';
+import EqDetail from '../components/eqDetail/EqDetail';
 
 const MapDetailScreen = () => {
   return (

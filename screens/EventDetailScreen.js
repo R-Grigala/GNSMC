@@ -1,7 +1,7 @@
-import { View, StyleSheet} from 'react-native'
-import React from 'react'
-import EqEventMap from '../components/eqMap/EqEventMap'
-import EqDetail from '../components/eqDetail/EqDetail'
+import { View, StyleSheet} from 'react-native';
+import React from 'react';
+import EqEventMap from '../components/eqMap/EqEventMap';
+import EqDetail from '../components/eqDetail/EqDetail';
 
 const EventDetailScreen = () => {
   return (

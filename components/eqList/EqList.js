@@ -8,7 +8,7 @@ function EqList(){
     const [refreshing, setRefreshing] = useState(false);
 
     const renderItem = ({item}) => {
-        return <EqItem eqId={item.id} origin_time={item.origin_time} ml={item.ml} depth={item.depth} description={item.description}/>
+        return <EqItem eqId={item.id} origin_time={item.origin_time} ml={item.ml} depth={item.depth} latitude={item.latitude} longitude={item.longitude} description={item.description}/>
     }
 
     const onRefresh = () => {

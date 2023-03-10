@@ -20,6 +20,13 @@ const NewsStack = () => {
           component={NewsScreen} 
           options={{
             headerTitle:'News',
+            headerStyle: {
+              backgroundColor: 'rgb(212, 212, 212)',
+              shadowColor: '#000',
+              shadowOpacity: 0.9,
+              shadowRadius: 3,
+              elevation: 5 
+            },
             headerTitleAlign: 'center',
             headerRight: () => null,
             headerLeft:  () => (

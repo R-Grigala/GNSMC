@@ -15,11 +15,11 @@ const EqItem = ({eqId, origin_time, ml, depth, description}) => {
 const styles = StyleSheet.create({
   card: {
     flex:1,
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: '#c5c5c5',
-    borderRadius: 10,
-    marginVertical: 5,
-    padding: 30,
+    // borderRadius: 10,
+    // marginVertical: 5,
+    padding: 20,
   }
 })
 

@@ -3,7 +3,7 @@ import React from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { EQ_DATA } from '../../data/EqData';
 
-const EqEventMap = () => {
+const EqMapDetail = () => {
   return (
     <MapView 
         style={styles.mapview}
@@ -13,7 +13,7 @@ const EqEventMap = () => {
         latitudeDelta: 10,
         longitudeDelta: 10,
         }}
-        mapType="standard"
+        mapType="hybrid"
         showsMyLocationButton={true}
         showsUserLocation={true}
     >
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EqEventMap
+export default EqMapDetail;

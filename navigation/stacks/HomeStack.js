@@ -16,6 +16,10 @@ const HomeStack = () => {
         navigation.navigate('HomeStack');
     };
 
+    const handleBackPress = () => {
+        navigation.navigate('HomeScreen');
+    };
+
     return (
         <Stack.Navigator>
             <Stack.Screen 
@@ -23,6 +27,13 @@ const HomeStack = () => {
                 component={HomeScreen} 
                 options={{
                     headerTitle: 'EARTHQUAKES',
+                    headerStyle: {
+                        backgroundColor: 'rgb(212, 212, 212)',
+                        shadowColor: '#000',
+                        shadowOpacity: 0.9,
+                        shadowRadius: 3,
+                        elevation: 5 
+                    },
                     headerTitleAlign: 'center',
                     headerRight: () => null,
                     headerLeft:  () => (
@@ -48,7 +59,7 @@ const HomeStack = () => {
                     headerLeft: () => (
                         <HeaderBackButton 
                             tintColor='black'
-                            onPress={() => navigation.goBack()}
+                            onPress={handleBackPress}
                             style={{paddingLeft: 10}}
                         />
                     )

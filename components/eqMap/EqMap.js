@@ -1,10 +1,11 @@
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { EQ_DATA } from '../../data/EqData';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
-const Map = () => {
+const EqMap = () => {
   const navigation = useNavigation();
   return (
     <MapView 
@@ -30,22 +31,21 @@ const Map = () => {
           <Callout>
             <TouchableOpacity 
               onPress={()=> navigation.navigate(
-                "EventDetailScreen", 
+                "MapDetailScreen", 
                 {eqId: event.id, origin_time: event.origin_time, ml: event.ml, depth: event.depth, description: event.description}
               )}
               >
-              <Text>
+              <View style={{ flexDirection: 'row',alignItems: 'center', width:290, height:75}}>
+                <Text style={{padding:0, margin:0}}>
                   <Text style={{ fontSize: 15, fontWeight: 'bold' }}>დრო(UTC): </Text>{event.origin_time}
-              </Text>
-              <Text>
-                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>გან/გრძ: </Text>{event.latitude} / {event.longitude}
-              </Text>
-              <Text>
-                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>მაგნიტუდა: </Text>{event.ml}
-              </Text>
-              <Text>
-                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>DEPTH: </Text>{event.depth}
-              </Text>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{'\n'}გან/გრძ: </Text>{event.latitude} / {event.longitude}
+                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{'\n'}მაგნიტუდა: </Text>{event.ml}
+                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{'\n'}DEPTH: </Text>{event.depth}
+                </Text>
+                <View style={{marginBottom:18, marginTop:17,marginLeft:30}}>
+                  <Ionicons name='alert-circle-outline' size={40} color='#4083ff'/>
+                </View>
+              </View>
             </TouchableOpacity>
           </Callout>
         </Marker>
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
   },
   });
 
-export default Map
+export default EqMap

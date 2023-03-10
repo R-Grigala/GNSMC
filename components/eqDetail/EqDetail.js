@@ -27,7 +27,7 @@ const EventDetail = () => {
     
 const styles = StyleSheet.create({
     screen: {
-        padding:1
+        padding:10
     },
     text: {
         fontSize:15

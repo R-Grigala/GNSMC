@@ -52,7 +52,7 @@ const MapStack = () => {
           name="MapDetailScreen" 
           component={MapDetailScreen} 
           options={{ 
-              headerTitle: 'EARTH',
+              headerTitle: 'სეისმური აქტივობა',
               headerTitleAlign: 'center',
               headerRight: () => null,
               headerLeft: () => (

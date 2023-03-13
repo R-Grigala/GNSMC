@@ -7,7 +7,7 @@ const MapDetailScreen = () => {
   return (
     <View style={styles.screen}>
         <View style={styles.eq_screen}>
-            <EqDetail val={'blue'}/>
+            <EqDetail />
         </View>
         <EqMapDetail />
     </View>

@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import { useRoute } from '@react-navigation/native';
 
-const EventDetail = ({val}) => {
+const EventDetail = () => {
     const route = useRoute()
 
     const { eqId, origin_time, ml, depth, description } = route.params

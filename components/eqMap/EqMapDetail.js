@@ -23,7 +23,7 @@ const EqMapDetail = () => {
           coordinate={{
             latitude:eqEvent.latitude,
             longitude:eqEvent.longitude,
-          }} 
+          }}
         >
           <Callout>
             <Text>

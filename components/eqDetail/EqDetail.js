@@ -2,29 +2,29 @@ import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import { useRoute } from '@react-navigation/native';
 
-const EventDetail = () => {
+const EventDetail = ({val}) => {
     const route = useRoute()
 
     const { eqId, origin_time, ml, depth, description } = route.params
 
     return (
         <View style={styles.screen}>
-            <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'row',  alignItems: 'center'}}>
-                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
-                    <Text style={{ fontSize: 15, fontWeight: 'bold'}}>დრო(UTC): </Text>
+            <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'row',  alignItems: 'center' }}>
+                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold' }}>დრო(UTC): </Text>
                 </View>
                 <View style={{ flex:1.5, borderBottomWidth: 0.5, flexDirection: 'column'}}>
-                    <Text style={{ fontSize: 15, fontWeight: 'bold'}}>{origin_time}</Text>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{origin_time}</Text>
                 </View>
             </View>
 
             <View style={{flex:1, borderBottomWidth: 0.5, flexDirection: 'row'}}>
 
                 <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
-                    <Text style={{ fontSize: 15, fontWeight: 'bold'}}>მაგნიტუდა(ML): </Text>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold' }}>მაგნიტუდა(ML): </Text>
                 </View>
                 <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
-                    <Text style={{ fontSize: 15, fontWeight: 'bold'}}>{ml}</Text>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{ml}</Text>
                 </View>
 
             </View>

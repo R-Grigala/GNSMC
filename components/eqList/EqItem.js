@@ -6,6 +6,18 @@ const EqItem = ({eqId, origin_time, ml, latitude, longitude, depth, description}
 
   const navigation = useNavigation();
 
+  const getColor = () => {
+
+    if (ml > 5) {
+      return '#ff0000';
+    } else if (ml > 4) {
+      return '#ff7b00';
+    } else {
+      return '#aa00ff';
+    }
+
+  };
+
   return (
 
     <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("EventDetailScreen", {eqId, origin_time, ml, depth, description})}>
@@ -40,7 +52,7 @@ const EqItem = ({eqId, origin_time, ml, latitude, longitude, depth, description}
               <Text style={{ fontSize: 9, fontWeight: 'bold'}}>მაგნიტუდა(ML):</Text>
             </View>
             <View style={{flex: 1.9}}>
-              <Text style={styles.mlContent}>{ml}</Text>
+              <Text style={[styles.mlContent, { color: getColor() }]}>{ml}</Text>
             </View>
 
           </View>
@@ -79,7 +91,6 @@ const styles = StyleSheet.create({
   mlContent: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: 'red'
   }
 })
 

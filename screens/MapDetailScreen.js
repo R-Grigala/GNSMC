@@ -7,7 +7,7 @@ const MapDetailScreen = () => {
   return (
     <View style={styles.screen}>
         <View style={styles.eq_screen}>
-            <EqDetail/>
+            <EqDetail val={'blue'}/>
         </View>
         <EqMapDetail />
     </View>
@@ -17,7 +17,6 @@ const MapDetailScreen = () => {
 const styles = StyleSheet.create({
     screen: {
       flex: 1,
-      
     },
     eq_screen :{
       flex:1,

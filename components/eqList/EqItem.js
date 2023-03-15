@@ -12,8 +12,10 @@ const EqItem = ({eqId, origin_time, ml, latitude, longitude, depth, description}
       return '#ff0000';
     } else if (ml > 4) {
       return '#ff7b00';
-    } else {
+    } else if (ml > 3) {
       return '#aa00ff';
+    }else {
+      return '#000'
     }
 
   };

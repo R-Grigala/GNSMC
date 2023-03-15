@@ -31,6 +31,7 @@ function EqList(){
                     title={refreshing ? 'Refreshing...' : 'Pull to Refresh'}
                 />
             }
+            showsVerticalScrollIndicator={false}
         />
     )
 }

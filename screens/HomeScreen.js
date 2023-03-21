@@ -1,15 +1,45 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState }  from 'react'
 import EqList from '../components/eqList/EqList';
 
 const HomeScreen = () => {
+
+  const [data, setData] = useState([])
+  const [refresh, setRefresh] = useState(false)
+
+  const handleRefresh = () => {
+    console.log('refreshing Data ...')
+    setRefresh(prevState => !prevState)
+  }
+
+  useEffect(()=> {
+    fetchData()
+  },[refresh])
+
+
+  const fetchData = async() =>{
+    try {
+      const response = await fetch('http://10.0.2.2:8000/api/events/')
+      
+      const data = await response.json()
+
+      setData(data)
+      console.log(data)
+
+    } catch (error) {
+        console.log(error.message);
+    }
+
+
+  }
+
   return (
     <View style={{flex:1}}>
       <View style={styles.content}>
         <Text style={styles.header}>მიმდინარე სეისმურობა</Text>
       </View>
       <View style={{flex:20}}>
-        <EqList />
+        <EqList data={data} onRefresh={handleRefresh}/>
       </View>
     </View>
   )

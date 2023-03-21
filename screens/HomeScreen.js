@@ -1,11 +1,12 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React, { useEffect, useState }  from 'react'
+import { View, Text, StyleSheet } from 'react-native';
+import React, { useEffect, useState }  from 'react';
 import EqList from '../components/eqList/EqList';
+import EventData from '../data/EqData';
 
 const HomeScreen = () => {
 
-  const [data, setData] = useState([])
-  const [refresh, setRefresh] = useState(false)
+  const [data, setData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   const handleRefresh = () => {
     console.log('refreshing Data ...')
@@ -13,25 +14,16 @@ const HomeScreen = () => {
   }
 
   useEffect(()=> {
-    fetchData()
+    EventData()
+    .then(responseData => {
+      setData(responseData)
+    })
+    .catch(error => {
+      console.error(error);
+    });
   },[refresh])
 
 
-  const fetchData = async() =>{
-    try {
-      const response = await fetch('http://10.0.2.2:8000/api/events/')
-      
-      const data = await response.json()
-
-      setData(data)
-      console.log(data)
-
-    } catch (error) {
-        console.log(error.message);
-    }
-
-
-  }
 
   return (
     <View style={{flex:1}}>

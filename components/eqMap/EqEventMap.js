@@ -1,9 +1,8 @@
 import { StyleSheet, Text } from 'react-native';
 import React from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
-import { EQ_DATA } from '../../data/EqData';
 
-const EqEventMap = () => {
+const EqEventMap = ({data}) => {
   return (
     <MapView 
         style={styles.mapview}
@@ -17,7 +16,7 @@ const EqEventMap = () => {
         showsMyLocationButton={true}
         showsUserLocation={true}
     >
-      {EQ_DATA.map((eqEvent, index) => (
+      {data.map((eqEvent, index) => (
         <Marker 
           key={index} 
           coordinate={{

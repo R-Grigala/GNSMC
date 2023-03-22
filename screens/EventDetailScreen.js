@@ -13,6 +13,7 @@ const EventDetailScreen = () => {
     EventData()
     .then(responseData => {
       setData(responseData)
+      console.log("EventDetailScreen")
     })
     .catch(error => {
       console.error(error);

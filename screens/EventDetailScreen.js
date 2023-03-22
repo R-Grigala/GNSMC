@@ -2,23 +2,27 @@ import { View, StyleSheet} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import EqEventMap from '../components/eqMap/EqEventMap';
 import EqDetail from '../components/eqDetail/EqDetail';
-import EventData from '../data/EqData'
+import EventDataAPI from '../data/EventDataAPI'
 
 
 const EventDetailScreen = () => {
 
   const [data, setData] = useState([]);
 
-  useEffect(()=> {
-    EventData()
-    .then(responseData => {
-      setData(responseData)
-      console.log("EventDetailScreen")
-    })
-    .catch(error => {
-      console.error(error);
-    });
-  },[])
+  useEffect(() => {
+    async function fetchData() {
+      await EventDataAPI()
+      .then(responseData => {
+        setData(responseData);
+        // console.log("Call EventDataAPI");
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
+
+    fetchData();
+  }, []);
 
 
   return (

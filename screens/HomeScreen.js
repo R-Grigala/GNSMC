@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React, { useEffect, useState }  from 'react';
 import EqList from '../components/eqList/EqList';
-import EventData from '../data/EqData';
+import EventDataAPI from '../data/EventDataAPI';
 
 const HomeScreen = () => {
 
@@ -9,14 +9,14 @@ const HomeScreen = () => {
   const [refresh, setRefresh] = useState(false);
 
   const handleRefresh = () => {
-    console.log('refreshing Data ...')
-    setRefresh(prevState => !prevState)
+    console.log('refreshing Data ...');
+    setRefresh(prevState => !prevState);
   }
 
   useEffect(()=> {
-    EventData()
+    EventDataAPI()
     .then(responseData => {
-      setData(responseData)
+      setData(responseData);
     })
     .catch(error => {
       console.error(error);

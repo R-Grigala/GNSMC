@@ -8,19 +8,22 @@ const Article = (props) => {
     <SafeAreaView style={styles.container}>
 
         {/* image */}
-        <Image source={require("../../assets/images/admin-ajax.jpeg")} style={styles.image} />
+        <Image source={{
+            uri: props.urlImage
+        }} 
+        style={styles.image} />
 
         <View style={{padding: 20}}>
 
         {/* title */}
-        <Text style={styles.title}>ვაშლიჯვრის მიმდებარე ტერიტორია</Text>
+        <Text style={styles.title} numberOfLines={2}>{props.title}</Text>
 
         {/* description */}
-        <Text style={styles.description}>2023 წლის 27 თებერვალს, ილიას სახელმწიფო უნივერსიტეტის დედამიწის შემსწავლელ მეცნიერებათა ინსტიტუტსა და სეისმური მონიტორინგის ეროვნულ ცენტრს ტიციან ტაბიძის შესახვევის # 24-24ა მაცხოვრებლებმა აცნობეს, რომ მათ სახლებთან მეწყერი ჩამოწვა</Text>
+        <Text style={styles.description} numberOfLines={3}>{props.description}</Text>
 
         <View style={styles.data}>
             <View style={styles.date}>
-            <Text style={styles.text}>2023-03-17 13:11</Text>
+            <Text style={styles.text}>{props.uploadTime}</Text>
             </View>
         </View>
 

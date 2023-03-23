@@ -32,7 +32,7 @@ const HomeStack = () => {
                         shadowColor: '#000',
                         shadowOpacity: 0.9,
                         shadowRadius: 3,
-                        elevation: 5 
+                        elevation: 10
                     },
                     headerTitleAlign: 'center',
                     headerRight: () => null,

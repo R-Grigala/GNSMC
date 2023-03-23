@@ -1,14 +1,14 @@
-import React from 'react'
-import { SafeAreaView, StyleSheet, Text, Image, View } from 'react-native'
+import React from 'react';
+import { SafeAreaView, StyleSheet, Text, Image, View } from 'react-native';
 
-const Article = () => {
+const Article = (props) => {
 
   return (
 
     <SafeAreaView style={styles.container}>
 
         {/* image */}
-        <Image source={require("../../assets/images/Profile_2.jpg")} style={styles.image} />
+        <Image source={require("../../assets/images/admin-ajax.jpeg")} style={styles.image} />
 
         <View style={{padding: 20}}>
 
@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.5,
       shadowColor: '#000',
       elevation:10,
-      marginTop:20,
+      marginTop:10,
+      marginBottom:10,
       shadowOffset: {
         height: 5,
         width: 5

@@ -9,31 +9,31 @@ const EventDetail = () => {
 
     return (
         <View style={styles.screen}>
-            <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'row',  alignItems: 'center' }}>
-                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column' }}>
+            <View style={{ flex:1, borderBottomWidth: 0.8, flexDirection: 'row',  alignItems: 'center' }}>
+                <View style={{ flex:1, flexDirection: 'column' }}>
                     <Text style={{ fontSize: 15, fontWeight: 'bold' }}>დრო(UTC): </Text>
                 </View>
-                <View style={{ flex:1.5, borderBottomWidth: 0.5, flexDirection: 'column'}}>
+                <View style={{ flex:1.5, flexDirection: 'column'}}>
                     <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{origin_time}</Text>
                 </View>
             </View>
 
-            <View style={{flex:1, borderBottomWidth: 0.5, flexDirection: 'row'}}>
+            <View style={{flex:1, borderBottomWidth: 0.8, flexDirection: 'row'}}>
 
-                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
+                <View style={{ flex:1, flexDirection: 'column'}}>
                     <Text style={{ fontSize: 15, fontWeight: 'bold' }}>მაგნიტუდა(ML): </Text>
                 </View>
-                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
+                <View style={{ flex:1, flexDirection: 'column'}}>
                     <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{ml}</Text>
                 </View>
 
             </View>
-            <View style={{flex:1, borderBottomWidth: 0.5, flexDirection: 'row'}}>
+            <View style={{flex:1, borderBottomWidth: 1, flexDirection: 'row'}}>
 
-                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
+                <View style={{ flex:1, flexDirection: 'column'}}>
                     <Text style={{ fontSize: 15, fontWeight: 'bold'}}>სიღრმე(კმ): </Text>
                 </View>
-                <View style={{ flex:1, borderBottomWidth: 0.5, flexDirection: 'column'}}>
+                <View style={{ flex:1, flexDirection: 'column'}}>
                     <Text style={{ fontSize: 15, fontWeight: 'bold'}}>{depth}</Text>
                 </View>
 

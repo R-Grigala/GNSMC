@@ -37,7 +37,6 @@ const Article = (props) => {
 
         <View style={styles.data}>
             <View style={styles.date}>
-            <Text style={styles.text}>{props.uploadTime}</Text>
             <Text style={styles.text}>{newDateString}</Text>
             </View>
         </View>

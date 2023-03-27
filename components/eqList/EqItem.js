@@ -22,7 +22,7 @@ const EqItem = ({eqId, origin_time, ml, latitude, longitude, depth, description}
 
   return (
 
-    <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("EventDetailScreen", {eqId, origin_time, ml, depth, description})}>
+    <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("EventDetailScreen", {eqId, origin_time, ml, latitude, longitude, depth, description})}>
       <View style={{ flexDirection: 'column', width: '100%', height:75}}>
         <View style={{flex:2, flexDirection: 'row', alignItems: 'center'}}>
 

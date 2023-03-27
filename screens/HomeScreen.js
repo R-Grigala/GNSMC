@@ -24,7 +24,6 @@ const HomeScreen = () => {
   },[refresh])
 
 
-
   return (
     <View style={{flex:1}}>
       <View style={styles.content}>

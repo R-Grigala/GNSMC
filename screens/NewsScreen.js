@@ -10,12 +10,13 @@ const NewsScreen = () => {
         data={newsData}
         renderItem = {({item}) => 
           <Article
+            newsId={item.id}
             title={item.title}
             description={item.description}
             urlImage={item.urlImage}
             uploadTime={item.uploadTime}
           />}
-          keyExtractor = {(item) => item.title}
+          keyExtractor = {(item) => item.title} //უნდა გააკეთდეს newsId-ით რომ სათაურის დამთხვევა არ მოხდეს შემდგომი error-ის გამოსარიცხად 
       />
     </SafeAreaView>
   )

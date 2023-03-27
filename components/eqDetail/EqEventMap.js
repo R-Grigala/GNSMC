@@ -19,7 +19,7 @@ const EqEventMap = () => {
         longitudeDelta: 1,
         }}
         mapType="standard"
-        showsMyLocationButton={false}
+        showsMyLocationButton={true}
         showsUserLocation={true}
     >
         <Marker 

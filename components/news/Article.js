@@ -15,7 +15,7 @@ const Article = (props) => {
   const seconds = dateObj.getSeconds();
 
   // Construct a new date string in the desired format
-  const newDateString = `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+  const newDateString = `${date}-${month}-${year} ${hours}:${minutes}:${seconds}`;
 
   return (
 

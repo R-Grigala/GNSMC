@@ -3,6 +3,20 @@ import { SafeAreaView, StyleSheet, Text, Image, View } from 'react-native';
 
 const Article = (props) => {
 
+  // Create a new Date object from the date string
+  const dateObj = new Date(props.uploadTime);
+
+  // Extract the date components from the date object
+  const year = dateObj.getFullYear();
+  const month = dateObj.getMonth() + 1; // Add 1 to account for zero-based indexing
+  const date = dateObj.getDate();
+  const hours = dateObj.getHours();
+  const minutes = dateObj.getMinutes();
+  const seconds = dateObj.getSeconds();
+
+  // Construct a new date string in the desired format
+  const newDateString = `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+
   return (
 
     <SafeAreaView style={styles.container}>
@@ -24,6 +38,7 @@ const Article = (props) => {
         <View style={styles.data}>
             <View style={styles.date}>
             <Text style={styles.text}>{props.uploadTime}</Text>
+            <Text style={styles.text}>{newDateString}</Text>
             </View>
         </View>
 

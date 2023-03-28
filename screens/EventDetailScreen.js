@@ -1,17 +1,35 @@
 import { View, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import EqEventMap from '../components/eqDetail/EqEventMap';
 import EqDetail from '../components/eqDetail/EqDetail';
+import EventDataAPI from '../data/EventDataAPI'
 
 
 const EventDetailScreen = () => {
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      await EventDataAPI()
+      .then(responseData => {
+        setData(responseData);
+        console.log("Call EventDataAPI");
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <View style={styles.screen}>
         <View style={styles.eq_screen}>
             <EqDetail/>
         </View>
-        <EqEventMap/>
+        <EqEventMap data={data}/>
     </View>
   )
 }

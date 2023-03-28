@@ -1,13 +1,13 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, Image} from 'react-native';
 import React from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { useRoute } from '@react-navigation/native';
 
-const EqEventMap = () => {
+const EqEventMap = ({data}) => {
 
   const route = useRoute()
 
-  const {eqId, origin_time, ml, latitude, longitude, depth} = route.params
+  const {latitude, longitude} = route.params
 
   return (
     <MapView 
@@ -22,27 +22,30 @@ const EqEventMap = () => {
         showsMyLocationButton={true}
         showsUserLocation={true}
     >
+      {data.map((eqEvent, index) => (
         <Marker 
+          key={index} 
           coordinate={{
-            latitude:latitude,
-            longitude:longitude,
+            latitude:eqEvent.latitude,
+            longitude:eqEvent.longitude,
           }} 
         >
           <Callout>
             <Text>
-              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>დრო(UTC): </Text>{origin_time}
+              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>დრო(UTC): </Text>{eqEvent.origin_time}
             </Text>
             <Text>
-              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>გან/გრძ: </Text>{latitude} / {longitude}
+              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>გან/გრძ: </Text>{eqEvent.latitude} / {eqEvent.longitude}
             </Text>
             <Text>
-              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>მაგნიტუდა: </Text>{ml}
+              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>მაგნიტუდა: </Text>{eqEvent.ml}
             </Text>
             <Text>
-              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>DEPTH: </Text>{depth}
+              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>DEPTH: </Text>{eqEvent.depth}
             </Text>
           </Callout>
         </Marker>
+      ))}
   </MapView>
   );
 };
@@ -52,6 +55,10 @@ const styles = StyleSheet.create({
   mapview: {
     flex:10,
   },
+  markerIcon: {
+    width:20,
+    height:20
+  }
 });
 
 export default EqEventMap;

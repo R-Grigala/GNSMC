@@ -14,8 +14,8 @@ const EqMapDetail = () => {
         longitudeDelta: 10,
         }}
         mapType="hybrid"
-        showsMyLocationButton={true}
-        showsUserLocation={true}
+        showsMyLocationButton={false}
+        showsUserLocation={false}
     >
       {EQ_DATA.map((eqEvent, index) => (
         <Marker 

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import React from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { EQ_DATA } from '../../data/EqData';
@@ -17,8 +17,8 @@ const EqMap = () => {
         longitudeDelta: 10,
         }}
         mapType="hybrid"
-        showsMyLocationButton={true}
-        showsUserLocation={true}
+        showsMyLocationButton={false}
+        showsUserLocation={false}
     >
       {EQ_DATA.map((event, index) => (
         <Marker 
@@ -28,6 +28,10 @@ const EqMap = () => {
             longitude:event.longitude,
           }}
         >
+          <Image
+            style={styles.markerIcon}
+            source={require("../../assets/images/Earthquake-icon.webp")}
+          />
           <Callout>
             <TouchableOpacity 
               onPress={()=> navigation.navigate(
@@ -59,6 +63,10 @@ const styles = StyleSheet.create({
   mapview: {
     flex:5,
   },
+  markerIcon: {
+    width:20,
+    height:20
+  }
   });
 
 export default EqMap

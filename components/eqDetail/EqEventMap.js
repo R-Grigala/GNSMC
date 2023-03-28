@@ -2,6 +2,7 @@ import { StyleSheet, Text, Image} from 'react-native';
 import React from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { useRoute } from '@react-navigation/native';
+import { formatData } from '../../utils/formatData';
 
 const EqEventMap = ({data}) => {
 
@@ -30,18 +31,24 @@ const EqEventMap = ({data}) => {
             longitude:eqEvent.longitude,
           }} 
         >
-          <Callout>
+          <Image
+            style={styles.markerIcon}
+            source={require("../../assets/images/Earthquake-icon.webp")}
+          />
+          <Callout
+            style={styles.cellout}
+            >
             <Text>
-              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>დრო(UTC): </Text>{eqEvent.origin_time}
+              <Text style={styles.text}>დრო(UTC):  </Text>{formatData(eqEvent.origin_time)}
             </Text>
             <Text>
-              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>გან/გრძ: </Text>{eqEvent.latitude} / {eqEvent.longitude}
+              <Text style={styles.text}>გან/გრძ: </Text>{eqEvent.latitude} / {eqEvent.longitude}
             </Text>
             <Text>
-              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>მაგნიტუდა: </Text>{eqEvent.ml}
+              <Text style={styles.text}>მაგნიტუდა: </Text>{eqEvent.ml}
             </Text>
             <Text>
-              <Text style={{ fontSize: 15, fontWeight: 'bold' }}>DEPTH: </Text>{eqEvent.depth}
+              <Text style={styles.text}>DEPTH: </Text>{eqEvent.depth}
             </Text>
           </Callout>
         </Marker>
@@ -56,8 +63,14 @@ const styles = StyleSheet.create({
     flex:10,
   },
   markerIcon: {
-    width:20,
-    height:20
+    width:30,
+    height:30
+  },
+  cellout: {
+    width:230
+  },
+  text: {
+    fontSize: 15, fontWeight: 'bold' 
   }
 });
 

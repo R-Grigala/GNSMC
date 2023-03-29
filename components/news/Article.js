@@ -1,21 +1,9 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, Image, View } from 'react-native';
+import { formatData } from '../../utils/formatData';
+
 
 const Article = (props) => {
-
-  // Create a new Date object from the date string
-  const dateObj = new Date(props.uploadTime);
-
-  // Extract the date components from the date object
-  const year = dateObj.getFullYear();
-  const month = dateObj.getMonth() + 1; // Add 1 to account for zero-based indexing
-  const date = dateObj.getDate();
-  const hours = dateObj.getHours();
-  const minutes = dateObj.getMinutes();
-  const seconds = dateObj.getSeconds();
-
-  // Construct a new date string in the desired format
-  const newDateString = `${date}-${month}-${year} ${hours}:${minutes}:${seconds}`;
 
   return (
 
@@ -37,7 +25,7 @@ const Article = (props) => {
 
         <View style={styles.data}>
             <View style={styles.date}>
-            <Text style={styles.text}>{newDateString}</Text>
+            <Text style={styles.text}>{formatData(props.uploadTime)}</Text>
             </View>
         </View>
 

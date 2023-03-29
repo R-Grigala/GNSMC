@@ -14,7 +14,7 @@ const EventDetailScreen = () => {
       await EventDataAPI()
       .then(responseData => {
         setData(responseData);
-        console.log("Call EventDataAPI");
+        // console.log("Call EventDataAPI");
       })
       .catch(error => {
         console.error(error);

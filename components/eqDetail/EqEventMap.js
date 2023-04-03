@@ -29,14 +29,14 @@ const EqEventMap = ({data}) => {
           coordinate={{
             latitude:eqEvent.latitude,
             longitude:eqEvent.longitude,
-          }} 
+          }}
         >
           <Image
             style={styles.markerIcon}
             source={require("../../assets/images/Earthquake-icon.webp")}
           />
           <Callout
-            style={styles.cellout}
+            style={styles.callout}
             >
             <Text>
               <Text style={styles.text}>დრო(UTC):  </Text>{formatData(eqEvent.origin_time)}
@@ -64,10 +64,12 @@ const styles = StyleSheet.create({
   },
   markerIcon: {
     width:30,
-    height:30
+    height:30,
   },
-  cellout: {
-    width:230
+  callout: {
+    width:230,
+    borderBottomLeftRadius: 10,
+    borderWidth:2,
   },
   text: {
     fontSize: 15, fontWeight: 'bold' 

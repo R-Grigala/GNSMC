@@ -1,0 +1,2 @@
+# for runserver: 
+npx expo start --tunnel

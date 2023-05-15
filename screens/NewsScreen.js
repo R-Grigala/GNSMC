@@ -1,20 +1,33 @@
 import { SafeAreaView, StyleSheet, FlatList } from 'react-native'
-import React from 'react'
+import React, {useState, useEffect} from 'react';
 import Article from '../components/news/Article'
-import { newsData } from '../data/newsData'
+import NewsDataAPI from '../data/NewsDataAPI'
 
 const NewsScreen = () => {
+
+  const [data, setData] = useState([]);
+
+  useEffect(()=> {
+    NewsDataAPI()
+    .then(responseData => {
+      setData(responseData);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  },[])
+
   return (
     <SafeAreaView >
       <FlatList 
-        data={newsData}
+        data={data}
         renderItem = {({item}) => 
           <Article
             newsId={item.id}
             title={item.title}
             description={item.description}
-            urlImage={item.urlImage}
-            uploadTime={item.uploadTime}
+            urlImage={item.imageURL}
+            uploadTime={item.created_at}
           />}
           keyExtractor = {(item) => item.title} //უნდა გააკეთდეს newsId-ით რომ სათაურის დამთხვევა არ მოხდეს შემდგომი error-ის გამოსარიცხად 
       />

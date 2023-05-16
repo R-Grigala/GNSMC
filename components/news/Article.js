@@ -9,22 +9,24 @@ const Article = (props) => {
 
     <SafeAreaView style={styles.container}>
 
-        {/* image */}
-        <Image source={{
-            uri: props.urlImage
+      {/* Image */}
+      <Image source={{
+          uri: props.urlImage
         }} 
-        style={styles.image} />
+        style={styles.image}
+      />
 
-        <View style={{padding: 20}}>
+      <View style={{padding: 20}}>
 
-        {/* title */}
+        {/* Title */}
         <Text style={styles.title} numberOfLines={2}>{props.title}</Text>
 
-        {/* description */}
+        {/* Description */}
         <Text style={styles.description} numberOfLines={3}>{props.description}</Text>
 
         <View style={styles.data}>
             <View style={styles.date}>
+            {/* Formatted Upload Time */}
             <Text style={styles.text}>{formatData(props.uploadTime)}</Text>
             </View>
         </View>
@@ -82,7 +84,7 @@ const styles = StyleSheet.create({
     },
     date:{
       flex:1,
-      alignContent: 'flex-end'
+      alignItems: 'flex-end'
     },
     text:{
       textAlign: 'right',

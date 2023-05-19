@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { getColor } from '../../utils/utils'; // Importing the getColor function from utils.js
 
 const EqItem = ({ eqId, origin_time, ml, latitude, longitude, depth, description }) => {
 

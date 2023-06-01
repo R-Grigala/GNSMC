@@ -6,7 +6,18 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
 const EqMap = () => {
+  
   const navigation = useNavigation();
+
+  const handleMarkerPress = (event) => {
+    navigation.navigate('MapDetailScreen', {
+      eqId: event.id,
+      origin_time: event.origin_time,
+      ml: event.ml,
+      depth: event.depth,
+      description: event.description,
+    });
+  };
 
   return (
     <MapView 
@@ -33,19 +44,8 @@ const EqMap = () => {
             style={styles.markerIcon}
             source={require("../../assets/images/Earthquake-icon.webp")}
           />
-          <Callout>
-            <TouchableOpacity 
-              onPress={() => navigation.navigate(
-                "MapDetailScreen", 
-                {
-                  eqId: event.id,
-                  origin_time: event.origin_time,
-                  ml: event.ml,
-                  depth: event.depth,
-                  description: event.description
-                }
-              )}
-            >
+          <Callout onPress={() => handleMarkerPress(event)}>
+            <TouchableOpacity>
               <View style={{ flexDirection: 'row', alignItems: 'center', width: 290, height: 75 }}>
                 <Text style={{ padding: 0, margin: 0 }}>
                   {/* Display earthquake details */}

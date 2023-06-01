@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import React, { useEffect, useState }  from 'react';
 import EqList from '../components/eqList/EqList';
 import EventDataAPI from '../data/EventDataAPI';
@@ -25,14 +25,14 @@ const HomeScreen = () => {
 
 
   return (
-    <View style={{flex:1}}>
+    <SafeAreaView style={{flex:1}}>
       <View style={styles.content}>
         <Text style={styles.header}>მიმდინარე სეისმურობა</Text>
       </View>
       <View style={{flex:20}}>
         <EqList data={data} onRefresh={handleRefresh}/>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

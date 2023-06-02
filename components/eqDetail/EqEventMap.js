@@ -1,5 +1,5 @@
 import { StyleSheet, Text, Image} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState, useCallback}from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { useRoute } from '@react-navigation/native';
 import { formatData } from '../../utils/formatData';
@@ -7,8 +7,22 @@ import { formatData } from '../../utils/formatData';
 const EqEventMap = ({data}) => {
 
   const route = useRoute()
-
   const {latitude, longitude} = route.params
+
+  const [values, setValues] = useState([]);
+  // Sort the data array by origin_time in descending order
+  const valuesCallback = useCallback(() => {
+      if (data && data.length > 0) {
+          const sortedData = [...data].sort(
+            (a, b) => new Date(b.origin_time) - new Date(a.origin_time)
+          );
+          setValues(sortedData);
+      }
+  }, [data, setValues]);
+
+  useEffect(() => {
+      valuesCallback();
+  }, [valuesCallback]);
 
   return (
     <MapView 
@@ -23,7 +37,7 @@ const EqEventMap = ({data}) => {
         showsMyLocationButton={true}
         showsUserLocation={true}
     >
-      {data.map((eqEvent, index) => (
+      {values.map((eqEvent, index) => (
         <Marker 
           key={index} 
           coordinate={{
@@ -33,7 +47,10 @@ const EqEventMap = ({data}) => {
         >
           <Image
             style={styles.markerIcon}
-            source={require("../../assets/images/Earthquake-icon.webp")}
+            source={{
+              uri: 'http://127.0.0.1:8000/images/Earthquake-icon.webp',
+              cache: 'only-if-cached',
+          }}
           />
           <Callout
             style={styles.callout}

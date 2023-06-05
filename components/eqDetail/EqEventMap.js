@@ -48,7 +48,7 @@ const EqEventMap = ({data}) => {
           <Image
             style={styles.markerIcon}
             source={{
-              uri: 'http://127.0.0.1:8000/images/Earthquake-icon.webp',
+              uri: 'http://10.0.2.2:8000/images/Earthquake-icon.webp',
               cache: 'only-if-cached',
           }}
           />

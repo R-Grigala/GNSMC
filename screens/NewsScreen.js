@@ -1,13 +1,13 @@
-import { SafeAreaView, StyleSheet, FlatList, RefreshControl } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import Article from '../components/news/Article';
+import NewsList from '../components/news/NewsList';
 import NewsDataAPI from '../data/NewsDataAPI';
 
 const NewsScreen = () => {
   const [data, setData] = useState([]); // State variable to hold the data
   const [refreshing, setRefreshing] = useState(false); // State variable to track the refreshing state
 
-  const fetchData = () => {
+  const fetchNewsData = () => {
     // Function to fetch data from the API
     NewsDataAPI()
       .then(responseData => {
@@ -16,46 +16,53 @@ const NewsScreen = () => {
       .catch(error => {
         console.error(error);
       })
-      .finally(() => {
-        setRefreshing(false); // Set refreshing state to false when the fetching is completed
-      });
   };
 
   const handleRefresh = () => {
     // Function to handle the refresh action
     console.log('refreshing NewsData ...');
-    setRefreshing(true); // Set refreshing state to true
-    fetchData(); // Fetch the data
+    setRefreshing(prevState => !prevState); // Set refreshing state to true
+    fetchNewsData(); // Fetch the data
   };
 
   useEffect(() => {
-    fetchData(); // Fetch the data when the component mounts
-  }, []);
+    fetchNewsData(); // Fetch the data when the component mounts
+  }, [refreshing]);
 
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={data} // Set the data for the FlatList
-        renderItem={({ item }) => (
-          <Article
-            newsId={item.id}
-            title={item.title}
-            description={item.description}
-            urlImage={item.imageURL}
-            uploadTime={item.created_at}
-          />
-        )}
-        keyExtractor={(item) => item.title} //უნდა გააკეთდეს newsId-ით რომ სათაურის დამთხვევა არ მოხდეს შემდგომი error-ის გამოსარიცხად
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} /> // Add the RefreshControl component to enable pull-to-refresh
-        }
-      />
+      <View style={styles.content}>
+        <Text style={styles.header}>მიმდინარე სიახლეები</Text>
+      </View>
+      <View style={styles.listContainer}>
+        <NewsList data={data} onRefresh={handleRefresh} />
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {}, // Add any styles for the container if needed
+  container: {
+    flex: 1,
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    borderWidth: 0.5,
+    borderColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: 'rgba(0,0,0,0.3)',
+  },
+  header: {
+    flex: 1,
+    color: 'rgba(122, 0, 2, 1)',
+    marginLeft: 20,
+    marginTop: 8,
+    fontWeight: 'bold',
+  },
+  listContainer: {
+    flex: 20,
+  },
 });
 
 export default NewsScreen;

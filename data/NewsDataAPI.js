@@ -3,7 +3,7 @@ const NewsDataAPI = async() =>{
     const token = 'ee1403e4ef95d1c81a5ee47d864bd646fea308e7'; // Replace with the actual token
   
     try {
-      const response = await fetch('http://10.0.2.2:8000/api/newsposts/', {
+      const response = await fetch('https://45ce-212-72-141-34.ngrok-free.app/api/newsposts/', {
         headers: {
           Authorization: `Token ${token}`
         }

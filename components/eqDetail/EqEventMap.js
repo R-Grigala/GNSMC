@@ -48,8 +48,7 @@ const EqEventMap = ({data}) => {
           <Image
             style={styles.markerIcon}
             source={{
-              uri: 'http://10.0.2.2:8000/images/Earthquake-icon.webp',
-              cache: 'only-if-cached',
+              uri: 'https://45ce-212-72-141-34.ngrok-free.app/images/Earthquake-icon.webp',
           }}
           />
           <Callout
@@ -85,8 +84,7 @@ const styles = StyleSheet.create({
   },
   callout: {
     width:230,
-    borderBottomLeftRadius: 10,
-    borderWidth:2,
+    margin:10,
   },
   text: {
     fontSize: 15, fontWeight: 'bold' 

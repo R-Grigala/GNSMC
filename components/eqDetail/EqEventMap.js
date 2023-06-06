@@ -48,7 +48,7 @@ const EqEventMap = ({data}) => {
           <Image
             style={styles.markerIcon}
             source={{
-              uri: 'https://45ce-212-72-141-34.ngrok-free.app/images/Earthquake-icon.webp',
+              uri: 'https://9a48-212-72-141-34.ngrok-free.app/images/Earthquake-icon.webp',
           }}
           />
           <Callout

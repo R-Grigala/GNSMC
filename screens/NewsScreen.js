@@ -2,10 +2,12 @@ import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import NewsList from '../components/news/NewsList';
 import NewsDataAPI from '../data/NewsDataAPI';
+import SearchBar from '../components/news/SearchBar';
 
 const NewsScreen = () => {
   const [data, setData] = useState([]); // State variable to hold the data
   const [refreshing, setRefreshing] = useState(false); // State variable to track the refreshing state
+  const [searchText, setSearchText] = useState("");
 
   const fetchNewsData = () => {
     // Function to fetch data from the API
@@ -32,7 +34,7 @@ const NewsScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.header}>მიმდინარე სიახლეები</Text>
+        <SearchBar searchText={searchText} setSearchText={setSearchText}/>
       </View>
       <View style={styles.listContainer}>
         <NewsList data={data} onRefresh={handleRefresh} />
@@ -46,12 +48,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    borderWidth: 0.5,
-    borderColor: 'rgba(0,0,0,0.3)',
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    flex: 2,
   },
   header: {
     flex: 1,

@@ -16,7 +16,7 @@ const Article = (props) => {
         style={styles.image}
       />
 
-      <View style={{padding: 20}}>
+      <View style={{padding: 15}}>
 
         {/* Title */}
         <Text style={styles.title} numberOfLines={2}>{props.title}</Text>
@@ -30,13 +30,7 @@ const Article = (props) => {
             <Text style={styles.text}>{formatData(props.uploadTime)}</Text>
             </View>
         </View>
-
-        {/* source */}
-        <View style={{marginTop: 10}}>
-            <Text>source: <Text style={styles.source}>Programmingknowledge</Text></Text>
-        </View>
-
-        </View>
+      </View>
 
     </SafeAreaView>
 
@@ -69,34 +63,29 @@ const styles = StyleSheet.create({
     title:{
       fontSize: 18,
       fontWeight: '600',
-      marginTop: 10
+      marginTop: 0,
     },
     description:{
       fontSize: 16,
       fontWeight: '400',
-      marginTop: 10
+      marginTop: 10,
     },
     data:{
       flexDirection: 'row',
       justifyContent: 'space-between',
       marginTop: 10,
-      alignItems: 'center'
+      alignItems: 'center',
     },
     date:{
       flex:1,
-      alignItems: 'flex-end'
+      alignItems: 'flex-end',
     },
     text:{
       textAlign: 'right',
       color: '#e63946',
       fontWeight: 'bold',
-      fontSize: 15
+      fontSize: 15,
     },
-    source:{
-      color: '#FF0000',
-      fontWeight: 'bold',
-      fontSize: 18
-    }
 })
 
 export default Article;

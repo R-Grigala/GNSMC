@@ -1,16 +1,16 @@
-import { View, StyleSheet} from 'react-native';
+import { View, StyleSheet, SafeAreaView} from 'react-native';
 import React from 'react';
 import EqMapDetail from '../components/eqMap/EqMapDetail';
 import EqDetail from '../components/eqDetail/EqDetail';
 
 const MapDetailScreen = () => {
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
         <View style={styles.eq_screen}>
           <EqDetail />
         </View>
         <EqMapDetail />
-    </View>
+    </SafeAreaView>
   )
 }
 

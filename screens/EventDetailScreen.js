@@ -1,4 +1,4 @@
-import { View, StyleSheet} from 'react-native';
+import { View, StyleSheet, SafeAreaView} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import EqEventMap from '../components/eqDetail/EqEventMap';
 import EqDetail from '../components/eqDetail/EqDetail';
@@ -25,12 +25,12 @@ const EventDetailScreen = () => {
   }, []);
 
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
         <View style={styles.eq_screen}>
             <EqDetail/>
         </View>
         <EqEventMap data={data}/>
-    </View>
+    </SafeAreaView>
   )
 }
 

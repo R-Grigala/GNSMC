@@ -1,39 +1,33 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, Image, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
 import { formatData } from '../../utils/formatData';
+import { useNavigation } from '@react-navigation/native';
 
 
 const Article = (props) => {
+  const navigation = useNavigation();
 
   return (
-
-    <SafeAreaView style={styles.container}>
-
-      {/* Image */}
-      <Image source={{
-          uri: props.urlImage
-        }} 
-        style={styles.image}
-      />
-
-      <View style={{padding: 15}}>
-
-        {/* Title */}
-        <Text style={styles.title} numberOfLines={2}>{props.title}</Text>
-
-        {/* Description */}
-        <Text style={styles.description} numberOfLines={3}>{props.description}</Text>
-
-        <View style={styles.data}>
-            <View style={styles.date}>
-            {/* Formatted Upload Time */}
-            <Text style={styles.text}>{formatData(props.uploadTime)}</Text>
-            </View>
+    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate("NewsDetailScreen", {urlImage: props.urlImage, title: props.title, description: props.description, uploadTime: props.uploadTime })}>
+        {/* Image */}
+        <Image source={{
+            uri: props.urlImage
+          }} 
+          style={styles.image}
+        />
+        <View style={{padding: 15}}>
+          {/* Title */}
+          <Text style={styles.title} numberOfLines={2}>{props.title}</Text>
+          {/* Description */}
+          <Text style={styles.description} numberOfLines={3}>{props.description}</Text>
+          <View style={styles.data}>
+              <View style={styles.date}>
+              {/* Formatted Upload Time */}
+              <Text style={styles.text}>{formatData(props.uploadTime)}</Text>
+              </View>
+          </View>
         </View>
-      </View>
-
-    </SafeAreaView>
-
+    </TouchableOpacity>
   )
 }
 
@@ -58,7 +52,9 @@ const styles = StyleSheet.create({
       height: 200,
       width: '100%',
       borderTopLeftRadius: 40,
-      borderTopRightRadius: 40
+      borderTopRightRadius: 40,
+      borderBottomLeftRadius: 20,
+      borderBottomRightRadius: 20,
     },
     title:{
       fontSize: 18,

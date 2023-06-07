@@ -38,9 +38,11 @@ const NewsScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
+        {/* SearchBar component */}
         <SearchBar searchText={searchText} setSearchText={setSearchText} onSubmit={fetchNewsData}/>
       </View>
       <View style={styles.listContainer}>
+        {/* NewsList component */}
         <NewsList data={data} onRefresh={handleRefresh} />
       </View>
     </SafeAreaView>

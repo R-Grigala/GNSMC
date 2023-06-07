@@ -2,6 +2,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import NewsScreen from '../../screens/NewsScreen';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { HeaderBackButton } from '@react-navigation/elements';
+import NewsDetailScreen from '../../screens/NewsDetailScreen';
 
 const Stack = createStackNavigator();
 
@@ -11,6 +13,10 @@ const NewsStack = () => {
 
   const handleLogoPress = () => {
       navigation.navigate('HomeStack');
+  };
+
+  const handleBackPress = () => {
+    navigation.navigate('NewsScreen');
   };
 
   return (
@@ -40,6 +46,22 @@ const NewsStack = () => {
                 </TouchableOpacity>
             )
           }}  
+        />
+        <Stack.Screen 
+          name="NewsDetailScreen" 
+          component={NewsDetailScreen} 
+          options={{ 
+              headerTitle: 'სიახლეები',
+              headerTitleAlign: 'center',
+              headerRight: () => null,
+              headerLeft: () => (
+                  <HeaderBackButton 
+                      tintColor='black'
+                      onPress={handleBackPress}
+                      style={{paddingLeft: 10}}
+                  />
+              )
+          }}
         />
       </Stack.Navigator>
   );

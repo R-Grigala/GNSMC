@@ -13,7 +13,11 @@ const NewsScreen = () => {
     // Function to fetch data from the API
     NewsDataAPI()
       .then(responseData => {
-        setData(responseData); // Update the state with the fetched data
+        // Filter the data based on the searchText
+        const filteredData = responseData.filter(item =>
+          item.title.toLowerCase().includes(searchText.toLowerCase())
+        );
+        setData(filteredData); // Update the state with the filtered data
       })
       .catch(error => {
         console.error(error);
@@ -34,7 +38,7 @@ const NewsScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <SearchBar searchText={searchText} setSearchText={setSearchText}/>
+        <SearchBar searchText={searchText} setSearchText={setSearchText} onSubmit={fetchNewsData}/>
       </View>
       <View style={styles.listContainer}>
         <NewsList data={data} onRefresh={handleRefresh} />

@@ -3,13 +3,14 @@ import { Ionicons } from '@expo/vector-icons';
 import HomeStack from '../stacks/HomeStack';
 import MapStack from '../stacks/MapStack';
 import NewsStack from '../stacks/NewsStack';
+import SettingsStack from '../stacks/SettingsStack';
 
 const Tab = createBottomTabNavigator();
 
 // Define the screen options for the tab navigator
 const screenOptions = ({ route, focused}) => {
   const { name } = route;
-  const iconName = name === 'HomeStack' ? 'list' : name === 'MapStack' ? 'earth' : 'newspaper';
+  const iconName = name === 'HomeStack' ? 'list' : name === 'MapStack' ? 'earth' : name === 'NewsStack' ? 'newspaper' : 'settings';
   const focusedIconName = `${iconName}${focused ? '' : '-outline'}`;
 
   return {
@@ -38,6 +39,7 @@ const MyTabs = () => {
       />
       <Tab.Screen name="MapStack" component={MapStack} />
       <Tab.Screen name="NewsStack" component={NewsStack} />
+      <Tab.Screen name="SettingsStack" component={SettingsStack} />
     </Tab.Navigator>
   );
 };

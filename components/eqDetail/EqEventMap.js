@@ -6,6 +6,8 @@ import { formatData } from '../../utils/formatData';
 
 const EqEventMap = ({data}) => {
 
+  const EqImage = 'https://8bbb-212-72-141-34.ngrok-free.app/images/Earthquake-icon.webp';
+
   const route = useRoute()
   const {latitude, longitude} = route.params
 
@@ -48,7 +50,7 @@ const EqEventMap = ({data}) => {
           <Image
             style={styles.markerIcon}
             source={{
-              uri: 'https://8bbb-212-72-141-34.ngrok-free.app/images/Earthquake-icon.webp',
+              uri: EqImage,
           }}
           />
           <Callout

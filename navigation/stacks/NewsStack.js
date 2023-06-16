@@ -9,6 +9,8 @@ const Stack = createStackNavigator();
 
 const NewsStack = () => {
 
+  const LogoImage = 'https://8bbb-212-72-141-34.ngrok-free.app/images/GNSMC_logo.png';
+
   const navigation = useNavigation();
 
   const handleLogoPress = () => {
@@ -40,7 +42,9 @@ const NewsStack = () => {
                     <View style={{paddingLeft:20}}>
                         <Image 
                             style={{width: 45, height: 45, resizeMode: 'contain'}}
-                            source={require("../../assets/images/logo.png")}
+                            source={{
+                              uri: LogoImage
+                            }}
                         />
                     </View>
                 </TouchableOpacity>

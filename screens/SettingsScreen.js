@@ -1,5 +1,5 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from 'react-native';
+import React from 'react';
 
 const SettingsScreen = () => {
   return (
@@ -9,4 +9,4 @@ const SettingsScreen = () => {
   )
 }
 
-export default SettingsScreen
+export default SettingsScreen;

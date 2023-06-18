@@ -20,7 +20,7 @@ const SettingsStack = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen 
-                name="HomeScreen" 
+                name="SettingsScreen" 
                 component={SettingsScreen} 
                 options={{
                     headerTitle: headerTitle,

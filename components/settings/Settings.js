@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import {ScrollView, StyleSheet, View, Text } from 'react-native';
 import React from 'react';
 
 const SECTIONS = [
@@ -7,24 +7,47 @@ const SECTIONS = [
     items: [
       { id: 'language', icon: 'globe', label: 'Language', type: 'select' },
       { id: 'darkMode', icon: 'moon', label: 'Dark Mode', type: 'toggle' },
-      { id: 'wife', icon: 'wife', label: 'use Wi-Fi', type: 'toggle' },
+      { id: 'notifications', icon: 'notifications-outline', label: 'use notifications', type: 'toggle' },
     ],
   },
   {  
-    header: 'Help',
+    header: 'About',
     items: [
-      { id: 'bug', icon: 'flag', label: 'Report Bug', type: 'link' },
-      { id: 'contact', icon: 'mail', label: 'Contact Us', type: 'link' },
+      { id: 'about', icon: 'help-circle-outline', label: 'About Us', type: 'link' },
+      { id: 'contact', icon: 'mail-outline', label: 'Contact Us', type: 'link' },
     ],
   },
 ]
 
 const Settings = () => {
   return (
-    <View>
-      <Text>Settings</Text>
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      {SECTIONS.map(({ header, items }) => (
+        <View style={styles.section} key={header}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionHeaderText}>{header}</Text>
+          </View>
+        </View>
+      ))}
+    </ScrollView>
   )
 }
 
-export default Settings
+const styles = StyleSheet.create({
+  container: {
+    paddingVertical: 24,
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: '700',
+    color: '#1d1d1d',
+    marginBottom: 6,
+  },
+  subtitle: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#929292',
+  }
+});
+
+export default Settings;

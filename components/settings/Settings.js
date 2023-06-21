@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Switch } from 'react-native';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -23,11 +23,11 @@ const SECTIONS = [
 const Settings = () => {
   const [form, setForm] = useState({
     language: 'ქართული',
-    darkMode: true,
-    notications: true,
+    darkMode: false,
+    notifications: true,
   })
   return (
-    <ScrollView>
+    <View>
       {SECTIONS.map(({ header, items }) => (
         <View style={styles.section} key={header}>
           <View style={styles.sectionHeader}>
@@ -60,6 +60,23 @@ const Settings = () => {
                     {type === 'select' && (
                       <Text style={styles.rowValue}>{form[id]}</Text>
                     )}
+
+                    {type === 'toggle' && (
+                      <Switch
+                        value={form[id]}
+                        onValueChange={value =>
+                          setForm({...form, [id]: value})
+                        }
+                      />
+                    )}
+
+                    {['select', 'link'].includes(type) && (
+                      <Ionicons
+                        name='chevron-forward-outline'
+                        color='#555'
+                        size={25}
+                      />
+                    )}
                   </View>
                 </TouchableOpacity>
               </View>
@@ -67,7 +84,7 @@ const Settings = () => {
           </View>
         </View>
       ))}
-    </ScrollView>
+    </View>
   )
 }
 
@@ -119,7 +136,7 @@ const styles = StyleSheet.create({
     flex: 1, 
   },
   rowValue: {
-    fontSize: 17,
+    fontSize: 18,
     color: '#616161',
     marginRight: 4,
   }

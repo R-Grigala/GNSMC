@@ -1,11 +1,30 @@
 import { StyleSheet, SafeAreaView } from 'react-native'
-import React from 'react';
-import EqMap from '../components/eqMap/EqMap'
+import React, {useState, useEffect} from 'react';
+import EqMap from '../components/eqMap/EqMap';
+import EventDataAPI from '../data/EventDataAPI';
 
 const MapScreen = () => {
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      await EventDataAPI()
+      .then(responseData => {
+        setData(responseData);
+        // console.log("Call EventDataAPI");
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <SafeAreaView style={styles.screen}>
-      <EqMap />
+      <EqMap data={data}/>
     </SafeAreaView>
   )
 }

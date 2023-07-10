@@ -2,7 +2,7 @@ import { View, StyleSheet, SafeAreaView} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import EqEventMap from '../components/eqDetail/EqEventMap';
 import EqDetail from '../components/eqDetail/EqDetail';
-import EventDataAPI from '../data/EventDataAPI'
+import EventDataAPI from '../data/EventDataAPI';
 
 
 const EventDetailScreen = () => {
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
     }
   })
 
-export default EventDetailScreen
+export default EventDetailScreen;

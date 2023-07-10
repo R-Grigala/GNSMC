@@ -1,21 +1,41 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState, useCallback}from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
-import { EQ_DATA } from '../../data/EqData';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { formatData } from '../../utils/formatData';
 
-const EqMap = () => {
+const EqMap = ({data}) => {
   
+  const EqImage = 'https://02ef-212-72-141-34.ngrok-free.app/images/Earthquake-icon.webp';
+
   const navigation = useNavigation();
+
+  const [values, setValues] = useState([]);
+  // Sort the data array by origin_time in descending order
+  const valuesCallback = useCallback(() => {
+      if (data && data.length > 0) {
+          const sortedData = [...data].sort(
+            (a, b) => new Date(b.origin_time) - new Date(a.origin_time)
+          );
+          setValues(sortedData);
+      }
+  }, [data, setValues]);
+
+  useEffect(() => {
+      valuesCallback();
+  }, [valuesCallback]);
 
   const handleMarkerPress = (event) => {
     navigation.navigate('MapDetailScreen', {
       eqId: event.id,
       origin_time: event.origin_time,
       ml: event.ml,
+      latitude: event.latitude,
+      longitude: event.longitude,
       depth: event.depth,
       description: event.description,
+
     });
   };
 
@@ -32,27 +52,29 @@ const EqMap = () => {
       showsMyLocationButton={false}
       showsUserLocation={false}
     >
-      {EQ_DATA.map((event, index) => (
+      {values.map((eqEvent, index) => (
         <Marker 
           key={index} 
           coordinate={{
-            latitude: event.latitude,
-            longitude: event.longitude,
+            latitude: eqEvent.latitude,
+            longitude: eqEvent.longitude,
           }}
         >
           <Image
             style={styles.markerIcon}
-            source={require("../../assets/images/Earthquake-icon.webp")}
+            source={{
+              uri: EqImage,
+          }}
           />
-          <Callout onPress={() => handleMarkerPress(event)}>
-            <TouchableOpacity>
+          <Callout onPress={() => handleMarkerPress(eqEvent)}>
+            <TouchableOpacity >
               <View style={{ flexDirection: 'row', alignItems: 'center', width: 290, height: 75 }}>
                 <Text style={{ padding: 0, margin: 0 }}>
                   {/* Display earthquake details */}
-                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>დრო(UTC): </Text>{event.origin_time}
-                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{'\n'}გან/გრძ: </Text>{event.latitude} / {event.longitude}
-                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{'\n'}მაგნიტუდა: </Text>{event.ml}
-                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{'\n'}DEPTH: </Text>{event.depth}
+                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>დრო(UTC): </Text>{formatData(eqEvent.origin_time)}
+                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{'\n'}გან/გრძ: </Text>{eqEvent.latitude} / {eqEvent.longitude}
+                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{'\n'}მაგნიტუდა: </Text>{eqEvent.ml}
+                  <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{'\n'}DEPTH: </Text>{eqEvent.depth}
                 </Text>
                 <View style={{ marginBottom: 18, marginTop: 17, marginLeft: 30 }}>
                   {/* Display alert icon */}

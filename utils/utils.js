@@ -24,17 +24,17 @@ export const eqColor = (eqId, origin_time, Id) => {
   // Use a switch-case statement to determine the color based on the age of the data
   switch (true) {
     case eqId == Id:
-      return `${getUrlEqIcon()}/images/Earthquake_gif.gif`;
+      return `${getUrl()}/images/Earthquake_gif.gif`;
     case originTime > oneWeekAgo:
-      return `${getUrlEqIcon()}/images/Earthquake_gif.gif`; // If data is less than one week old, return gif URL
+      return `${getUrl()}/images/Earthquake_gif.gif`; // If data is less than one week old, return gif URL
     case originTime > threeMonthsAgo:
-      return `${getUrlEqIcon()}/images/Earthquake_red.png`; // If data is less than three months old, return red image URL
+      return `${getUrl()}/images/Earthquake_red.png`; // If data is less than three months old, return red image URL
     default:
-      return `${getUrlEqIcon()}/images/Earthquake_yellow.png`; // Otherwise, return yellow image URL
+      return `${getUrl()}/images/Earthquake_yellow.png`; // Otherwise, return yellow image URL
   }
 }
 
-export const getUrlEqIcon = () =>{
+export const getUrl = () =>{
   // URL of the earthquake image
   return 'https://2d08-178-134-23-146.ngrok-free.app'
 }

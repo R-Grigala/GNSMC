@@ -1,9 +1,11 @@
+import { getUrl } from '../utils/utils';
+
 const EventDataAPI = async() =>{
 
   const token = 'ee1403e4ef95d1c81a5ee47d864bd646fea308e7'; // Replace with the actual token
 
   try {
-    const response = await fetch('https://2d08-178-134-23-146.ngrok-free.app/api/events/', {
+    const response = await fetch(`${getUrl()}/api/events/`, {
       headers: {
         Authorization: `Token ${token}`
       }

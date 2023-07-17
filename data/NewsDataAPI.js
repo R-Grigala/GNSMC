@@ -1,9 +1,11 @@
+import { getUrl } from '../utils/utils';
+
 const NewsDataAPI = async() =>{
 
     const token = 'ee1403e4ef95d1c81a5ee47d864bd646fea308e7'; // Replace with the actual token
   
     try {
-      const response = await fetch('https://2d08-178-134-23-146.ngrok-free.app/api/newsposts/', {
+      const response = await fetch(`${getUrl()}/api/newsposts/`, {
         headers: {
           Authorization: `Token ${token}`
         }

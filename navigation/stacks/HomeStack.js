@@ -4,12 +4,12 @@ import { useNavigation } from '@react-navigation/native';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { HeaderBackButton } from '@react-navigation/elements';
 import EventDetailScreen from '../../screens/EventDetailScreen';
-
+import { getUrl } from '../../utils/utils';
 
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
-    const LogoImage = 'https://8bbb-212-72-141-34.ngrok-free.app/images/GNSMC_logo.png';
+    const LogoImage = `${getUrl()}/images/GNSMC_logo.png`;
     
     const navigation = useNavigation();
 

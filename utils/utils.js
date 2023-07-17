@@ -14,9 +14,6 @@ export const eqColor = (origin_time) => {
   // Convert the input origin_time to a Date object
   const originTime = new Date(origin_time);
 
-  // URL of the earthquake image
-  const UrlImage = 'https://2d08-178-134-23-146.ngrok-free.app'
-
   // Get the current date and time
   const now = new Date();
 
@@ -31,10 +28,15 @@ export const eqColor = (origin_time) => {
   // Use a switch-case statement to determine the color based on the age of the data
   switch (true) {
     case originTime > oneWeekAgo:
-      return `${UrlImage}/images/Earthquake_gif.gif`; // If data is less than one week old, return gif URL
+      return `${getUrlEqIcon()}/images/Earthquake_gif.gif`; // If data is less than one week old, return gif URL
     case originTime > threeMonthsAgo:
-      return `${UrlImage}/images/Earthquake_red.png`; // If data is less than three months old, return red image URL
+      return `${getUrlEqIcon()}/images/Earthquake_red.png`; // If data is less than three months old, return red image URL
     default:
-      return `${UrlImage}/images/Earthquake_yellow.png`; // Otherwise, return yellow image URL
+      return `${getUrlEqIcon()}/images/Earthquake_yellow.png`; // Otherwise, return yellow image URL
   }
+}
+
+export const getUrlEqIcon = () =>{
+  // URL of the earthquake image
+  return 'https://2d08-178-134-23-146.ngrok-free.app'
 }

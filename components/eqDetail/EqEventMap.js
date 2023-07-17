@@ -7,9 +7,6 @@ import { eqColor } from '../../utils/utils';
 
 const EqEventMap = ({data}) => {
 
-  // URL of the earthquake image
-  const EqImage = 'https://2d08-178-134-23-146.ngrok-free.app/images/Earthquake_red.png';
-
   // Get latitude and longitude from the route params
   const route = useRoute()
   const {latitude, longitude} = route.params
@@ -39,9 +36,9 @@ const EqEventMap = ({data}) => {
         latitudeDelta: 1,
         longitudeDelta: 1,
       }}
-      mapType="standard"
-      showsMyLocationButton={true}
-      showsUserLocation={true}
+      mapType="hybrid"
+      showsMyLocationButton={false}
+      showsUserLocation={false}
     >
       {values.map((eqEvent, index) => (
         <Marker 

@@ -4,10 +4,9 @@ import MapView, { Callout, Marker } from 'react-native-maps';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { formatData } from '../../utils/formatData';
+import { eqColor } from '../../utils/utils';
 
 const EqMap = ({data}) => {
-  
-  const EqImage = 'https://2d08-178-134-23-146.ngrok-free.app/images/Earthquake_gif.gif';
 
   const navigation = useNavigation();
 
@@ -63,7 +62,7 @@ const EqMap = ({data}) => {
           <Image
             style={styles.markerIcon}
             source={{
-              uri: EqImage,
+              uri: eqColor(eqEvent.origin_time),
           }}
           />
           <Callout onPress={() => handleMarkerPress(eqEvent)}>

@@ -13,6 +13,8 @@ export const getColor = (ml) => {
 export const eqColor = (origin_time) => {
   // Convert the input origin_time to a Date object
   const originTime = new Date(origin_time);
+
+  // URL of the earthquake image
   const UrlImage = 'https://2d08-178-134-23-146.ngrok-free.app'
 
   // Get the current date and time

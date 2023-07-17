@@ -7,7 +7,7 @@ import { formatData } from '../../utils/formatData';
 
 const EqMap = ({data}) => {
   
-  const EqImage = 'https://02ef-212-72-141-34.ngrok-free.app/images/Earthquake-icon.webp';
+  const EqImage = 'https://2d08-178-134-23-146.ngrok-free.app/images/Earthquake-icon.webp';
 
   const navigation = useNavigation();
 

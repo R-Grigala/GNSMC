@@ -3,11 +3,12 @@ import React, {useEffect, useState, useCallback}from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { useRoute } from '@react-navigation/native';
 import { formatData } from '../../utils/formatData';
+import { eqColor } from '../../utils/utils';
 
 const EqEventMap = ({data}) => {
 
   // URL of the earthquake image
-  const EqImage = 'https://2d08-178-134-23-146.ngrok-free.app/images/Screenshot_image.png';
+  const EqImage = 'https://2d08-178-134-23-146.ngrok-free.app/images/Earthquake_red.png';
 
   // Get latitude and longitude from the route params
   const route = useRoute()
@@ -54,7 +55,7 @@ const EqEventMap = ({data}) => {
           <Image
             style={styles.markerIcon}
             source={{
-              uri: EqImage,
+              uri: eqColor(eqEvent.origin_time),
             }}
           />
           <Callout

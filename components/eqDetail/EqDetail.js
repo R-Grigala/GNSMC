@@ -5,7 +5,7 @@ import { useRoute } from '@react-navigation/native';
 const EventDetail = () => {
     const route = useRoute()
 
-    const { eqId, origin_time, ml, depth, description } = route.params
+    const { origin_time, ml, depth, description } = route.params
 
     return (
         <View style={styles.screen}>

@@ -10,7 +10,7 @@ export const getColor = (ml) => {
     }
 };
 
-export const eqColor = (origin_time) => {
+export const eqColor = (eqId, origin_time, Id) => {
   // Convert the input origin_time to a Date object
   const originTime = new Date(origin_time);
 
@@ -21,12 +21,10 @@ export const eqColor = (origin_time) => {
   const threeMonthsAgo = new Date(now.getFullYear(), now.getMonth() - 3, now.getDate());
   const oneWeekAgo = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7);
 
-  // Debugging log messages to check the calculated dates
-  console.log('origin: ', originTime);
-  console.log('month:  ', oneWeekAgo);
-
   // Use a switch-case statement to determine the color based on the age of the data
   switch (true) {
+    case eqId == Id:
+      return `${getUrlEqIcon()}/images/Earthquake_gif.gif`;
     case originTime > oneWeekAgo:
       return `${getUrlEqIcon()}/images/Earthquake_gif.gif`; // If data is less than one week old, return gif URL
     case originTime > threeMonthsAgo:

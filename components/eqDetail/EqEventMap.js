@@ -9,7 +9,7 @@ const EqEventMap = ({data}) => {
 
   // Get latitude and longitude from the route params
   const route = useRoute()
-  const {latitude, longitude} = route.params
+  const {eqId, latitude, longitude} = route.params
 
   const [values, setValues] = useState([]);
 
@@ -52,7 +52,7 @@ const EqEventMap = ({data}) => {
           <Image
             style={styles.markerIcon}
             source={{
-              uri: eqColor(eqEvent.origin_time),
+              uri: eqColor(eqId, eqEvent.origin_time, eqEvent.id),
             }}
           />
           <Callout

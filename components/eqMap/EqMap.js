@@ -62,7 +62,7 @@ const EqMap = ({data}) => {
           <Image
             style={styles.markerIcon}
             source={{
-              uri: eqColor(eqEvent.origin_time),
+              uri: eqColor(null, eqEvent.origin_time, eqEvent.id),
           }}
           />
           <Callout onPress={() => handleMarkerPress(eqEvent)}>

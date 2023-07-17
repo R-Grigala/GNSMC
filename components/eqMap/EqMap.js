@@ -7,7 +7,7 @@ import { formatData } from '../../utils/formatData';
 
 const EqMap = ({data}) => {
   
-  const EqImage = 'https://2d08-178-134-23-146.ngrok-free.app/images/Earthquake-icon.webp';
+  const EqImage = 'https://2d08-178-134-23-146.ngrok-free.app/images/Earthquake_red.png';
 
   const navigation = useNavigation();
 
@@ -94,8 +94,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   markerIcon: {
-    width: 20,
-    height: 20
+    width: 30,
+    height: 30,
   }
 });
 

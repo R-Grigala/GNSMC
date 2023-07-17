@@ -7,7 +7,7 @@ import { formatData } from '../../utils/formatData';
 const EqEventMap = ({data}) => {
 
   // URL of the earthquake image
-  const EqImage = 'https://2d08-178-134-23-146.ngrok-free.app/images/Earthquake-icon.webp';
+  const EqImage = 'https://2d08-178-134-23-146.ngrok-free.app/images/Screenshot_image.png';
 
   // Get latitude and longitude from the route params
   const route = useRoute()

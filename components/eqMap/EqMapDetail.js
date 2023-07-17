@@ -7,7 +7,7 @@ import { useRoute } from '@react-navigation/native';
 const EqMapDetail = ({data}) => {
 
   // URL of the earthquake image
-  const EqImage = 'https://2d08-178-134-23-146.ngrok-free.app/images/Earthquake-icon.webp';
+  const EqImage = 'https://2d08-178-134-23-146.ngrok-free.app/images/Earthquake_red.png';
 
   // Get latitude and longitude from the route params
   const route = useRoute()
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
     flex: 5,
   },
   markerIcon: {
-    width: 20,
-    height: 20,
+    width: 30,
+    height: 30,
   },
   callout: {
     width: 230,

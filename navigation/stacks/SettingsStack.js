@@ -37,9 +37,9 @@ const SettingsStack = () => {
                             <View style={{paddingLeft:20}}>
                                 <Image 
                                     style={{width: 45, height: 45, resizeMode: 'contain'}}
-                                    source={{
-                                        uri: LogoImage
-                                    }}
+                                    source={
+                                        require('../../assets/logos/GNSMC_logo.png')
+                                    }
                                 />
                             </View>
                         </TouchableOpacity>

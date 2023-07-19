@@ -3,14 +3,11 @@ import NewsScreen from '../../screens/NewsScreen';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import NewsDetailScreen from '../../screens/NewsDetailScreen';
-import { getUrl } from '../../utils/utils';
 import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
 const NewsStack = () => {
-
-  const LogoImage = `${getUrl()}/images/GNSMC_logo.png`;
 
   const navigation = useNavigation();
 
@@ -43,9 +40,9 @@ const NewsStack = () => {
                     <View style={{paddingLeft:20}}>
                         <Image 
                             style={{width: 45, height: 45, resizeMode: 'contain'}}
-                            source={{
-                              uri: LogoImage
-                            }}
+                            source={
+                              require('../../assets/logos/GNSMC_logo.png')
+                            }
                         />
                     </View>
                 </TouchableOpacity>

@@ -1,5 +1,5 @@
-import { StyleSheet, Text, Image} from 'react-native';
-import React, {useEffect, useState, useCallback}from 'react';
+import { StyleSheet, Text, Image, Dimensions} from 'react-native';
+import React, {useEffect, useState}from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { formatData } from '../../utils/formatData';
 import { useRoute } from '@react-navigation/native';
@@ -12,20 +12,15 @@ const EqMapDetail = ({data}) => {
   const {eqId, latitude, longitude} = route.params
 
   const [values, setValues] = useState([]);
-
-  // Sort the data array by origin_time in descending order
-  const valuesCallback = useCallback(() => {
-    if (data && data.length > 0) {
-      const sortedData = [...data].sort(
-        (a, b) => new Date(b.origin_time) - new Date(a.origin_time)
-      );
-      setValues(sortedData);
-    }
-  }, [data, setValues]);
-
+  // Sort the data array by origin_time in ascending order
   useEffect(() => {
-    valuesCallback();
-  }, [valuesCallback]);
+      if (data && data.length > 0) {
+          const sortedData = [...data].sort(
+            (a, b) => new Date(a.origin_time) - new Date(b.origin_time)
+          );
+          setValues(sortedData);
+      }
+  }, [data]);
 
   return (
     <MapView 
@@ -78,22 +73,26 @@ const EqMapDetail = ({data}) => {
   );
 };
 
-const styles = StyleSheet.create({
+const { width, height } = Dimensions.get('window');
 
+const styles = StyleSheet.create({
   mapview: {
-    flex: 5,
+    flex: 4, // Take 4 part of the available height
+    width: width, // Take the full width of the screen
+    height: height, // Take the full height of the screen
   },
   markerIcon: {
-    width: 30,
-    height: 30,
+    width: width * 0.07, // Adjust the width based on the screen width (10% of the screen width)
+    height: width * 0.07, // Adjust the height based on the screen width (10% of the screen width)
   },
   callout: {
-    width: 230,
+    width: width * 0.6, // Adjust the width based on the screen width (80% of the screen width)
     margin: 10,
   },
   text: {
-    fontSize: 15, fontWeight: 'bold' 
-  }
+    fontSize: width * 0.04, // Adjust the font size based on the screen width (3% of the screen width)
+    fontWeight: 'bold',
+  },
 });
 
 export default EqMapDetail;

@@ -2,10 +2,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import MapScreen from '../../screens/MapScreen';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { HeaderBackButton } from '@react-navigation/elements';
 import MapDetailScreen from '../../screens/MapDetailScreen';
 import { getUrl } from '../../utils/utils';
-
+import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
@@ -60,11 +59,12 @@ const MapStack = () => {
               headerTitleAlign: 'center',
               headerRight: () => null,
               headerLeft: () => (
-                  <HeaderBackButton 
-                      tintColor='black'
-                      onPress={handleBackPress}
-                      style={{paddingLeft: 10}}
-                  />
+                <Ionicons 
+                  name='chevron-back-outline'
+                  size={33}
+                  onPress={handleBackPress} 
+                  style={{paddingLeft: 10}}
+              />
               )
           }} />
       </Stack.Navigator>

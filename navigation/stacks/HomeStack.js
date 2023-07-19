@@ -2,9 +2,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../../screens/HomeScreen';
 import { useNavigation } from '@react-navigation/native';
 import { Image, TouchableOpacity, View } from 'react-native';
-import { HeaderBackButton } from '@react-navigation/elements';
 import EventDetailScreen from '../../screens/EventDetailScreen';
 import { getUrl } from '../../utils/utils';
+import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
@@ -60,9 +60,10 @@ const HomeStack = () => {
                     headerTitleAlign: 'center',
                     headerRight: () => null,
                     headerLeft: () => (
-                        <HeaderBackButton 
-                            tintColor='black'
-                            onPress={handleBackPress}
+                        <Ionicons 
+                            name='chevron-back-outline'
+                            size={33}
+                            onPress={handleBackPress} 
                             style={{paddingLeft: 10}}
                         />
                     )

@@ -3,13 +3,11 @@ import HomeScreen from '../../screens/HomeScreen';
 import { useNavigation } from '@react-navigation/native';
 import { Image, TouchableOpacity, View } from 'react-native';
 import EventDetailScreen from '../../screens/EventDetailScreen';
-import { getUrl } from '../../utils/utils';
 import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
-    const LogoImage = `${getUrl()}/images/GNSMC_logo.png`;
     
     const navigation = useNavigation();
 

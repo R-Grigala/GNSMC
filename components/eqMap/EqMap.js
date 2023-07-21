@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   callout: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: width * 0.71, // Adjust the width based on the screen width (71% of the screen width)
+    width: width * 0.75, // Adjust the width based on the screen width (75% of the screen width)
     height: width * 0.2, // Adjust the height based on the screen width (20% of the screen width)
   },
   textBox: {

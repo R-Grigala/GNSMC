@@ -73,7 +73,13 @@ const EqMap = ({data}) => {
                 </Text>
                 <View style={{ marginBottom: 18, marginTop: 17, marginLeft: 30 }}>
                   {/* Display alert icon */}
-                  <Ionicons name='alert-circle-outline' size={40} color='#4083ff' />
+                  {/* <Ionicons name='alert-circle-outline' size={40} color='#4083ff' /> */}
+                  <Image 
+                    style={{width: 40, height: 40, tintColor: '#4083ff'}}
+                    source={
+                        require('../../assets/icons/alert-circle-outline.png')
+                      }
+                  />
                 </View>
               </View>
             </TouchableOpacity>

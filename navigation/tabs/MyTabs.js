@@ -8,6 +8,7 @@ import SettingsStack from '../stacks/SettingsStack';
 
 const Tab = createBottomTabNavigator();
 
+// Define the paths to the icon images
 const iconPaths = {
   list: require('../../assets/icons/list-outline.png'),
   earth: require('../../assets/icons/earth-outline.png'),

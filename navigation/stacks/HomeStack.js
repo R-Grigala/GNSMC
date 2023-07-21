@@ -3,11 +3,11 @@ import HomeScreen from '../../screens/HomeScreen';
 import { useNavigation } from '@react-navigation/native';
 import { Image, TouchableOpacity, View } from 'react-native';
 import EventDetailScreen from '../../screens/EventDetailScreen';
+import { SvgUri } from 'react-native-svg';
 
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
-    
     const navigation = useNavigation();
 
     const handleLogoPress = () => {
@@ -59,11 +59,10 @@ const HomeStack = () => {
                     headerLeft: () => (
                         <TouchableOpacity onPress={handleBackPress}>
                             <View style={{paddingLeft:13}}>
-                                <Image
-                                    style={{width: 33, height: 33, resizeMode: 'contain'}}
-                                    source={
-                                        require('../../assets/icons/chevron-back-outline.png')
-                                    }
+                                <SvgUri
+                                    width="0.25em"
+                                    height="0.25em"
+                                    uri={require('../../assets/icons/chevron-back-outline.svg')}
                                 />
                             </View>
                         </TouchableOpacity>

@@ -17,7 +17,7 @@ const EqEventMap = ({data}) => {
   const valuesCallback = useCallback(() => {
     if (data && data.length > 0) {
       const sortedData = [...data].sort(
-        (a, b) => new Date(b.origin_time) - new Date(a.origin_time)
+        (a, b) => new Date(a.origin_time) - new Date(b.origin_time)
       );
       setValues(sortedData);
     }

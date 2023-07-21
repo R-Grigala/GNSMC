@@ -3,7 +3,6 @@ import HomeScreen from '../../screens/HomeScreen';
 import { useNavigation } from '@react-navigation/native';
 import { Image, TouchableOpacity, View } from 'react-native';
 import EventDetailScreen from '../../screens/EventDetailScreen';
-import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 

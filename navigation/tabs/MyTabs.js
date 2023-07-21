@@ -1,5 +1,6 @@
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
+import { Image } from 'react-native';
 import HomeStack from '../stacks/HomeStack';
 import MapStack from '../stacks/MapStack';
 import NewsStack from '../stacks/NewsStack';
@@ -7,11 +8,16 @@ import SettingsStack from '../stacks/SettingsStack';
 
 const Tab = createBottomTabNavigator();
 
-// Define the screen options for the tab navigator
-const screenOptions = ({ route, focused}) => {
+const iconPaths = {
+  list: require('../../assets/icons/list-outline.png'),
+  earth: require('../../assets/icons/earth-outline.png'),
+  newspaper: require('../../assets/icons/newspaper-outline.png'),
+  settings: require('../../assets/icons/settings-outline.png'),
+};
+
+const screenOptions = ({ route }) => {
   const { name } = route;
   const iconName = name === 'HomeStack' ? 'list' : name === 'MapStack' ? 'earth' : name === 'NewsStack' ? 'newspaper' : 'settings';
-  const focusedIconName = `${iconName}${focused ? '' : '-outline'}`;
 
   return {
     headerShown: false,
@@ -21,7 +27,10 @@ const screenOptions = ({ route, focused}) => {
     },
     tabBarActiveTintColor: 'red',
     tabBarIcon: ({ focused, color, size }) => (
-      <Ionicons name={focusedIconName} size={focused ? 35 : size} color={color} />
+      <Image 
+      style={{ tintColor: focused ? 'red' : color, width: focused ? 35 : size, height: focused ? 35 : size }} // Customize icon color, width, and height when focused or not
+      source={iconPaths[iconName]}
+      />
     ),
   };
 };

@@ -57,12 +57,16 @@ const NewsStack = () => {
               headerTitleAlign: 'center',
               headerRight: () => null,
               headerLeft: () => (
-                <Ionicons 
-                  name='chevron-back-outline'
-                  size={33}
-                  onPress={handleBackPress} 
-                  style={{paddingLeft: 10}}
-              />
+                <TouchableOpacity onPress={handleBackPress}>
+                  <View style={{paddingLeft:13}}>
+                      <Image
+                          style={{width: 33, height: 33, resizeMode: 'contain'}}
+                          source={
+                              require('../../assets/icons/chevron-back-outline.png')
+                          }
+                      />
+                  </View>
+                </TouchableOpacity>
               )
           }}
         />

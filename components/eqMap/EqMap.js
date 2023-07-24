@@ -90,13 +90,11 @@ const EqMap = ({data}) => {
   );
 };
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   mapview: {
     flex: 1,
-    width: width, // Take the full width of the screen
-    height: height, // Take the full height of the screen
   },
   markerIcon: {
     width: width * 0.07, // Adjust the width based on the screen width (7% of the screen width)

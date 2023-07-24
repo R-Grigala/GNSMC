@@ -2,7 +2,6 @@ import { StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from 'rea
 import React, {useEffect, useState}from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
 import { formatData } from '../../utils/formatData';
 import { eqColor } from '../../utils/utils';
 

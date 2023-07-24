@@ -3,7 +3,6 @@ import NewsScreen from '../../screens/NewsScreen';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import NewsDetailScreen from '../../screens/NewsDetailScreen';
-import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 

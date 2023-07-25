@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, Dimensions, View } from 'react-native'
+import { StyleSheet, SafeAreaView, Text, View } from 'react-native'
 import React, {useState, useEffect} from 'react';
 import EqMap from '../components/eqMap/EqMap';
 import EventDataAPI from '../data/EventDataAPI';
@@ -7,27 +7,40 @@ import EqMapLegend from '../components/eqMap/EqMapLegend';
 const MapScreen = () => {
 
   const [data, setData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+
+  // Function to handle the refresh action
+  const handleRefresh = () => {
+    // setRefreshing(true);
+    console.log('Refreshing EqData...');
+    
+    setRefresh(prevState => !prevState);
+    
+  }
 
   useEffect(() => {
-    async function fetchData() {
-      await EventDataAPI()
-      .then(responseData => {
-        setData(responseData);
-        // console.log("Call EventDataAPI");
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    }
+    // Fetch the event data when the component mounts or when the 'refresh' state changes
+    fetchEventData();
+  }, [refresh]);
 
-    fetchData();
-  }, []);
+  // Function to fetch event data from the API
+  const fetchEventData = async () => {
+    try {
+      const responseData = await EventDataAPI();
+      setData(responseData);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setRefreshing(false);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.screen}>
-      <EqMap data={data}/>
+      <EqMap data={data} isRefreshing={refreshing}/>
       <View style={styles.lg_screen}>
-        <EqMapLegend />
+        <EqMapLegend onRefresh={handleRefresh}/>
       </View>
     </SafeAreaView>
   )
@@ -42,4 +55,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default MapScreen
+export default MapScreen;

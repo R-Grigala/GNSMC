@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { formatData } from '../../utils/formatData';
 import { eqColor } from '../../utils/utils';
 
-const EqMap = ({data}) => {
+const EqMap = ({data, isRefreshing}) => {
 
   const navigation = useNavigation();
 
@@ -85,6 +85,12 @@ const EqMap = ({data}) => {
           </Callout>
         </Marker>
       ))}
+      {/* Display "Refreshing" message if isRefreshing is true */}
+      {isRefreshing && (
+        <View style={styles.refreshingContainer}>
+            <Text style={styles.refreshingText}>Refreshing...</Text>
+        </View>
+      )}
     </MapView>
   );
 };
@@ -113,7 +119,20 @@ const styles = StyleSheet.create({
     fontSize: width * 0.04, // Adjust the font size based on the screen width (3% of the screen width)
     fontWeight: 'bold',
   },
-
+  refreshingContainer: {
+    position: 'absolute',
+    top: 0,
+    bottom:0,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
+  },
+  refreshingText: {
+    fontSize: 18,
+    color: 'white',
+  },
 });
 
 export default EqMap;

@@ -3,7 +3,6 @@ import MapScreen from '../../screens/MapScreen';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MapDetailScreen from '../../screens/MapDetailScreen';
-import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 

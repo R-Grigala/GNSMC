@@ -2,7 +2,7 @@ import {SafeAreaView, StyleSheet, TouchableOpacity, Dimensions, Image, View, Tex
 import React from 'react'
 import { getUrl } from '../../utils/utils';
 
-const EqMapLegend = () => {
+const EqMapLegend = ({onRefresh}) => {
   return (
     <SafeAreaView style={styles.lg_container}>
         <View style={styles.lg_content}>
@@ -23,9 +23,9 @@ const EqMapLegend = () => {
                 <Text style={{ fontSize: 12 }}> +91 დღე</Text>
             </View>
         </View>
-        <TouchableOpacity style={styles.lg_touchable}>
+        <TouchableOpacity style={styles.lg_touchable} onPress={onRefresh}>
             <Image 
-                style={{width: 40, height: 40, tintColor: 'black'}}
+                style={styles.lg_icon}
                 source={
                     require('../../assets/icons/refresh-circle-outline.png')
                 }
@@ -40,11 +40,14 @@ const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
     lg_container:{
-         flex: 1,
-         flexDirection: 'row',
+        flex: 1,
+        flexDirection: 'row',
     },
     lg_content:{
-        flex:1, flexDirection: 'row',  alignItems: 'center'
+        flex:1,
+        marginLeft: 15,
+        flexDirection: 'row',  
+        alignItems: 'center'
     },
     lg_image:{
         width: width * 0.06,
@@ -59,6 +62,11 @@ const styles = StyleSheet.create({
         flex:0.6,
         flexDirection: 'row',
         alignItems: 'center',
+    },
+    lg_icon: {
+        width: 35, 
+        height: 35, 
+        tintColor:'rgb(120, 120, 120)'
     }
 })
 

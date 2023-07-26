@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, View } from 'react-native'
+import { StyleSheet, SafeAreaView, Dimensions, Text, View } from 'react-native'
 import React, {useState, useEffect} from 'react';
 import EqMap from '../components/eqMap/EqMap';
 import EventDataAPI from '../data/EventDataAPI';
@@ -8,11 +8,10 @@ const MapScreen = () => {
 
   const [data, setData] = useState([]);
   const [refresh, setRefresh] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
+  const [isRefreshing, setRefreshing] = useState(false);
 
   // Function to handle the refresh action
   const handleRefresh = () => {
-    // setRefreshing(true);
     console.log('Refreshing EqData...');
     
     setRefresh(prevState => !prevState);
@@ -22,6 +21,7 @@ const MapScreen = () => {
   useEffect(() => {
     // Fetch the event data when the component mounts or when the 'refresh' state changes
     fetchEventData();
+    setRefreshing(true);
   }, [refresh]);
 
   // Function to fetch event data from the API
@@ -41,7 +41,13 @@ const MapScreen = () => {
       <View style={styles.lg_screen}>
         <EqMapLegend onRefresh={handleRefresh}/>
       </View>
-      <EqMap data={data} isRefreshing={refreshing}/>
+      <EqMap data={data}/>
+      {/* Display "Refreshing" message at the center of the map */}
+      {isRefreshing && (
+        <View style={styles.refreshingContainer}>
+          <Text style={styles.refreshingText}>Refreshing...</Text>
+        </View>
+      )}
     </SafeAreaView>
   )
 }
@@ -52,6 +58,21 @@ const styles = StyleSheet.create({
   },
   lg_screen: {
     flex: 0.08,
+  },
+  refreshingContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
+    padding: 10,
+  },
+  refreshingText: {
+    fontSize: 18,
+    color: 'white',
   },
 })
 

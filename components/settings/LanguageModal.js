@@ -1,4 +1,4 @@
-import { View, Text, Modal, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, Modal, StyleSheet, FlatList, TouchableOpacity, Dimensions, Image } from 'react-native'
 import React, { useState } from 'react';
 
 const { width, height } = Dimensions.get('window');
@@ -7,7 +7,7 @@ const LanguageModal = ({langModalVisible, setLangModalVisible}) => {
     const [language, setLanguage] = useState([
         {name: 'English', selected: false},
         {name: 'ქართული', selected: true}
-    ])
+    ]);
   return (
     <Modal
         animationType='slide'
@@ -23,7 +23,19 @@ const LanguageModal = ({langModalVisible, setLangModalVisible}) => {
                     <FlatList data={language} renderItem={({item, index}) => {
                         return(
                             <TouchableOpacity style={styles.languageItem}>
-                                <Text>{item.name}</Text>
+                                {item.selected == true?(
+                                    <Image 
+                                        style={styles.icon}
+                                        source={require('../../assets/icons/radio-button-on-outline.png')}
+                                    />
+                                ):(
+                                    <Image 
+                                        style={styles.icon}
+                                        source={require('../../assets/icons/radio-button-off-outline.png')}
+                                    />
+                                )}
+
+                                <Text style={{marginLeft: 20, fontSize: 18}}>{item.name}</Text>
                             </TouchableOpacity>
                         )
                     }}/>
@@ -42,7 +54,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 22,
+        margin:0,
         backgroundColor: 'rgba(0,0,0,0.5)',
     },
     modalView: {
@@ -59,21 +71,25 @@ const styles = StyleSheet.create({
             height: 2,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 4,
+        shadowRadius: 2,
         elevation: 5,
     },
     title: {
         fontSize: 18,
-        fontWeight: '600',
+        fontWeight: '500',
     },
     languageItem: {
         width: '100%',
         height: 50,
         borderRadius: 10,
-        borderWidth: 5,
+        borderWidth: 1,
         marginTop: 10,
         paddingLeft: 10,
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    icon: {
+        width: 24,
+        height: 24,
     }
 })

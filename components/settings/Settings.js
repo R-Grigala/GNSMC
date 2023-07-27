@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, TouchableOpacity, Switch } from 'react-native';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import LanguageModal from './LanguageModal';
 
 const SECTIONS = [
   {
@@ -21,11 +22,15 @@ const SECTIONS = [
 ];
 
 const Settings = () => {
+
+  const [langModalVisible, setLangModalVisible] = useState(false);
+
   const [form, setForm] = useState({
     language: 'ქართული',
     darkMode: false,
     notifications: true,
   })
+
   return (
     <View>
       {SECTIONS.map(({ header, items }) => (
@@ -58,7 +63,19 @@ const Settings = () => {
                     <View style={styles.rowSpacer}/>
 
                     {type === 'select' && (
-                      <Text style={styles.rowValue}>{form[id]}</Text>
+                      <View>
+                        <TouchableOpacity 
+                          style={styles.selectLanguageBtn}
+                          onPress={() => {
+                            setLangModalVisible(!langModalVisible)
+                        }}>
+                          <Text style={styles.rowValue}>{form[id]}</Text>
+                        </TouchableOpacity>
+                        <LanguageModal 
+                          langModalVisible={langModalVisible}
+                          setLangModalVisible={setLangModalVisible}
+                        />
+                      </View>
                     )}
 
                     {type === 'toggle' && (

@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.8)', // Semi-transparent black background

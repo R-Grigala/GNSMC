@@ -1,9 +1,11 @@
-const en = {
-    seismic_activity: 'Seiscmic Activity',
-};
+export const translation = [
+    {
+        English: 'Seiscmic Activity',
+        Georgia: 'სეისმური აქტივობა'
+    },
 
-const ka = {
-    seismic_activity: 'სეისმური აქტივობა',
-};
-
-export { en, ka };
+    {
+        English: 'Latest Earthquakes',
+        Georgia: 'მიმდინარე სეისმურობა'
+    },
+];

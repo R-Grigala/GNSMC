@@ -2,8 +2,11 @@ import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import React, { useEffect, useState }  from 'react';
 import EqList from '../components/eqList/EqList';
 import EventDataAPI from '../data/EventDataAPI';
+import i18next from '../components/settings/i18next';
+import { useTranslation } from 'react-i18next';
 
 const HomeScreen = () => {
+  const {t} = useTranslation();
   const [data, setData] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [isRefreshing, setRefreshing] = useState(false);
@@ -35,7 +38,7 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.header}>მიმდინარე სეისმურობა</Text>
+        <Text style={styles.header}>{t('seismic_activity')}</Text>
       </View>
       <View style={styles.listContainer}>
         {/* Pass the event data and refresh function to the EqList component */}

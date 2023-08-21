@@ -1,6 +1,9 @@
-import { StyleSheet, View, Text, TouchableOpacity, Switch } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Switch, Modal, FlatList } from 'react-native';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
+import languagesList from './languagesList.json'
+import { languageResources } from './i18next';
 
 const SECTIONS = [
   {
@@ -21,8 +24,10 @@ const SECTIONS = [
 ];
 
 const Settings = () => {
+  const [visible, setVisible] = useState(false);
+  
+  const {t} = useTranslation();
   const [form, setForm] = useState({
-    language: 'ქართული',
     darkMode: false,
     notifications: true,
   })
@@ -44,7 +49,7 @@ const Settings = () => {
                 key={id}>
                 <TouchableOpacity
                   onPress={() => {
-                    // handle onPress
+                    setVisible(true)
                   }}>
                   <View style={styles.row}>
                     <Ionicons
@@ -58,7 +63,21 @@ const Settings = () => {
                     <View style={styles.rowSpacer}/>
 
                     {type === 'select' && (
-                      <Text style={styles.rowValue}>{form[id]}</Text>
+                      <Modal visible={visible} onRequestClose={() => setVisible(false)}>
+                        <View style={styles.languagesList}>
+                          <FlatList 
+                            data={Object.keys(languageResources)}
+                            renderItem={({item}) => (
+                              <TouchableOpacity style={styles.languageButton}>
+                                <Text style={styles.lngName}>
+                                  {languagesList[item].nativeName}
+                                </Text>
+                              </TouchableOpacity>
+                            )}
+                          
+                          />
+                        </View>
+                      </Modal>
                     )}
 
                     {type === 'toggle' && (
@@ -102,6 +121,17 @@ const styles = StyleSheet.create({
   },
   section: {
     paddingTop: 12,
+  },
+  languagesList: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 10,
+    backgroundColor: '#6258e8',
+  },
+  languageButton: {
+    padding: 10,
+    borderBottomColor: "#dddddd",
+    borderBottomWidth: 1,
   },
   sectionHeader: {
     paddingHorizontal: 24,

@@ -1,4 +1,5 @@
-import { StyleSheet, View, Text, TouchableOpacity, Switch, Modal, FlatList } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList } from 'react-native';
+import { Modal, Portal, Button, PaperProvider } from 'react-native-paper';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
@@ -25,7 +26,11 @@ const SECTIONS = [
 
 const Settings = () => {
   const [visible, setVisible] = useState(false);
-  
+
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+  const containerStyle = {backgroundColor: 'red',};
+
   const {t} = useTranslation();
   const [form, setForm] = useState({
     darkMode: false,
@@ -63,21 +68,32 @@ const Settings = () => {
                     <View style={styles.rowSpacer}/>
 
                     {type === 'select' && (
-                      <Modal visible={visible} onRequestClose={() => setVisible(false)}>
-                        <View style={styles.languagesList}>
-                          <FlatList 
-                            data={Object.keys(languageResources)}
-                            renderItem={({item}) => (
-                              <TouchableOpacity style={styles.languageButton}>
-                                <Text style={styles.lngName}>
-                                  {languagesList[item].nativeName}
-                                </Text>
-                              </TouchableOpacity>
-                            )}
-                          
-                          />
-                        </View>
-                      </Modal>
+                      <PaperProvider>
+                        <Portal>
+                          <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+                            <View style={styles.languagesList}>
+                              <Text>Example Modal.  Click outside this area to dismiss.</Text>
+                            </View>
+                          </Modal>
+                        </Portal>
+                        <Button style={{marginTop: 30, color:'red'}} onPress={showModal}>
+                          Show
+                        </Button>
+                      </PaperProvider>
+                      // <Modal visible={visible} onRequestClose={() => setVisible(false)}>
+                      //   <View style={styles.languagesList}>
+                      //     <FlatList 
+                      //       data={Object.keys(languageResources)}
+                      //       renderItem={({item}) => (
+                      //         <TouchableOpacity style={styles.languageButton}>
+                      //           <Text style={styles.lngName}>
+                      //             {languagesList[item].nativeName}
+                      //           </Text>
+                      //         </TouchableOpacity>
+                      //       )}
+                      //     />
+                      //   </View>
+                      // </Modal>
                     )}
 
                     {type === 'toggle' && (

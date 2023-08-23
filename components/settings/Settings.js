@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList, Dimensions } from 'react-native';
 import { Modal, Portal, Button, PaperProvider } from 'react-native-paper';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
@@ -29,16 +29,57 @@ const Settings = () => {
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const containerStyle = {backgroundColor: 'red',};
+  const containerStyle = {backgroundColor: 'white', padding: 20};
 
   const {t} = useTranslation();
   const [form, setForm] = useState({
+    language: 'ქართული',
     darkMode: false,
     notifications: true,
   })
+
   return (
-    <View>
-      {SECTIONS.map(({ header, items }) => (
+    <PaperProvider>
+      <Portal>
+        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+          <Text>Example Modal.  Click outside this area to dismiss.</Text>
+        </Modal>
+      </Portal>
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+            <Text style={styles.sectionHeaderText}>Preferences</Text>
+          </View>
+        </View>
+        <View style={[styles.row, styles.rowWrapper]}>
+          <View style={styles.row}>
+            <Ionicons
+              name='globe'
+              color='#000'
+              size={28}
+              style={{ marginRight: 12}}
+            />
+            <Text style={styles.rowLabel}>Language</Text>
+            
+            
+            <View style={styles.rowSpacer}/>
+          </View>
+            <Button style={{ marginLeft: 20}} onPress={showModal}>
+              <View style={{ marginLeft:10, }}>
+                <Text>Change Language</Text>
+              </View>
+              
+              <Ionicons
+                name='chevron-forward-outline'
+                color='black'
+                size={25}
+              />
+          </Button>
+
+        </View>
+      
+        
+    </PaperProvider>
+      /* {SECTIONS.map(({ header, items }) => (
         <View style={styles.section} key={header}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionHeaderText}>{header}</Text>
@@ -68,32 +109,7 @@ const Settings = () => {
                     <View style={styles.rowSpacer}/>
 
                     {type === 'select' && (
-                      <PaperProvider>
-                        <Portal>
-                          <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-                            <View style={styles.languagesList}>
-                              <Text>Example Modal.  Click outside this area to dismiss.</Text>
-                            </View>
-                          </Modal>
-                        </Portal>
-                        <Button style={{marginTop: 30, color:'red'}} onPress={showModal}>
-                          Show
-                        </Button>
-                      </PaperProvider>
-                      // <Modal visible={visible} onRequestClose={() => setVisible(false)}>
-                      //   <View style={styles.languagesList}>
-                      //     <FlatList 
-                      //       data={Object.keys(languageResources)}
-                      //       renderItem={({item}) => (
-                      //         <TouchableOpacity style={styles.languageButton}>
-                      //           <Text style={styles.lngName}>
-                      //             {languagesList[item].nativeName}
-                      //           </Text>
-                      //         </TouchableOpacity>
-                      //       )}
-                      //     />
-                      //   </View>
-                      // </Modal>
+                      <Text style={styles.rowValue}>{form[id]}</Text>
                     )}
 
                     {type === 'toggle' && (
@@ -118,10 +134,10 @@ const Settings = () => {
             ))}
           </View>
         </View>
-      ))}
-    </View>
+      ))} */
   )
 }
+const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   title: {
@@ -161,6 +177,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.2,
   },
   rowWrapper: {
+    width: width,
     paddingLeft: 24,
     borderTopWidth: 1,
     borderColor: '#e3e3e3',

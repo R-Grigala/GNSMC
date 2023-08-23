@@ -36,5 +36,5 @@ export const eqColor = (eqId, origin_time, Id) => {
 
 export const getUrl = () =>{
   // URL of the earthquake image
-  return 'https://f01c-212-72-141-34.ngrok-free.app'
+  return 'https://2b64-212-72-141-34.ngrok-free.app'
 }

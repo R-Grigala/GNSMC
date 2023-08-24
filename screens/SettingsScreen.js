@@ -1,6 +1,7 @@
 import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
 import React from 'react';
 import Settings from '../components/settings/Settings';
+import SettingsOLD from '../components/settings/SettingsOLD';
 
 const SettingsScreen = () => {
   return (
@@ -9,7 +10,7 @@ const SettingsScreen = () => {
         <Text style={styles.header}>პარამეტრების განახლება</Text>
       </View>
       <View style={styles.setContainer}>
-        <Settings />
+        <Settings/>
       </View>
     </SafeAreaView>
   )

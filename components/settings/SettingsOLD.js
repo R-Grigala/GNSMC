@@ -1,10 +1,7 @@
-import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList, Dimensions } from 'react-native';
-import { Modal, Portal, Button, PaperProvider } from 'react-native-paper';
+import { StyleSheet, View, Text, TouchableOpacity, Switch, Dimensions } from 'react-native';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import languagesList from './languagesList.json'
-import { languageResources } from './i18next';
 
 const SECTIONS = [
   {
@@ -24,14 +21,8 @@ const SECTIONS = [
   },
 ];
 
-const Settings = () => {
-  const [visible, setVisible] = useState(false);
+const SettingsOLD = () => {
 
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
-  const containerStyle = {backgroundColor: 'white', padding: 20};
-
-  const {t} = useTranslation();
   const [form, setForm] = useState({
     language: 'ქართული',
     darkMode: false,
@@ -39,44 +30,8 @@ const Settings = () => {
   })
 
   return (
-    <PaperProvider>
-      <Portal>
-        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-          <Text>Example Modal.  Click outside this area to dismiss.</Text>
-        </Modal>
-      </Portal>
-      <View style={{paddingTop: 12, flexDirection: 'column'}}>
-        <View style={{paddingHorizontal: 24, paddingVertical: 8}}>
-            <Text style={styles.sectionHeaderText}>Preferences</Text>
-        </View>
-      </View>
-      <View style={styles.lanContainer}>
-        <View style={styles.lanRow}>
-          <Ionicons
-            name='globe'
-            color='#000'
-            size={28}
-            style={{ marginRight: 12}}
-          />
-          <Text style={{textAlign: 'right', marginLeft: 20,}}>Language</Text>
-        </View>
-        <TouchableOpacity style={{ flexDirection:'row', marginLeft: '5%', justifyContent:'flex-end'}} onPress={showModal}>
-          <View style={{ marginRight:'10%', justifyContent:'center'}}>
-            <Text>Change Language</Text>
-          </View>
-          
-          <Ionicons
-            name='chevron-forward-outline'
-            color='black'
-            size={25}
-          />
-      </TouchableOpacity>
-
-      </View>
-      
-        
-    </PaperProvider>
-      /* {SECTIONS.map(({ header, items }) => (
+    <View>
+        {SECTIONS.map(({ header, items }) => (
         <View style={styles.section} key={header}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionHeaderText}>{header}</Text>
@@ -92,7 +47,6 @@ const Settings = () => {
                 key={id}>
                 <TouchableOpacity
                   onPress={() => {
-                    setVisible(true)
                   }}>
                   <View style={styles.row}>
                     <Ionicons
@@ -131,7 +85,8 @@ const Settings = () => {
             ))}
           </View>
         </View>
-      ))} */
+      ))}
+      </View>
   )
 }
 const { width } = Dimensions.get('window');
@@ -174,30 +129,26 @@ const styles = StyleSheet.create({
     letterSpacing: 1.2,
   },
   rowWrapper: {
+    width: width,
     paddingLeft: 24,
     borderTopWidth: 1,
     borderColor: '#e3e3e3',
     backgroundColor: '#fff',
   },
-  lanContainer: {
-    height: '8%',
-    flexDirection: 'row',
-    paddingLeft: '4%',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingRight: '5%',
-  },
-
-  lanRow: {
+  row: {
     height: 50,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingRight: '10%',
+    justifyContent: 'flex-start',
+    paddingRight: 24,
   },
   rowLabel: {
     fontSize: 17,
     fontWeight: '500',
     color: '#000'
+  },
+  rowSpacer: {
+    flex: 1, 
   },
   rowValue: {
     fontSize: 18,
@@ -206,4 +157,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Settings;
+export default SettingsOLD;

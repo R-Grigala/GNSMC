@@ -7,14 +7,6 @@ import languagesList from './languagesList.json'
 import { languageResources } from './i18next';
 
 const SECTIONS = [
-  {
-    header: 'Preferences',
-    items: [
-      { id: 'language', icon: 'globe', label: 'Language', type: 'select' },
-      { id: 'darkMode', icon: 'moon', label: 'Dark Mode', type: 'toggle' },
-      { id: 'notifications', icon: 'notifications-outline', label: 'Notifications', type: 'toggle' },
-    ],
-  },
   {  
     header: 'About',
     items: [
@@ -27,12 +19,16 @@ const SECTIONS = [
 const Settings = () => {
   const [visible, setVisible] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [notifi, setNotifi] = useState(false);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const containerStyle = {backgroundColor: 'white', padding: 20};
 
   const {t} = useTranslation();
+  const notifiSwitch = () => {
+    setNotifi(!notifi)
+  }
   const toggleSwitch = () => {
     setChecked(!checked);
   }
@@ -94,11 +90,27 @@ const Settings = () => {
         </View>
       </View>
 
+      {/* Notifications */}
+      <View style={styles.rowContainer}>
+        <View style={styles.lanRow}>
+          <Ionicons
+            name='notifications-outline'
+            color='#000'
+            size={28}
+            style={{ marginRight: 12}}
+          />
+          <Text style={styles.rowLabel}>Notifications</Text>
+        </View>
+        <View style={{marginLeft:'16%'}}>
+          <Switch
+            value={notifi}
+            onValueChange={(value) => setNotifi(value)}
+          />
+        </View>
+      </View>
 
-      
-        
-    </PaperProvider>
-      /* {SECTIONS.map(({ header, items }) => (
+      {/* About */}
+      {SECTIONS.map(({ header, items }) => (
         <View style={styles.section} key={header}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionHeaderText}>{header}</Text>
@@ -114,7 +126,6 @@ const Settings = () => {
                 key={id}>
                 <TouchableOpacity
                   onPress={() => {
-                    setVisible(true)
                   }}>
                   <View style={styles.row}>
                     <Ionicons
@@ -153,7 +164,8 @@ const Settings = () => {
             ))}
           </View>
         </View>
-      ))} */
+      ))}
+    </PaperProvider>
   )
 }
 const { width } = Dimensions.get('window');
@@ -201,6 +213,13 @@ const styles = StyleSheet.create({
     borderColor: '#e3e3e3',
     backgroundColor: '#fff',
   },
+  row: {
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingRight: 24,
+  },
   rowContainer: {
     height: '8%',
     flexDirection: 'row',
@@ -223,6 +242,9 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '500',
     color: '#000'
+  },
+  rowSpacer: {
+    flex: 1, 
   },
   rowValue: {
     fontSize: 18,

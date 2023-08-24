@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import React, { useEffect, useState }  from 'react';
 import EqList from '../components/eqList/EqList';
 import EventDataAPI from '../data/EventDataAPI';
-import i18next from '../components/settings/i18next';
 import { useTranslation } from 'react-i18next';
 
 const HomeScreen = () => {

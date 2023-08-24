@@ -1,10 +1,10 @@
 import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList, Dimensions } from 'react-native';
-import { Modal, Portal, Button, PaperProvider } from 'react-native-paper';
+import { Modal, Portal, PaperProvider } from 'react-native-paper';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import languagesList from './languagesList.json'
-import { languageResources } from './i18next';
+import i18next, { languageResources } from './i18next';
 
 const SECTIONS = [
   {  
@@ -32,12 +32,29 @@ const Settings = () => {
   const toggleSwitch = () => {
     setChecked(!checked);
   }
+  const changeLng = (lng) => {
+    i18next.changeLanguage(lng);
+    setVisible(false);
+  }
 
   return (
     <PaperProvider>
       <Portal>
         <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-          <Text>Example Modal.  Click outside this area to dismiss.</Text>
+          <View style={styles.languagesList}>
+            <FlatList
+              data={Object.keys(languageResources)}
+              renderItem={({item}) => (
+                <TouchableOpacity 
+                  style={styles.languageButton}
+                  onPress={() => changeLng(item)}>
+                  <Text style={styles.lngName}>
+                    {languagesList[item].nativeName}
+                  </Text>
+                </TouchableOpacity>
+              )}
+            />
+          </View>
         </Modal>
       </Portal>
       {/* Header */}
@@ -56,18 +73,12 @@ const Settings = () => {
             size={28}
             style={{ marginRight: 12}}
           />
-          <Text style={styles.rowLabel}>Language</Text>
+          <Text style={styles.rowLabel}>{t('language')}</Text>
         </View>
-        <TouchableOpacity style={{ flexDirection:'row', marginLeft: '5%', justifyContent:'flex-end'}} onPress={showModal}>
-          <View style={{ marginRight:'10%', justifyContent:'center'}}>
-            <Text >Change Language</Text>
+        <TouchableOpacity style={{ flexDirection:'row', marginLeft: '17%'}} onPress={showModal}>
+          <View style={{ justifyContent:'center'}}>
+            <Text style={{ fontSize: 15, fontWeight:'400', color: '#000'}}>ენის შეცვლა</Text>
           </View>
-          
-          <Ionicons
-            name='chevron-forward-outline'
-            color='black'
-            size={25}
-          />
       </TouchableOpacity>
       </View>
 
@@ -80,7 +91,7 @@ const Settings = () => {
             size={28}
             style={{ marginRight: 12}}
           />
-          <Text style={styles.rowLabel}>Dark Mode</Text>
+          <Text style={styles.rowLabel}>{t('dark_mode')}</Text>
         </View>
         <View style={{marginLeft:'20%'}}>
           <Switch
@@ -99,7 +110,8 @@ const Settings = () => {
             size={28}
             style={{ marginRight: 12}}
           />
-          <Text style={styles.rowLabel}>Notifications</Text>
+          <Text style={styles.rowLabel}>შეტყობინებები</Text>
+          
         </View>
         <View style={{marginLeft:'16%'}}>
           <Switch
@@ -186,10 +198,9 @@ const styles = StyleSheet.create({
     paddingTop: 12,
   },
   languagesList: {
-    flex: 1,
     justifyContent: 'center',
     padding: 10,
-    backgroundColor: '#6258e8',
+    backgroundColor: '#fff',
   },
   languageButton: {
     padding: 10,
@@ -231,7 +242,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: '#e3e3e3',
   },
-
   lanRow: {
     height: 50,
     flexDirection: 'row',
@@ -250,7 +260,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#616161',
     marginRight: 4,
-  }
+  },
+  lngName: {
+    fontSize: 16,
+    color: 'black',
+  },
 });
 
 export default Settings;

@@ -1,4 +1,9 @@
 {
-    "seismic_activity": "Seicmiv Activity",
-    "welcome": "Welcome to my app"
+    "settings":"Settings",
+    "settings_update":"settings update",
+    "language":"Language",
+    "dark_mode":"Dark Mode",
+    "notifications":"Notifications",
+    "seismic_activity": "Seicmiv Activity"
+
 }

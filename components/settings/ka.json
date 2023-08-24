@@ -1,4 +1,8 @@
 {
-    "seismic_activity": "მიმდინარე სეისმურობა",
-    "welcome": "მოგესალმებით ჩემს აპლიკაციაში"
+    "settings":"პარამეტრები",
+    "settings_update":"პარამეტრების განახლება",
+    "language":"ენა",
+    "dark_mode":"ღამის რეჟიმი",
+    "notifications":"შეტყობინებები",
+    "seismic_activity": "მიმდინარე სეისმურობა"
 }

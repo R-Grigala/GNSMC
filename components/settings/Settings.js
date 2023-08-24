@@ -26,17 +26,16 @@ const SECTIONS = [
 
 const Settings = () => {
   const [visible, setVisible] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const containerStyle = {backgroundColor: 'white', padding: 20};
 
   const {t} = useTranslation();
-  const [form, setForm] = useState({
-    language: 'ქართული',
-    darkMode: false,
-    notifications: true,
-  })
+  const toggleSwitch = () => {
+    setChecked(!checked);
+  }
 
   return (
     <PaperProvider>
@@ -45,12 +44,15 @@ const Settings = () => {
           <Text>Example Modal.  Click outside this area to dismiss.</Text>
         </Modal>
       </Portal>
+      {/* Header */}
       <View style={{paddingTop: 12, flexDirection: 'column'}}>
         <View style={{paddingHorizontal: 24, paddingVertical: 8}}>
             <Text style={styles.sectionHeaderText}>Preferences</Text>
         </View>
       </View>
-      <View style={styles.lanContainer}>
+
+      {/* Language */}
+      <View style={styles.rowContainer}>
         <View style={styles.lanRow}>
           <Ionicons
             name='globe'
@@ -58,11 +60,11 @@ const Settings = () => {
             size={28}
             style={{ marginRight: 12}}
           />
-          <Text style={{textAlign: 'right', marginLeft: 20,}}>Language</Text>
+          <Text style={styles.rowLabel}>Language</Text>
         </View>
         <TouchableOpacity style={{ flexDirection:'row', marginLeft: '5%', justifyContent:'flex-end'}} onPress={showModal}>
           <View style={{ marginRight:'10%', justifyContent:'center'}}>
-            <Text>Change Language</Text>
+            <Text >Change Language</Text>
           </View>
           
           <Ionicons
@@ -71,8 +73,28 @@ const Settings = () => {
             size={25}
           />
       </TouchableOpacity>
-
       </View>
+
+      {/* Dark Mode */}
+      <View style={styles.rowContainer}>
+        <View style={styles.lanRow}>
+          <Ionicons
+            name='moon'
+            color='#000'
+            size={28}
+            style={{ marginRight: 12}}
+          />
+          <Text style={styles.rowLabel}>Dark Mode</Text>
+        </View>
+        <View style={{marginLeft:'20%'}}>
+          <Switch
+            value={checked}
+            onValueChange={(value) => setChecked(value)}
+          />
+        </View>
+      </View>
+
+
       
         
     </PaperProvider>
@@ -179,13 +201,16 @@ const styles = StyleSheet.create({
     borderColor: '#e3e3e3',
     backgroundColor: '#fff',
   },
-  lanContainer: {
+  rowContainer: {
     height: '8%',
     flexDirection: 'row',
-    paddingLeft: '4%',
+    paddingLeft: '6%',
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingRight: '5%',
+    backgroundColor: '#fff',
+    borderTopWidth: 1,
+    borderColor: '#e3e3e3',
   },
 
   lanRow: {

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList } from 'react-native';
 import { Modal, Portal, PaperProvider } from 'react-native-paper';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
@@ -180,7 +180,6 @@ const Settings = () => {
     </PaperProvider>
   )
 }
-const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   title: {

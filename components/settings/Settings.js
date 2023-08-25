@@ -1,23 +1,12 @@
 import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList } from 'react-native';
 import { Modal, Portal, PaperProvider } from 'react-native-paper';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import languagesList from './languagesList.json'
 import i18next, { languageResources } from './i18next';
 import { EventRegister } from 'react-native-event-listeners'
-
-
-
-const SECTIONS = [
-  {  
-    header: 'About',
-    items: [
-      { id: 'about', icon: 'help-circle-outline', label: 'About Us', type: 'link' },
-      { id: 'contact', icon: 'mail-outline', label: 'Contact Us', type: 'link' },
-    ],
-  },
-];
+import themeContext from '../../theme/themeContext';
 
 const Settings = () => {
   const [visible, setVisible] = useState(false);
@@ -26,7 +15,7 @@ const Settings = () => {
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const containerStyle = {backgroundColor: 'white', padding: 20};
+  // const containerStyle = {backgroundColor: 'white', padding: 20};
 
   const {t} = useTranslation();
   const notifiSwitch = () => {
@@ -40,18 +29,20 @@ const Settings = () => {
     setVisible(false);
   }
 
+  const theme = useContext(themeContext)
+
   return (
     <PaperProvider>
       <Portal>
-        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-          <View style={styles.languagesList}>
+        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={[styles.constainerStyle,{ backgroundColor: theme.background} ]}>
+          <View style={[styles.languagesList, { backgroundColor: theme.background}]}>
             <FlatList
               data={Object.keys(languageResources)}
               renderItem={({item}) => (
                 <TouchableOpacity 
                   style={styles.languageButton}
                   onPress={() => changeLng(item)}>
-                  <Text style={styles.lngName}>
+                  <Text style={[styles.lngName, {color:theme.color}]}>
                     {languagesList[item].nativeName}
                   </Text>
                 </TouchableOpacity>
@@ -95,7 +86,7 @@ const Settings = () => {
             size={28}
             style={{ marginRight: 12}}
           />
-          <Text style={styles.rowLabel}>{t('dark_mode')}</Text>
+          <Text style={[styles.rowLabel, {color:theme.color}]}>{t('dark_mode')}</Text>
         </View>
         <View style={styles.rowSpacer}/>
         <Switch
@@ -263,8 +254,10 @@ const styles = StyleSheet.create({
   },
   lngName: {
     fontSize: 16,
-    color: 'black',
   },
+  constainerStyle : {
+    padding: 20
+  }
 });
 
 export default Settings;

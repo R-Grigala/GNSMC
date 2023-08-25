@@ -4,9 +4,11 @@ const theme = {
         color: 'black',
         background: 'white'
     },
-    datk: {
+    dark: {
         theme: 'dark',
         color: 'white',
         background: 'black'
     }
 }
+
+export default theme;

@@ -78,7 +78,7 @@ const Settings = () => {
         <View style={styles.rowSpacer}/>
         <TouchableOpacity onPress={showModal}>
           <View style={{ justifyContent:'center'}}>
-            <Text style={{ fontSize: 15, fontWeight:'400', color: '#000'}}>ენის შეცვლა</Text>
+            <Text style={{ fontSize: 15, fontWeight:'400', color: '#000'}}>{t('change_language')}</Text>
           </View>
       </TouchableOpacity>
       </View>
@@ -94,12 +94,11 @@ const Settings = () => {
           />
           <Text style={styles.rowLabel}>{t('dark_mode')}</Text>
         </View>
-        <View style={{marginLeft:'20%'}}>
-          <Switch
-            value={checked}
-            onValueChange={(value) => setChecked(value)}
-          />
-        </View>
+        <View style={styles.rowSpacer}/>
+        <Switch
+          value={checked}
+          onValueChange={(value) => setChecked(value)}
+        />
       </View>
 
       {/* Notifications */}
@@ -114,12 +113,11 @@ const Settings = () => {
           <Text style={styles.rowLabel}>{t('notifications')}</Text>
           
         </View>
-        <View style={{marginLeft:'16%'}}>
-          <Switch
-            value={notifi}
-            onValueChange={(value) => setNotifi(value)}
-          />
-        </View>
+        <View style={styles.rowSpacer}/>
+        <Switch
+          value={notifi}
+          onValueChange={(value) => setNotifi(value)}
+        />
       </View>
 
       {/* About Header */}

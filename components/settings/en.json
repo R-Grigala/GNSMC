@@ -1,7 +1,8 @@
 {
     "settings":"Settings",
-    "settings_update":"settings update",
+    "settings_update":"Settings Update",
     "language":"Language",
+    "change_language":"Change Language",
     "dark_mode":"Dark Mode",
     "notifications":"Notifications",
     "about_us":"About Us",

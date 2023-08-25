@@ -3,11 +3,12 @@ import { useNavigation } from '@react-navigation/native';
 import { Image, TouchableOpacity, View } from 'react-native';
 import SettingsScreen from '../../screens/SettingsScreen';
 import { getUrl } from '../../utils/utils';
+import { useTranslation } from 'react-i18next';
 
 const Stack = createStackNavigator();
 
 const SettingsStack = () => {
-    const headerTitle = 'პარამეტრები';
+    const {t} = useTranslation();
     const LogoImage = `${getUrl()}/images/GNSMC_logo.png`;
     
     const navigation = useNavigation();
@@ -22,7 +23,7 @@ const SettingsStack = () => {
                 name="SettingsScreen" 
                 component={SettingsScreen} 
                 options={{
-                    headerTitle: headerTitle,
+                    headerTitle: t('settings'),
                     headerStyle: {
                         backgroundColor: 'rgb(212, 212, 212)',
                         shadowColor: '#000',

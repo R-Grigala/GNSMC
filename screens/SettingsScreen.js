@@ -1,12 +1,14 @@
 import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
 import React from 'react';
 import Settings from '../components/settings/Settings';
+import { useTranslation } from 'react-i18next';
 
 const SettingsScreen = () => {
+  const {t} = useTranslation();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.header}>პარამეტრების განახლება</Text>
+        <Text style={styles.header}>{t('settings_update')}</Text>
       </View>
       <View style={styles.setContainer}>
         <Settings />

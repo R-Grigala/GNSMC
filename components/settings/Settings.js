@@ -75,7 +75,8 @@ const Settings = () => {
           />
           <Text style={styles.rowLabel}>{t('language')}</Text>
         </View>
-        <TouchableOpacity style={{ flexDirection:'row', marginLeft: '17%'}} onPress={showModal}>
+        <View style={styles.rowSpacer}/>
+        <TouchableOpacity onPress={showModal}>
           <View style={{ justifyContent:'center'}}>
             <Text style={{ fontSize: 15, fontWeight:'400', color: '#000'}}>ენის შეცვლა</Text>
           </View>
@@ -110,7 +111,7 @@ const Settings = () => {
             size={28}
             style={{ marginRight: 12}}
           />
-          <Text style={styles.rowLabel}>შეტყობინებები</Text>
+          <Text style={styles.rowLabel}>{t('notifications')}</Text>
           
         </View>
         <View style={{marginLeft:'16%'}}>
@@ -121,62 +122,58 @@ const Settings = () => {
         </View>
       </View>
 
-      {/* About */}
-      {SECTIONS.map(({ header, items }) => (
-        <View style={styles.section} key={header}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionHeaderText}>{header}</Text>
-          </View>
-
-          <View style={styles.sectionBody}>
-            {items.map(({ label, id, type, icon }, index) => (
-              <View 
-                style={[
-                  styles.rowWrapper,
-                  index === 0 && { borderTopWindth: 0},
-                ]}
-                key={id}>
-                <TouchableOpacity
-                  onPress={() => {
-                  }}>
-                  <View style={styles.row}>
-                    <Ionicons
-                      name={icon}
-                      color='#000'
-                      size={28}
-                      style={{ marginRight: 12}}
-                    />
-                    <Text style={styles.rowLabel}>{label}</Text>
-
-                    <View style={styles.rowSpacer}/>
-
-                    {type === 'select' && (
-                      <Text style={styles.rowValue}>{form[id]}</Text>
-                    )}
-
-                    {type === 'toggle' && (
-                      <Switch
-                        value={form[id]}
-                        onValueChange={value =>
-                          setForm({...form, [id]: value})
-                        }
-                      />
-                    )}
-
-                    {['select', 'link'].includes(type) && (
-                      <Ionicons
-                        name='chevron-forward-outline'
-                        color='#555'
-                        size={25}
-                      />
-                    )}
-                  </View>
-                </TouchableOpacity>
-              </View>
-            ))}
-          </View>
+      {/* About Header */}
+      <View style={{paddingTop: 12, flexDirection: 'column'}}>
+        <View style={{paddingHorizontal: 24, paddingVertical: 8}}>
+            <Text style={styles.sectionHeaderText}>About</Text>
         </View>
-      ))}
+      </View>
+
+      {/* About Us*/}
+      <View style={styles.rowContainer}>
+        <View style={styles.lanRow}>
+          <Ionicons
+            name='help-circle-outline'
+            color='#000'
+            size={28}
+            style={{ marginRight: 12}}
+          />
+          <Text style={styles.rowLabel}>{t('about_us')}</Text>
+          
+          
+        </View>
+        <View style={styles.rowSpacer}/>
+        <View style={{marginLeft:'16%'}}>
+          <Ionicons
+            name='chevron-forward-outline'
+            color='#555'
+            size={25}
+          />
+        </View>
+      </View>
+
+      {/* Contact Us*/}
+      <View style={styles.rowContainer}>
+        <View style={styles.lanRow}>
+          <Ionicons
+            name='mail-outline'
+            color='#000'
+            size={28}
+            style={{ marginRight: 12}}
+          />
+          <Text style={styles.rowLabel}>{t('contact_us')}</Text>
+          
+          
+        </View>
+        <View style={styles.rowSpacer}/>
+        <View style={{marginLeft:'16%'}}>
+          <Ionicons
+            name='chevron-forward-outline'
+            color='#555'
+            size={25}
+          />
+        </View>
+      </View>
     </PaperProvider>
   )
 }

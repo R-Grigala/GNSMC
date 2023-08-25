@@ -23,9 +23,6 @@ const screenOptions = ({ route }) => {
   return {
     headerShown: false,
     tabBarShowLabel: false,
-    tabBarStyle: {
-      backgroundColor: '#fff',
-    },
     tabBarActiveTintColor: 'red',
     tabBarIcon: ({ focused, color, size }) => (
       <Image 

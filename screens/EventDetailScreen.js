@@ -37,7 +37,6 @@ const EventDetailScreen = () => {
 const styles = StyleSheet.create({
     screen: {
       flex: 1,
-      
     },
     eq_screen :{
       flex:3,

@@ -1,12 +1,13 @@
 import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Settings from '../components/settings/Settings';
 import { useTranslation } from 'react-i18next';
-import { EventRegister } from 'react-native-event-listeners'
-import theme from '../theme/theme';
+import { EventRegister } from 'react-native-event-listeners';
 import themeContext from '../theme/themeContext';
 
 const SettingsScreen = () => {
+  const theme = useContext(themeContext);
+
   const {t} = useTranslation();
   const [darkMode, setDarkMode] = useState(false)
 
@@ -22,7 +23,7 @@ const SettingsScreen = () => {
 
   return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.content}>
+        <View style={[styles.content,  { backgroundColor: theme.headerCol}]}>
           <Text style={styles.header}>{t('settings_update')}</Text>
         </View>
         <View style={styles.setContainer}>
@@ -42,7 +43,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     borderWidth: 0.5,
     borderColor: 'rgba(0,0,0,0.3)',
-    backgroundColor: 'rgba(0,0,0,0.3)',
   },
   header: {
     flex: 1,

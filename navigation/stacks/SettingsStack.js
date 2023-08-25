@@ -4,10 +4,13 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import SettingsScreen from '../../screens/SettingsScreen';
 import { getUrl } from '../../utils/utils';
 import { useTranslation } from 'react-i18next';
+import { useContext } from 'react';
+import themeContext from '../../theme/themeContext';
 
 const Stack = createStackNavigator();
 
 const SettingsStack = () => {
+    const theme = useContext(themeContext);
     const {t} = useTranslation();
     const LogoImage = `${getUrl()}/images/GNSMC_logo.png`;
     
@@ -19,13 +22,13 @@ const SettingsStack = () => {
 
     return (
         <Stack.Navigator>
-            <Stack.Screen 
+            <Stack.Screen
                 name="SettingsScreen" 
                 component={SettingsScreen} 
                 options={{
                     headerTitle: t('settings'),
                     headerStyle: {
-                        backgroundColor: 'rgb(212, 212, 212)',
+                        backgroundColor: {backgroundColor: theme.stackColor},
                         shadowColor: '#000',
                         shadowOpacity: 0.9,
                         shadowRadius: 3,

@@ -9,6 +9,8 @@ import { EventRegister } from 'react-native-event-listeners'
 import themeContext from '../../theme/themeContext';
 
 const Settings = () => {
+  const theme = useContext(themeContext);
+
   const [visible, setVisible] = useState(false);
   const [darkmode, setDarkMode] = useState(false);
   const [notifi, setNotifi] = useState(false);
@@ -28,8 +30,6 @@ const Settings = () => {
     i18next.changeLanguage(lng);
     setVisible(false);
   }
-
-  const theme = useContext(themeContext)
 
   return (
     <PaperProvider>
@@ -59,37 +59,37 @@ const Settings = () => {
       </View>
 
       {/* Language */}
-      <View style={styles.rowContainer}>
-        <View style={styles.lanRow}>
+      <View style={[styles.rowContainer,{backgroundColor: theme.background}]}>
+        <View style={styles.row}>
           <Ionicons
             name='globe'
-            color='#000'
             size={28}
-            style={{ marginRight: 12}}
+            style={{ marginRight: 12, color: theme.imageCol}}
           />
-          <Text style={styles.rowLabel}>{t('language')}</Text>
+          <Text style={[styles.rowLabel, {color:theme.color}]}>{t('language')}</Text>
         </View>
         <View style={styles.rowSpacer}/>
         <TouchableOpacity onPress={showModal}>
           <View style={{ justifyContent:'center'}}>
-            <Text style={{ fontSize: 15, fontWeight:'400', color: '#000'}}>{t('change_language')}</Text>
+            <Text style={{ fontSize: 15, fontWeight:'400', color:theme.color}}>{t('change_language')}</Text>
           </View>
       </TouchableOpacity>
       </View>
 
       {/* Dark Mode */}
-      <View style={styles.rowContainer}>
-        <View style={styles.lanRow}>
+      <View style={[styles.rowContainer, {backgroundColor: theme.background}]}>
+        <View style={styles.row}>
           <Ionicons
             name='moon'
-            color='#000'
             size={28}
-            style={{ marginRight: 12}}
+            style={{ marginRight: 12, color: theme.imageCol}}
           />
           <Text style={[styles.rowLabel, {color:theme.color}]}>{t('dark_mode')}</Text>
         </View>
         <View style={styles.rowSpacer}/>
         <Switch
+          trackColor={{false: '#a8a8a8', true: 'green'}}
+          ios_backgroundColor="#a8a8a8"
           value={darkmode}
           onValueChange={(value) => {
             setDarkMode(value);
@@ -99,19 +99,20 @@ const Settings = () => {
       </View>
 
       {/* Notifications */}
-      <View style={styles.rowContainer}>
-        <View style={styles.lanRow}>
+      <View style={[styles.rowContainer,  {backgroundColor: theme.background}]}>
+        <View style={styles.row}>
           <Ionicons
             name='notifications-outline'
-            color='#000'
             size={28}
-            style={{ marginRight: 12}}
+            style={{ marginRight: 12, color: theme.imageCol}}
           />
-          <Text style={styles.rowLabel}>{t('notifications')}</Text>
+          <Text style={[styles.rowLabel, {color:theme.color}]}>{t('notifications')}</Text>
           
         </View>
         <View style={styles.rowSpacer}/>
         <Switch
+          trackColor={{false: '#a8a8a8', true: 'green'}}
+          ios_backgroundColor="#a8a8a8"
           value={notifi}
           onValueChange={(value) => setNotifi(value)}
         />
@@ -125,73 +126,55 @@ const Settings = () => {
       </View>
 
       {/* About Us*/}
-      <View style={styles.rowContainer}>
-        <View style={styles.lanRow}>
+      <View style={[styles.rowContainer, {backgroundColor: theme.background}]}>
+        <View style={styles.row}>
           <Ionicons
             name='help-circle-outline'
-            color='#000'
             size={28}
-            style={{ marginRight: 12}}
+            style={{ marginRight: 12, color: theme.imageCol}}
           />
-          <Text style={styles.rowLabel}>{t('about_us')}</Text>
+          <Text style={[styles.rowLabel, {color:theme.color}]}>{t('about_us')}</Text>
           
           
         </View>
         <View style={styles.rowSpacer}/>
-        <View style={{marginLeft:'16%'}}>
-          <Ionicons
-            name='chevron-forward-outline'
-            color='#555'
-            size={25}
-          />
-        </View>
+        <Ionicons
+          name='chevron-forward-outline'
+          color={theme.imageCol}
+          size={25}
+        />
       </View>
 
       {/* Contact Us*/}
-      <View style={styles.rowContainer}>
-        <View style={styles.lanRow}>
+      <View style={[styles.rowContainer, {backgroundColor: theme.background}]}>
+        <View style={styles.row}>
           <Ionicons
             name='mail-outline'
-            color='#000'
             size={28}
-            style={{ marginRight: 12}}
+            style={{ marginRight: 12, color: theme.imageCol}}
           />
-          <Text style={styles.rowLabel}>{t('contact_us')}</Text>
+          <Text style={[styles.rowLabel, {color:theme.color}]}>{t('contact_us')}</Text>
           
           
         </View>
         <View style={styles.rowSpacer}/>
-        <View style={{marginLeft:'16%'}}>
-          <Ionicons
-            name='chevron-forward-outline'
-            color='#555'
-            size={25}
-          />
-        </View>
+        <Ionicons
+          name='chevron-forward-outline'
+          color={theme.imageCol}
+          size={25}
+        />
       </View>
     </PaperProvider>
   )
 }
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 32,
-    fontWeight: '700',
-    color: '#1d1d1d',
-    marginBottom: 6,
-  },
-  subtitle: {
-    fontSize: 15,
-    fontWeight: '500',
-    color: '#929292',
-  },
   section: {
     paddingTop: 12,
   },
   languagesList: {
     justifyContent: 'center',
     padding: 10,
-    backgroundColor: '#fff',
   },
   languageButton: {
     padding: 10,
@@ -209,18 +192,12 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 1.2,
   },
-  rowWrapper: {
-    paddingLeft: 24,
-    borderTopWidth: 1,
-    borderColor: '#e3e3e3',
-    backgroundColor: '#fff',
-  },
   row: {
     height: 50,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingRight: 24,
+    paddingRight: '10%',
   },
   rowContainer: {
     height: '8%',
@@ -229,15 +206,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingRight: '5%',
-    backgroundColor: '#fff',
     borderTopWidth: 1,
+    borderBottomWidth:1,
     borderColor: '#e3e3e3',
-  },
-  lanRow: {
-    height: 50,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingRight: '10%',
   },
   rowLabel: {
     fontSize: 17,
@@ -246,11 +217,6 @@ const styles = StyleSheet.create({
   },
   rowSpacer: {
     flex: 1, 
-  },
-  rowValue: {
-    fontSize: 18,
-    color: '#616161',
-    marginRight: 4,
   },
   lngName: {
     fontSize: 16,

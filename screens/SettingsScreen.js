@@ -1,10 +1,23 @@
 import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Settings from '../components/settings/Settings';
 import { useTranslation } from 'react-i18next';
+import { EventRegister } from 'react-native-event-listeners'
 
 const SettingsScreen = () => {
   const {t} = useTranslation();
+  const [darkMode, setDarkMode] = useState(false)
+
+  useEffect(() => {
+    const listener = EventRegister.addEventListener('ChangeTheme', (data) =>{
+      setDarkMode(data)
+      console.log(data)
+    })
+    return () => {
+      EventRegister.removeAllListeners(listener)
+    }
+  }, [darkMode])
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>

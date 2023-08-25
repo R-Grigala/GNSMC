@@ -5,6 +5,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import languagesList from './languagesList.json'
 import i18next, { languageResources } from './i18next';
+import { EventRegister } from 'react-native-event-listeners'
+
+
 
 const SECTIONS = [
   {  
@@ -18,7 +21,7 @@ const SECTIONS = [
 
 const Settings = () => {
   const [visible, setVisible] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [darkmode, setDarkMode] = useState(false);
   const [notifi, setNotifi] = useState(false);
 
   const showModal = () => setVisible(true);
@@ -30,7 +33,7 @@ const Settings = () => {
     setNotifi(!notifi)
   }
   const toggleSwitch = () => {
-    setChecked(!checked);
+    setDarkMode(!darkmode);
   }
   const changeLng = (lng) => {
     i18next.changeLanguage(lng);
@@ -96,8 +99,11 @@ const Settings = () => {
         </View>
         <View style={styles.rowSpacer}/>
         <Switch
-          value={checked}
-          onValueChange={(value) => setChecked(value)}
+          value={darkmode}
+          onValueChange={(value) => {
+            setDarkMode(value);
+            EventRegister.emit('ChangeTheme', value)
+          }}
         />
       </View>
 

@@ -19,7 +19,7 @@ const EqItem = ({ eqId, origin_time, ml, latitude, longitude, depth, description
         <View style={[styles.tworow, {flexDirection: 'row'}]}>
           <View style={{ flex: 1.3, flexDirection: 'column' }}>
             {/* Origin Time */}
-            <View style={styles.content}>
+            <View style={[styles.content, {borderColor:theme.color}]}>
               <View style={styles.row}>
                 <Text style={styles.headertext}>დრო(UTC):</Text>
               </View>
@@ -28,7 +28,7 @@ const EqItem = ({ eqId, origin_time, ml, latitude, longitude, depth, description
               </View>
             </View>
             {/* Latitude and Longitude */}
-            <View style={styles.content}>
+            <View style={[styles.content, {borderColor:theme.color}]}>
               <View style={styles.row}>
                 <Text style={styles.headertext}>გან/გრძ(°C):</Text>
               </View>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 1.2,
     borderColor: 'black',
-    padding: 5,
+    padding: 5
   },
   content: {
     flex: 1,

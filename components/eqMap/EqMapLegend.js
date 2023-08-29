@@ -1,26 +1,31 @@
 import {SafeAreaView, StyleSheet, TouchableOpacity, Dimensions, Image, View, Text } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { getUrl } from '../../utils/utils';
+import { useTranslation } from 'react-i18next';
+import themeContext from '../../theme/themeContext';
 
 const EqMapLegend = ({onRefresh}) => {
+    const theme = useContext(themeContext);
+    const {t} = useTranslation();
+
   return (
-    <SafeAreaView style={styles.lg_container}>
+    <SafeAreaView style={[styles.lg_container, {backgroundColor:theme.background}]}>
         <View style={styles.lg_content}>
             <Image style={styles.lg_image} source={{ uri: `${getUrl()}/images/Earthquake_gif.gif`}}/>
             <View style={styles.lg_textV}>
-                <Text style={{ fontSize: 12 }}> მონიშნული</Text>
+                <Text style={[{fontSize: 12}, {color:theme.color}]}> მონიშნული</Text>
             </View>
         </View>
         <View style={styles.lg_content}>
             <Image style={styles.lg_image} source={{ uri: `${getUrl()}/images/Earthquake_red.png`}}/>
             <View style={styles.lg_textV}>
-                <Text style={{ fontSize: 12 }}> 7-91 დღე</Text>
+                <Text style={[{ fontSize: 12 }, {color:theme.color}]}> 7-91 დღე</Text>
             </View>
         </View>
         <View style={styles.lg_content}>
             <Image style={styles.lg_image} source={{ uri: `${getUrl()}/images/Earthquake_yellow.png`}}/>
             <View style={styles.lg_textV}>
-                <Text style={{ fontSize: 12 }}> +91 დღე</Text>
+                <Text style={[{ fontSize: 12 }, {color:theme.color}]}> +91 დღე</Text>
             </View>
         </View>
         <TouchableOpacity style={styles.lg_touchable} onPress={onRefresh}>

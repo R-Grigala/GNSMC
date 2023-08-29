@@ -42,7 +42,7 @@ const SettingsStack = () => {
                                 <Image 
                                     style={{width: 45, height: 45, resizeMode: 'contain'}}
                                     source={
-                                        require('../../assets/logos/GNSMC_logo_D.png')
+                                        require('../../assets/logos/GNSMC_logo.png')
                                     }
                                 />
                             </View>

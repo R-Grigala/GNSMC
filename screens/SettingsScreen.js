@@ -23,9 +23,9 @@ const SettingsScreen = () => {
 
   return (
       <SafeAreaView style={styles.container}>
-        <StatusBar backgroundColor='white' />
-        <View style={[styles.content,  { backgroundColor: theme.headerCol}]}>
-          <Text style={styles.header}>{t('settings_update')}</Text>
+        <StatusBar barStyle={theme.barStyle}/>
+        <View style={[styles.content,  { backgroundColor: theme.headerBackCol}]}>
+          <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('settings_update')}</Text>
         </View>
         <View style={styles.setContainer}>
           <Settings />
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    color: 'rgba(122, 0, 2, 1)',
     marginLeft: 20,
     marginTop: 8,
     fontWeight: 'bold',

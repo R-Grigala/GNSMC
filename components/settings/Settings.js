@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   languageButton: {
-    padding: 10,
+    padding: 20,
     borderBottomColor: "#dddddd",
     borderBottomWidth: 1,
   },
@@ -222,7 +222,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   constainerStyle : {
-    padding: 20
+    padding: 20,
+    height:'40%',
+    width:'100%'
   }
 });
 

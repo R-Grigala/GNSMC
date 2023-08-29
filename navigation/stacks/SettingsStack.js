@@ -28,7 +28,7 @@ const SettingsStack = () => {
                 options={{
                     headerTitle: t('settings'),
                     headerStyle: {
-                        backgroundColor: {backgroundColor: theme.stackColor},
+                        backgroundColor: theme.stackColor,
                         shadowColor: '#000',
                         shadowOpacity: 0.9,
                         shadowRadius: 3,
@@ -42,7 +42,7 @@ const SettingsStack = () => {
                                 <Image 
                                     style={{width: 45, height: 45, resizeMode: 'contain'}}
                                     source={
-                                        require('../../assets/logos/GNSMC_logo.png')
+                                        require('../../assets/logos/GNSMC_logo_D.png')
                                     }
                                 />
                             </View>

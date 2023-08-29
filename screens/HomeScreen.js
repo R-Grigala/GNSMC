@@ -1,11 +1,15 @@
 import { View, Text, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
-import React, { useEffect, useState }  from 'react';
+import React, { useContext, useEffect, useState }  from 'react';
 import EqList from '../components/eqList/EqList';
 import EventDataAPI from '../data/EventDataAPI';
 import { useTranslation } from 'react-i18next';
+import themeContext from '../theme/themeContext';
+
 
 const HomeScreen = () => {
   const {t} = useTranslation();
+  const theme = useContext(themeContext);
+
   const [data, setData] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [isRefreshing, setRefreshing] = useState(false);
@@ -36,9 +40,9 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor='white' />
-      <View style={styles.content}>
-        <Text style={styles.header}>{t('seismic_activity')}</Text>
+      <StatusBar barStyle={theme.barStyle} />
+      <View style={[styles.content,  { backgroundColor: theme.headerBackCol}]}>
+        <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('seismic_activity')}</Text>
       </View>
       <View style={styles.listContainer}>
         {/* Pass the event data and refresh function to the EqList component */}

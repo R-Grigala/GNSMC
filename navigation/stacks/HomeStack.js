@@ -6,12 +6,10 @@ import EventDetailScreen from '../../screens/EventDetailScreen';
 import { useContext } from 'react';
 import themeContext from '../../theme/themeContext';
 
-
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
     const theme = useContext(themeContext);
-
     const navigation = useNavigation();
 
     const handleLogoPress = () => {
@@ -30,7 +28,7 @@ const HomeStack = () => {
                 options={{
                     headerTitle: 'სეისმური აქტივობა',
                     headerStyle: {
-                        backgroundColor: {backgroundColor: theme.stackColor},
+                        backgroundColor: theme.stackColor,
                         shadowColor: '#000',
                         shadowOpacity: 0.9,
                         shadowRadius: 3,

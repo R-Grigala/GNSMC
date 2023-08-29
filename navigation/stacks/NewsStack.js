@@ -3,11 +3,13 @@ import NewsScreen from '../../screens/NewsScreen';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import NewsDetailScreen from '../../screens/NewsDetailScreen';
+import { useContext } from 'react';
+import themeContext from '../../theme/themeContext';
 
 const Stack = createStackNavigator();
 
 const NewsStack = () => {
-
+  const theme = useContext(themeContext);
   const navigation = useNavigation();
 
   const handleLogoPress = () => {
@@ -26,7 +28,7 @@ const NewsStack = () => {
           options={{
             headerTitle:'სიახლეები',
             headerStyle: {
-              backgroundColor: 'rgb(212, 212, 212)',
+              backgroundColor: theme.stackColor,
               shadowColor: '#000',
               shadowOpacity: 0.9,
               shadowRadius: 3,

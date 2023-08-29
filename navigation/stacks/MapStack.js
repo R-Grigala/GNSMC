@@ -3,11 +3,13 @@ import MapScreen from '../../screens/MapScreen';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MapDetailScreen from '../../screens/MapDetailScreen';
+import { useContext } from 'react';
+import themeContext from '../../theme/themeContext';
 
 const Stack = createStackNavigator();
 
 const MapStack = () => {
-
+  const theme = useContext(themeContext);
   const navigation = useNavigation();
 
   const handleLogoPress = () => {
@@ -26,7 +28,7 @@ const MapStack = () => {
           options={{
             headerTitle:'რუკა',
             headerStyle: {
-              backgroundColor: 'rgb(235, 235, 235)',
+              backgroundColor: theme.stackColor,
               shadowColor: '#000',
               shadowOpacity: 0.9,
               shadowRadius: 3,

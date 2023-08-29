@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
 import React, { useEffect, useState }  from 'react';
 import EqList from '../components/eqList/EqList';
 import EventDataAPI from '../data/EventDataAPI';
@@ -36,6 +36,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor='white' />
       <View style={styles.content}>
         <Text style={styles.header}>{t('seismic_activity')}</Text>
       </View>

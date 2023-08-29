@@ -3,10 +3,15 @@ import HomeScreen from '../../screens/HomeScreen';
 import { useNavigation } from '@react-navigation/native';
 import { Image, TouchableOpacity, View } from 'react-native';
 import EventDetailScreen from '../../screens/EventDetailScreen';
+import { useContext } from 'react';
+import themeContext from '../../theme/themeContext';
+
 
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
+    const theme = useContext(themeContext);
+
     const navigation = useNavigation();
 
     const handleLogoPress = () => {
@@ -25,11 +30,11 @@ const HomeStack = () => {
                 options={{
                     headerTitle: 'სეისმური აქტივობა',
                     headerStyle: {
-                        backgroundColor: 'rgb(212, 212, 212)',
+                        backgroundColor: {backgroundColor: theme.stackColor},
                         shadowColor: '#000',
                         shadowOpacity: 0.9,
                         shadowRadius: 3,
-                        elevation: 10
+                        elevation: 1
                     },
                     headerTitleAlign: 'center',
                     headerRight: () => null,

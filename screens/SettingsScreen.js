@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, StatusBar } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import Settings from '../components/settings/Settings';
 import { useTranslation } from 'react-i18next';
@@ -23,6 +23,7 @@ const SettingsScreen = () => {
 
   return (
       <SafeAreaView style={styles.container}>
+        <StatusBar backgroundColor='white' />
         <View style={[styles.content,  { backgroundColor: theme.headerCol}]}>
           <Text style={styles.header}>{t('settings_update')}</Text>
         </View>

@@ -21,7 +21,7 @@ const EqItem = ({ eqId, origin_time, ml, latitude, longitude, depth, description
             {/* Origin Time */}
             <View style={[styles.content, {borderColor:theme.color}]}>
               <View style={styles.row}>
-                <Text style={styles.headertext}>დრო(UTC):</Text>
+                <Text style={styles.headertext}>{t('time_UTC')}</Text>
               </View>
               <View style={styles.tworow}>
                 <Text style={[styles.bodyText, {color:theme.color}]}>{origin_time}</Text>
@@ -30,7 +30,7 @@ const EqItem = ({ eqId, origin_time, ml, latitude, longitude, depth, description
             {/* Latitude and Longitude */}
             <View style={[styles.content, {borderColor:theme.color}]}>
               <View style={styles.row}>
-                <Text style={styles.headertext}>გან/გრძ(°C):</Text>
+                <Text style={styles.headertext}>{t('lat_long')}</Text>
               </View>
               <View style={styles.tworow}>
                 <Text style={[styles.bodyText, {color:theme.color}]}>{latitude} / {longitude}</Text>
@@ -40,7 +40,7 @@ const EqItem = ({ eqId, origin_time, ml, latitude, longitude, depth, description
           <View style={styles.row}>
             {/* Magnitude */}
             <View style={styles.row}>
-              <Text style={styles.headertext}>მაგნიტუდა(ML):</Text>
+              <Text style={styles.headertext}>{t('magnitude')}</Text>
             </View>
             <View style={{ flex: 1.9 }}>
               <Text style={[styles.mlContent, { color: color }]}>{ml}</Text>
@@ -51,7 +51,7 @@ const EqItem = ({ eqId, origin_time, ml, latitude, longitude, depth, description
           {/* Description */}
           <View style={[styles.tworow, {flexDirection: 'row'}]}>
             <View style={styles.row}>
-              <Text style={{ fontSize: 10, fontWeight: 'bold', color: '#7d7d7d' }}>რეგიონი :</Text>
+              <Text style={{ fontSize: 10, fontWeight: 'bold', color: '#7d7d7d' }}>{t('region')}</Text>
             </View>
             <View style={{ flex: 4, alignItems: 'center' }}>
               <Text style={[{ fontSize: 8, fontWeight: 'bold' }, {color:theme.color}]}>{description}</Text>

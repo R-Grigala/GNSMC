@@ -42,7 +42,7 @@ const HomeScreen = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={theme.barStyle} />
       <View style={[styles.content,  { backgroundColor: theme.headerBackCol}]}>
-        <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('seismic_activity')}</Text>
+        <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('lastest_earthquakes')}</Text>
       </View>
       <View style={styles.listContainer}>
         {/* Pass the event data and refresh function to the EqList component */}

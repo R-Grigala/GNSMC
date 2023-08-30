@@ -5,11 +5,13 @@ import { useNavigation } from '@react-navigation/native';
 import MapDetailScreen from '../../screens/MapDetailScreen';
 import { useContext } from 'react';
 import themeContext from '../../theme/themeContext';
+import { useTranslation } from 'react-i18next';
 
 const Stack = createStackNavigator();
 
 const MapStack = () => {
   const theme = useContext(themeContext);
+  const {t} = useTranslation();
   const navigation = useNavigation();
 
   const handleLogoPress = () => {
@@ -54,7 +56,7 @@ const MapStack = () => {
           name="MapDetailScreen" 
           component={MapDetailScreen} 
           options={{ 
-              headerTitle: 'სეისმური აქტივობა',
+              headerTitle: t('seismic_activity'),
               headerTitleAlign: 'center',
               headerRight: () => null,
               headerLeft: () => (

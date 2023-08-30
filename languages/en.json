@@ -7,6 +7,15 @@
     "notifications":"Notifications",
     "about_us":"About Us",
     "contact_us":"Contact_Us",
-    "seismic_activity": "Seicmiv Activity"
+
+    "seismic_activity":"Seicmic Activity",
+    "lastest_earthquakes":"Lastest Earthquakes",
+    "time_UTC":"Time (UTC):",
+    "lat_long":"Lat/Long (°):",
+    "magnitude":"Magnitue (ML):",
+    "region":"Region :",
+    "depth_km":"Depth (KM):",
+
+    "map":"Map"
 
 }

@@ -15,7 +15,7 @@ const EventDetail = () => {
         <View style={[styles.screen, {backgroundColor: theme.background}, {borderColor:theme.color}]}>
             <View style={[{ flex:1, borderBottomWidth: 0.8, flexDirection: 'row',  alignItems: 'center' }, {borderColor:theme.color}]}>
                 <View style={{ flex:1, flexDirection: 'column' }}>
-                    <Text style={[{ fontSize: 15, fontWeight: 'bold' }, {color:theme.color}]}>დრო(UTC): </Text>
+                    <Text style={[{ fontSize: 15, fontWeight: 'bold' }, {color:theme.color}]}>{t('time_UTC')}</Text>
                 </View>
                 <View style={{ flex:1.5, flexDirection: 'column'}}>
                     <Text style={[{ fontSize: 15, fontWeight: 'bold' }, {color:theme.color}]}>{origin_time}</Text>
@@ -25,7 +25,7 @@ const EventDetail = () => {
             <View style={[{flex:1, borderBottomWidth: 0.8, flexDirection: 'row'}, {borderColor:theme.color}]}>
 
                 <View style={{ flex:1, flexDirection: 'column'}}>
-                    <Text style={[{ fontSize: 15, fontWeight: 'bold' }, {color:theme.color}]}>მაგნიტუდა(ML): </Text>
+                    <Text style={[{ fontSize: 15, fontWeight: 'bold' }, {color:theme.color}]}>{t('magnitude')}</Text>
                 </View>
                 <View style={{ flex:1, flexDirection: 'column'}}>
                     <Text style={[{ fontSize: 15, fontWeight: 'bold' },{color:theme.color}]}>{ml}</Text>
@@ -35,7 +35,7 @@ const EventDetail = () => {
             <View style={[{flex:1, borderBottomWidth: 1, flexDirection: 'row'}, {borderColor:theme.color}]}>
 
                 <View style={{ flex:1, flexDirection: 'column'}}>
-                    <Text style={[{ fontSize: 15, fontWeight: 'bold'}, {color:theme.color}]}>სიღრმე(კმ): </Text>
+                    <Text style={[{ fontSize: 15, fontWeight: 'bold'}, {color:theme.color}]}>{t('depth_km')}</Text>
                 </View>
                 <View style={{ flex:1, flexDirection: 'column'}}>
                     <Text style={[{ fontSize: 15, fontWeight: 'bold'}, {color:theme.color}]}>{depth}</Text>
@@ -45,7 +45,7 @@ const EventDetail = () => {
             <View style={{flex:2, flexDirection: 'row', alignItems: 'center'}}>
 
                 <View style={{ flex:1, flexDirection: 'column'}}>
-                    <Text style={[{ fontSize: 15, fontWeight: 'bold'}, {color:theme.color}]}>რეგიონი: </Text>
+                    <Text style={[{ fontSize: 15, fontWeight: 'bold'}, {color:theme.color}]}>{t('region')}</Text>
                 </View>
                 <View style={{ flex:2, flexDirection: 'column'}}>
                     <Text style={[{ fontSize: 10, fontWeight: 'bold'}, {color:theme.color}]}>{description}</Text>

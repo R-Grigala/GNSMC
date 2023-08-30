@@ -5,11 +5,13 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import EventDetailScreen from '../../screens/EventDetailScreen';
 import { useContext } from 'react';
 import themeContext from '../../theme/themeContext';
+import { useTranslation } from 'react-i18next';
 
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
     const theme = useContext(themeContext);
+    const {t} = useTranslation();
     const navigation = useNavigation();
 
     const handleLogoPress = () => {
@@ -26,7 +28,7 @@ const HomeStack = () => {
                 name="HomeScreen" 
                 component={HomeScreen} 
                 options={{
-                    headerTitle: 'სეისმური აქტივობა',
+                    headerTitle: t('seismic_activity'),
                     headerStyle: {
                         backgroundColor: theme.stackColor,
                         shadowColor: '#000',
@@ -54,7 +56,7 @@ const HomeStack = () => {
                 name="EventDetailScreen" 
                 component={EventDetailScreen} 
                 options={{ 
-                    headerTitle: 'სეისმური აქტივობა',
+                    headerTitle: t('seismic_activity'),
                     headerTitleAlign: 'center',
                     headerRight: () => null,
                     headerLeft: () => (

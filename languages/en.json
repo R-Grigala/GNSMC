@@ -6,7 +6,7 @@
     "dark_mode":"Dark Mode",
     "notifications":"Notifications",
     "about_us":"About Us",
-    "contact_us":"Contact_Us",
+    "contact_us":"Contact Us",
 
     "seismic_activity":"Seicmic Activity",
     "lastest_earthquakes":"Lastest Earthquakes",
@@ -16,6 +16,11 @@
     "region":"Region :",
     "depth_km":"Depth (KM):",
 
-    "map":"Map"
+    "map":"Map",
+    "selected":"Selected",
+    "7_91_days":"7-91 Days",
+    "91_days":"+91 Days",
+
+    "news":"News"
 
 }

@@ -5,11 +5,13 @@ import { useNavigation } from '@react-navigation/native';
 import NewsDetailScreen from '../../screens/NewsDetailScreen';
 import { useContext } from 'react';
 import themeContext from '../../theme/themeContext';
+import { useTranslation } from 'react-i18next';
 
 const Stack = createStackNavigator();
 
 const NewsStack = () => {
   const theme = useContext(themeContext);
+  const {t} = useTranslation();
   const navigation = useNavigation();
 
   const handleLogoPress = () => {
@@ -26,7 +28,7 @@ const NewsStack = () => {
           name="NewsScreen" 
           component={NewsScreen} 
           options={{
-            headerTitle:'სიახლეები',
+            headerTitle:t('news'),
             headerStyle: {
               backgroundColor: theme.stackColor,
               shadowColor: '#000',
@@ -54,7 +56,7 @@ const NewsStack = () => {
           name="NewsDetailScreen" 
           component={NewsDetailScreen} 
           options={{ 
-              headerTitle: 'სიახლეები',
+              headerTitle: t('news'),
               headerTitleAlign: 'center',
               headerRight: () => null,
               headerLeft: () => (

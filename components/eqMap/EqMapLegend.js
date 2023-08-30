@@ -13,19 +13,19 @@ const EqMapLegend = ({onRefresh}) => {
         <View style={styles.lg_content}>
             <Image style={styles.lg_image} source={{ uri: `${getUrl()}/images/Earthquake_gif.gif`}}/>
             <View style={styles.lg_textV}>
-                <Text style={[{fontSize: 12}, {color:theme.color}]}> მონიშნული</Text>
+                <Text style={[{fontSize: 12}, {color:theme.color}]}> {t('selected')}</Text>
             </View>
         </View>
         <View style={styles.lg_content}>
             <Image style={styles.lg_image} source={{ uri: `${getUrl()}/images/Earthquake_red.png`}}/>
             <View style={styles.lg_textV}>
-                <Text style={[{ fontSize: 12 }, {color:theme.color}]}> 7-91 დღე</Text>
+                <Text style={[{ fontSize: 12 }, {color:theme.color}]}> {t('7_91_days')}</Text>
             </View>
         </View>
         <View style={styles.lg_content}>
             <Image style={styles.lg_image} source={{ uri: `${getUrl()}/images/Earthquake_yellow.png`}}/>
             <View style={styles.lg_textV}>
-                <Text style={[{ fontSize: 12 }, {color:theme.color}]}> +91 დღე</Text>
+                <Text style={[{ fontSize: 12 }, {color:theme.color}]}> {t('91_days')}</Text>
             </View>
         </View>
         <TouchableOpacity style={styles.lg_touchable} onPress={onRefresh}>

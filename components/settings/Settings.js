@@ -3,8 +3,8 @@ import { Modal, Portal, PaperProvider } from 'react-native-paper';
 import React, { useContext, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import languagesList from './languagesList.json'
-import i18next, { languageResources } from './i18next';
+import languagesList from '../../languages/languagesList.json'
+import i18next, { languageResources } from '../../languages/i18next';
 import { EventRegister } from 'react-native-event-listeners'
 import themeContext from '../../theme/themeContext';
 
@@ -17,7 +17,6 @@ const Settings = () => {
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  // const containerStyle = {backgroundColor: 'white', padding: 20};
 
   const {t} = useTranslation();
   const notifiSwitch = () => {

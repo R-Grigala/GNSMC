@@ -4,9 +4,11 @@ import MapView, { Callout, Marker } from 'react-native-maps';
 import { useNavigation } from '@react-navigation/native';
 import { formatData } from '../../utils/formatData';
 import { eqColor } from '../../utils/utils';
+import { useTranslation } from 'react-i18next';
 
 const EqMap = ({data}) => {
 
+  const {t} = useTranslation();
   const navigation = useNavigation();
 
   const [values, setValues] = useState([]);
@@ -23,7 +25,7 @@ const EqMap = ({data}) => {
   const handleMarkerPress = (event) => {
     navigation.navigate('MapDetailScreen', {
       eqId: event.id,
-      origin_time: event.origin_time,
+      origin_time: formatData(event.origin_time),
       ml: event.ml,
       latitude: event.latitude,
       longitude: event.longitude,
@@ -65,10 +67,10 @@ const EqMap = ({data}) => {
               <View style={styles.callout}>
                 <Text style={styles.textBox}>
                   {/* Display earthquake details */}
-                  <Text style={styles.text}>დრო(UTC): </Text>{formatData(eqEvent.origin_time)}
-                  <Text style={styles.text}>{'\n'}გან/გრძ: </Text>{eqEvent.latitude} / {eqEvent.longitude}
-                  <Text style={styles.text}>{'\n'}მაგნიტუდა: </Text>{eqEvent.ml}
-                  <Text style={styles.text}>{'\n'}DEPTH: </Text>{eqEvent.depth}
+                  <Text style={styles.text}>{t('time_UTC')}</Text>{formatData(eqEvent.origin_time)}
+                  <Text style={styles.text}>{'\n'}{t('lat_long')} </Text>{eqEvent.latitude} / {eqEvent.longitude}
+                  <Text style={styles.text}>{'\n'}{t('magnitude')} </Text>{eqEvent.ml}
+                  <Text style={styles.text}>{'\n'}{t('depth_km')} </Text>{eqEvent.depth}
                 </Text>
                 <View style={{ marginBottom: 18, marginTop: 17, marginLeft: 30 }}>
                   {/* Display alert icon */}

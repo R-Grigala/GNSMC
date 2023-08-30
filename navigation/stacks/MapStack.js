@@ -28,7 +28,7 @@ const MapStack = () => {
           name="MapScreen" 
           component={MapScreen}
           options={{
-            headerTitle:'რუკა',
+            headerTitle: t('map'),
             headerStyle: {
               backgroundColor: theme.stackColor,
               shadowColor: '#000',

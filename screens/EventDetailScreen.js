@@ -27,7 +27,7 @@ const EventDetailScreen = () => {
   return (
     <SafeAreaView style={styles.screen}>
         <View style={styles.eq_screen}>
-            <EqDetail/>
+          <EqDetail/>
         </View>
         <EqEventMap data={data}/>
     </SafeAreaView>

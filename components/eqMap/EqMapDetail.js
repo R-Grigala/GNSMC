@@ -4,8 +4,11 @@ import MapView, { Callout, Marker } from 'react-native-maps';
 import { formatData } from '../../utils/formatData';
 import { useRoute } from '@react-navigation/native';
 import { eqColor } from '../../utils/utils';
+import { useTranslation } from 'react-i18next';
 
 const EqMapDetail = ({data}) => {
+
+  const {t} = useTranslation();
 
   // Get latitude and longitude from the route params
   const route = useRoute()
@@ -55,16 +58,16 @@ const EqMapDetail = ({data}) => {
           >
             {/* Display earthquake details */}
             <Text>
-              <Text style={styles.text}>დრო(UTC):  </Text>{formatData(eqEvent.origin_time)}
+              <Text style={styles.text}>{t('time_UTC')}  </Text>{formatData(eqEvent.origin_time)}
             </Text>
             <Text>
-              <Text style={styles.text}>გან/გრძ: </Text>{eqEvent.latitude} / {eqEvent.longitude}
+              <Text style={styles.text}>{t('lat_long')} </Text>{eqEvent.latitude} / {eqEvent.longitude}
             </Text>
             <Text>
-              <Text style={styles.text}>მაგნიტუდა: </Text>{eqEvent.ml}
+              <Text style={styles.text}>{t('magnitude')} </Text>{eqEvent.ml}
             </Text>
             <Text>
-              <Text style={styles.text}>DEPTH: </Text>{eqEvent.depth}
+              <Text style={styles.text}>{t('depth_km')} </Text>{eqEvent.depth}
             </Text>
           </Callout>
         </Marker>

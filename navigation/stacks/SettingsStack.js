@@ -40,7 +40,7 @@ const SettingsStack = () => {
                         <TouchableOpacity onPress={handleLogoPress}>
                             <View style={{paddingLeft:20}}>
                                 <Image 
-                                    style={{width: 45, height: 45, resizeMode: 'contain'}}
+                                    style={[{width: 45, height: 45, resizeMode: 'contain'}, {tintColor: theme.logoColor}]}
                                     source={
                                         require('../../assets/logos/GNSMC_logo.png')
                                     }

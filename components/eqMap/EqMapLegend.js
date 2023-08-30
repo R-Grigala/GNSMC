@@ -30,7 +30,7 @@ const EqMapLegend = ({onRefresh}) => {
         </View>
         <TouchableOpacity style={styles.lg_touchable} onPress={onRefresh}>
             <Image 
-                style={styles.lg_icon}
+                style={[styles.lg_icon, {tintColor:theme.refreshColor}]}
                 source={
                     require('../../assets/icons/refresh-circle-outline.png')
                 }
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
     lg_icon: {
         width: 35, 
         height: 35, 
-        tintColor:'rgb(120, 120, 120)'
     }
 })
 

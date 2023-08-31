@@ -1,6 +1,8 @@
 {
     "settings":"პარამეტრები",
     "settings_update":"პარამეტრების განახლება",
+    "preference": "მართვა",
+    "app":"აპლიკაცია",
     "language":"ენა",
     "change_language":"ენის შეცვლა",
     "dark_mode":"მუქი დიზაინი",

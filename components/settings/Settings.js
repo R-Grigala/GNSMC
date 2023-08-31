@@ -53,7 +53,7 @@ const Settings = () => {
       {/* Header */}
       <View style={{paddingTop: 12, flexDirection: 'column'}}>
         <View style={{paddingHorizontal: 24, paddingVertical: 8}}>
-            <Text style={styles.sectionHeaderText}>Preferences</Text>
+            <Text style={styles.sectionHeaderText}>{t('preference')}</Text>
         </View>
       </View>
 
@@ -120,7 +120,7 @@ const Settings = () => {
       {/* About Header */}
       <View style={{paddingTop: 12, flexDirection: 'column'}}>
         <View style={{paddingHorizontal: 24, paddingVertical: 8}}>
-            <Text style={styles.sectionHeaderText}>About</Text>
+            <Text style={styles.sectionHeaderText}>{t('app')}</Text>
         </View>
       </View>
 

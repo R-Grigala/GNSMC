@@ -1,6 +1,8 @@
 {
     "settings":"Settings",
     "settings_update":"Settings Update",
+    "preference": "Preference Management",
+    "app":"App",
     "language":"Language",
     "change_language":"Change Language",
     "dark_mode":"Dark Mode",

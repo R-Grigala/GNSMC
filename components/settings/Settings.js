@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList, Image } from 'react-native';
 import { Modal, Portal, PaperProvider } from 'react-native-paper';
 import React, { useContext, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
@@ -9,6 +9,17 @@ import { EventRegister } from 'react-native-event-listeners'
 import themeContext from '../../theme/themeContext';
 
 const Settings = () => {
+
+  // Define the paths to the icon images
+  const iconPaths = {
+    globe: require('../../assets/icons/globe.png'),
+    moon: require('../../assets/icons/moon.png'),
+    notifications: require('../../assets/icons/notifications.png'),
+    about: require('../../assets/icons/help-circle-outline.png'),
+    mail: require('../../assets/icons/mail-outline.png'),
+    chevron: require('../../assets/icons/chevron-forward-outline.png'),
+  };
+
   const theme = useContext(themeContext);
 
   const [visible, setVisible] = useState(false);
@@ -58,30 +69,26 @@ const Settings = () => {
       </View>
 
       {/* Language */}
-      <View style={[styles.rowContainer,{backgroundColor: theme.background}]}>
+      <TouchableOpacity style={[styles.rowContainer,{backgroundColor: theme.background}]} onPress={showModal}>
         <View style={styles.row}>
-          <Ionicons
-            name='globe'
-            size={28}
-            style={{ marginRight: 12, color: theme.imageCol}}
+          <Image
+            style={{ width: 28, height: 28, marginRight: 12, tintColor: theme.imageCol}}
+            source={iconPaths['globe']}
           />
           <Text style={[styles.rowLabel, {color:theme.color}]}>{t('language')}</Text>
         </View>
         <View style={styles.rowSpacer}/>
-        <TouchableOpacity onPress={showModal}>
           <View style={{ justifyContent:'center'}}>
             <Text style={{ fontSize: 15, fontWeight:'400', color:theme.color}}>{t('change_language')}</Text>
           </View>
       </TouchableOpacity>
-      </View>
 
       {/* Dark Mode */}
       <View style={[styles.rowContainer, {backgroundColor: theme.background}]}>
         <View style={styles.row}>
-          <Ionicons
-            name='moon'
-            size={28}
-            style={{ marginRight: 12, color: theme.imageCol}}
+          <Image
+            style={{ width: 28, height: 28, marginRight: 12, tintColor: theme.imageCol}}
+            source={iconPaths['moon']}
           />
           <Text style={[styles.rowLabel, {color:theme.color}]}>{t('dark_mode')}</Text>
         </View>
@@ -100,10 +107,9 @@ const Settings = () => {
       {/* Notifications */}
       <View style={[styles.rowContainer,  {backgroundColor: theme.background}]}>
         <View style={styles.row}>
-          <Ionicons
-            name='notifications-outline'
-            size={28}
-            style={{ marginRight: 12, color: theme.imageCol}}
+          <Image
+            style={{ width: 28, height: 28, marginRight: 12, tintColor: theme.imageCol}}
+            source={iconPaths['notifications']}
           />
           <Text style={[styles.rowLabel, {color:theme.color}]}>{t('notifications')}</Text>
           
@@ -127,41 +133,37 @@ const Settings = () => {
       {/* About Us*/}
       <View style={[styles.rowContainer, {backgroundColor: theme.background}]}>
         <View style={styles.row}>
-          <Ionicons
-            name='help-circle-outline'
-            size={28}
-            style={{ marginRight: 12, color: theme.imageCol}}
+          <Image
+            style={{ width: 30, height: 30, marginRight: 12, tintColor: theme.imageCol}}
+            source={iconPaths['about']}
           />
           <Text style={[styles.rowLabel, {color:theme.color}]}>{t('about_us')}</Text>
           
           
         </View>
         <View style={styles.rowSpacer}/>
-        <Ionicons
-          name='chevron-forward-outline'
-          color={theme.imageCol}
-          size={25}
-        />
+        <Image
+            style={{ width: 25, height: 25, tintColor: theme.imageCol}}
+            source={iconPaths['chevron']}
+          />
       </View>
 
       {/* Contact Us*/}
       <View style={[styles.rowContainer, {backgroundColor: theme.background}]}>
         <View style={styles.row}>
-          <Ionicons
-            name='mail-outline'
-            size={28}
-            style={{ marginRight: 12, color: theme.imageCol}}
+          <Image
+            style={{ width: 30, height: 30, marginRight: 12, tintColor: theme.imageCol}}
+            source={iconPaths['mail']}
           />
           <Text style={[styles.rowLabel, {color:theme.color}]}>{t('contact_us')}</Text>
           
           
         </View>
         <View style={styles.rowSpacer}/>
-        <Ionicons
-          name='chevron-forward-outline'
-          color={theme.imageCol}
-          size={25}
-        />
+        <Image
+            style={{ width: 25, height: 25, tintColor: theme.imageCol}}
+            source={iconPaths['chevron']}
+          />
       </View>
     </PaperProvider>
   )

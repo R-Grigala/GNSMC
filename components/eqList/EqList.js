@@ -4,20 +4,6 @@ import EqItem from './EqItem';
 import { formatData } from '../../utils/formatData';
 
 function EqList({ data, onRefresh }) {
-    // const [values, setValues] = useState([]);
-    // // Sort the data array by origin_time in descending order
-    // const valuesCallback = () => {
-    //     if (data && data.length > 0) {
-    //         const sortedData = [...data].sort(
-    //           (a, b) => new Date(b.origin_time) - new Date(a.origin_time)
-    //         );
-    //         setValues(sortedData);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     valuesCallback();
-    // }, [data]);
 
     // Define the renderItem function to render each item in the FlatList
     const renderItem = ({ item }) => (

@@ -1,5 +1,4 @@
 import { StyleSheet, Text, Image} from 'react-native';
-import React, {useEffect, useState, useCallback}from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { useRoute } from '@react-navigation/native';
 import { formatData } from '../../utils/formatData';
@@ -14,22 +13,6 @@ const EqEventMap = ({data}) => {
   const route = useRoute()
   const {eqId, latitude, longitude} = route.params
 
-  const [values, setValues] = useState([]);
-
-  // Sort the data array by origin_time in descending order
-  const valuesCallback = useCallback(() => {
-    if (data && data.length > 0) {
-      const sortedData = [...data].sort(
-        (a, b) => new Date(a.origin_time) - new Date(b.origin_time)
-      );
-      setValues(sortedData);
-    }
-  }, [data, setValues]);
-
-  useEffect(() => {
-    valuesCallback();
-  }, [valuesCallback]);
-
   return (
     <MapView 
       style={styles.mapview}
@@ -43,7 +26,7 @@ const EqEventMap = ({data}) => {
       showsMyLocationButton={false}
       showsUserLocation={false}
     >
-      {values.map((eqEvent, index) => (
+      {data.map((eqEvent, index) => (
         <Marker 
           key={index} 
           coordinate={{

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, Image, Dimensions} from 'react-native';
-import React, {useEffect, useState}from 'react';
+import React from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { formatData } from '../../utils/formatData';
 import { useRoute } from '@react-navigation/native';
@@ -14,17 +14,6 @@ const EqMapDetail = ({data}) => {
   const route = useRoute()
   const {eqId, latitude, longitude} = route.params
 
-  const [values, setValues] = useState([]);
-  // Sort the data array by origin_time in ascending order
-  useEffect(() => {
-      if (data && data.length > 0) {
-          const sortedData = [...data].sort(
-            (a, b) => new Date(a.origin_time) - new Date(b.origin_time)
-          );
-          setValues(sortedData);
-      }
-  }, [data]);
-
   return (
     <MapView 
       style={styles.mapview}
@@ -38,7 +27,7 @@ const EqMapDetail = ({data}) => {
       showsMyLocationButton={false}
       showsUserLocation={false}
     >
-      {values.map((eqEvent, index) => (
+      {data.map((eqEvent, index) => (
         <Marker 
           key={index} 
           coordinate={{

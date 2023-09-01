@@ -11,17 +11,6 @@ const EqMap = ({data}) => {
   const {t} = useTranslation();
   const navigation = useNavigation();
 
-  const [values, setValues] = useState([]);
-  // Sort the data array by origin_time in ascending order
-  useEffect(() => {
-      if (data && data.length > 0) {
-          const sortedData = [...data].sort(
-            (a, b) => new Date(a.origin_time) - new Date(b.origin_time)
-          );
-          setValues(sortedData);
-      }
-  }, [data]);
-
   const handleMarkerPress = (event) => {
     navigation.navigate('MapDetailScreen', {
       eqId: event.id,
@@ -48,7 +37,7 @@ const EqMap = ({data}) => {
       showsMyLocationButton={false}
       showsUserLocation={false}
     >
-      {values.map((eqEvent, index) => (
+      {data.map((eqEvent, index) => (
         <Marker 
           key={index} 
           coordinate={{

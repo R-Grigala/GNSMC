@@ -14,6 +14,18 @@ const HomeScreen = () => {
   const [refresh, setRefresh] = useState(false);
   const [isRefreshing, setRefreshing] = useState(false);
 
+  // Function to fetch event data from the API
+  const fetchEventData = async () => {
+    try {
+      const responseData = await EventDataAPI();
+      setData(responseData);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setRefreshing(false);
+    }
+  };
+  
   // Function to handle the refresh action
   const handleRefresh = () => {
     console.log('Refreshing EqData...');
@@ -26,17 +38,6 @@ const HomeScreen = () => {
     fetchEventData();
   }, [refresh]);
 
-  // Function to fetch event data from the API
-  const fetchEventData = async () => {
-    try {
-      const responseData = await EventDataAPI();
-      setData(responseData);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setRefreshing(false);
-    }
-  };
 
   return (
     <SafeAreaView style={styles.container}>

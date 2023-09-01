@@ -11,19 +11,22 @@ const EqMapLegend = ({onRefresh}) => {
   return (
     <SafeAreaView style={[styles.lg_container, {backgroundColor:theme.background}]}>
         <View style={styles.lg_content}>
-            <Image style={styles.lg_image} source={{ uri: `${getUrl()}/images/Earthquake_gif.gif`}}/>
+            <Image 
+                style={styles.lg_image} 
+                source={require('../../assets/icons/Earthquake_gif.gif')}
+            />
             <View style={styles.lg_textV}>
                 <Text style={[{fontSize: 12}, {color:theme.color}]}> {t('selected')}</Text>
             </View>
         </View>
         <View style={styles.lg_content}>
-            <Image style={styles.lg_image} source={{ uri: `${getUrl()}/images/Earthquake_red.png`}}/>
+            <Image style={styles.lg_image} source={require('../../assets/icons/Earthquake_red.png')}/>
             <View style={styles.lg_textV}>
                 <Text style={[{ fontSize: 12 }, {color:theme.color}]}> {t('7_91_days')}</Text>
             </View>
         </View>
         <View style={styles.lg_content}>
-            <Image style={styles.lg_image} source={{ uri: `${getUrl()}/images/Earthquake_yellow.png`}}/>
+            <Image style={styles.lg_image} source={require('../../assets/icons/Earthquake_yellow.png')}/>
             <View style={styles.lg_textV}>
                 <Text style={[{ fontSize: 12 }, {color:theme.color}]}> {t('91_days')}</Text>
             </View>

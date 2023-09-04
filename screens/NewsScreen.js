@@ -67,7 +67,6 @@ const NewsScreen = () => {
 
         <SearchBar
           platform={Platform.OS}
-          lightTheme
           searchIcon={{ size: 24 }}
           onChangeText={(text) => searchFilterFunction(text)}
           onClear={(text) => searchFilterFunction('')}

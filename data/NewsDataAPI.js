@@ -2,7 +2,7 @@ import { getUrl } from '../utils/utils';
 
 const NewsDataAPI = async() =>{
 
-    const token = 'ee1403e4ef95d1c81a5ee47d864bd646fea308e7'; // Replace with the actual token
+    const token = '714f1ab80d23ec315968cb075b39e4a4a0e37c8a'; // Replace with the actual token
   
     try {
       const response = await fetch(`${getUrl()}/api/newsposts/`, {

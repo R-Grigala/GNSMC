@@ -1,23 +1,24 @@
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
+import { View, Text, Platform, SafeAreaView, StyleSheet } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import NewsList from '../components/news/NewsList';
 import NewsDataAPI from '../data/NewsDataAPI';
-import SearchBar from '../components/news/SearchBar';
+// import SearchBar from '../components/news/SearchBar';
+import { SearchBar } from 'react-native-elements';
+
 
 const NewsScreen = () => {
-  const [data, setData] = useState([]); // State variable to hold the data
   const [refreshing, setRefreshing] = useState(false); // State variable to track the refreshing state
-  const [searchText, setSearchText] = useState("");
+
+  const [search, setSearch] = useState('');
+  const [filteredDataSource, setFilteredDataSource] = useState([]);
+  const [masterDataSource, setMasterDataSource] = useState([]);
 
   const fetchNewsData = () => {
     // Function to fetch data from the API
     NewsDataAPI()
       .then(responseData => {
-        // Filter the data based on the searchText
-        const filteredData = responseData.filter(item =>
-          item.title.toLowerCase().includes(searchText.toLowerCase())
-        );
-        setData(filteredData); // Update the state with the filtered data
+        setFilteredDataSource(responseData);
+        setMasterDataSource(responseData);
       })
       .catch(error => {
         console.error(error);
@@ -35,15 +36,48 @@ const NewsScreen = () => {
     fetchNewsData(); // Fetch the data when the component mounts
   }, [refreshing]);
 
+  const searchFilterFunction = (text) => {
+    // Check if searched text is not blank
+    if (text) {
+      // Inserted text is not blank
+      // Filter the masterDataSource
+      // Update FilteredDataSource
+      const newData = masterDataSource.filter(function (item) {
+        const itemData = item.title
+          ? item.title.toUpperCase()
+          : ''.toUpperCase();
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilteredDataSource(newData);
+      setSearch(text);
+    } else {
+      // Inserted text is blank
+      // Update FilteredDataSource with masterDataSource
+      setFilteredDataSource(masterDataSource);
+      setSearch(text);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         {/* SearchBar component */}
-        <SearchBar searchText={searchText} setSearchText={setSearchText} onSubmit={fetchNewsData}/>
+        {/* <SearchBar searchText={searchText} setSearchText={setSearchText} onSubmit={fetchNewsData}/> */}
+
+        <SearchBar
+          platform={Platform.OS}
+          lightTheme
+          searchIcon={{ size: 24 }}
+          onChangeText={(text) => searchFilterFunction(text)}
+          onClear={(text) => searchFilterFunction('')}
+          placeholder="Type Here..."
+          value={search}
+        />
       </View>
       <View style={styles.listContainer}>
         {/* NewsList component */}
-        <NewsList data={data} onRefresh={handleRefresh} />
+        <NewsList data={filteredDataSource} onRefresh={handleRefresh} />
       </View>
     </SafeAreaView>
   );
@@ -64,7 +98,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   listContainer: {
-    flex: 20,
+    flex: 18,
   },
 });
 

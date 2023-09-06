@@ -1,12 +1,17 @@
-import { SafeAreaView, View, Text, StyleSheet } from 'react-native'
-import React from 'react'
-import NewsDetail from '../components/news/NewsDetail'
+import { SafeAreaView, View, Text, StyleSheet } from 'react-native';
+import React, { useContext } from 'react';
+import NewsDetail from '../components/news/NewsDetail';
+import { useTranslation } from 'react-i18next';
+import themeContext from '../theme/themeContext';
 
 const NewsDetailScreen = () => {
+  const {t} = useTranslation();
+  const theme = useContext(themeContext);
+
   return (
     <SafeAreaView style={styles.screen}>
-      <View style={styles.content}>
-        <Text style={styles.header}>მიმდინარე სეისმურობა</Text>
+      <View style={[styles.content, {backgroundColor:theme.background}]}>
+        <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('news')}</Text>
       </View>
       <View style={styles.newsContainer} >
         <NewsDetail />
@@ -25,11 +30,9 @@ const styles = StyleSheet.create({
       alignItems: 'flex-start',
       borderWidth: 0.5,
       borderColor: 'rgba(0,0,0,0.3)',
-      backgroundColor: 'rgba(0,0,0,0.3)',
     },
     header: {
       flex: 1,
-      color: 'rgba(122, 0, 2, 1)',
       marginLeft: 20,
       marginTop: 8,
       fontWeight: 'bold',

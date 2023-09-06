@@ -63,7 +63,7 @@ const NewsStack = () => {
                 <TouchableOpacity onPress={handleBackPress}>
                   <View style={{paddingLeft:13}}>
                       <Image
-                          style={{width: 33, height: 33, resizeMode: 'contain'}}
+                          style={[{width: 33, height: 33, resizeMode: 'contain'}, {tintColor:theme.color}]}
                           source={
                               require('../../assets/icons/chevron-back-outline.png')
                           }

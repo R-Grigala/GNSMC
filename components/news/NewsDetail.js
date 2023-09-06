@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { SafeAreaView, StyleSheet, Text, Image, View, ScrollView } from 'react-native';
-import { formatData } from '../../utils/formatData';
+import { formatNewsData } from '../../utils/formatData';
 import { useRoute } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
+import themeContext from '../../theme/themeContext';
 
 const NewsDetail = () => {
+  const {t} = useTranslation();
+  const theme = useContext(themeContext);
   const route = useRoute()
 
   const { urlImage, title, description, uploadTime } = route.params
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor:theme.background}]}>
       <ScrollView>
         <View style={styles.viewimg}>
           {/* Image */}
@@ -22,15 +26,15 @@ const NewsDetail = () => {
         <View style={{padding: 15}}>
           {/* Title */}
           <View style={styles.viewtext}>
-            <Text style={styles.title} >{title}</Text>
+            <Text style={[styles.title, {color:theme.color}]} >{title}</Text>
           </View>
           
           {/* Description */}
-          <Text style={styles.description}>{description}</Text>
+          <Text style={[styles.description, {color:theme.color}]}>{description}</Text>
           <View style={styles.data}>
               <View style={styles.date}>
               {/* Formatted Upload Time */}
-              <Text style={styles.text}>{formatData(uploadTime)}</Text>
+              <Text style={styles.text}>{formatNewsData(uploadTime)}</Text>
               </View>
           </View>
         </View>

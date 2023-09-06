@@ -24,6 +24,16 @@ const EqMap = ({data}) => {
     });
   };
 
+  // Check if data is empty or null
+  if (!data || data.length === 0) {
+    return (
+      <View style={styles.mapview}>
+        {/* You can display a message or component here for when data is empty */}
+        <Text>No earthquake data available.</Text>
+      </View>
+    );
+  }
+
   return (
     <MapView 
       style={styles.mapview}

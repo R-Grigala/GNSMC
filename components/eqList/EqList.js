@@ -1,5 +1,5 @@
-import { FlatList, RefreshControl } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { FlatList, RefreshControl, View, Text } from 'react-native';
+import React from 'react';
 import EqItem from './EqItem';
 import { formatData } from '../../utils/formatData';
 
@@ -17,6 +17,17 @@ function EqList({ data, onRefresh }) {
             description={item.description}
         />
     );
+
+    // Check if data is empty or null
+    if (!data || data.length === 0) {
+        return (
+        <View>
+            {/* You can display a message or component here for when data is empty */}
+            <Text>No earthquake data available.</Text>
+        </View>
+        );
+    }
+
 
     return (
         // FlatList component to render the list of earthquake items

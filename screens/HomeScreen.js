@@ -38,7 +38,6 @@ const HomeScreen = () => {
     fetchEventData();
   }, [refresh]);
 
-
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={theme.barStyle} />

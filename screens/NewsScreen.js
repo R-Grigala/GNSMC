@@ -1,12 +1,18 @@
 import { View, Text, Platform, SafeAreaView, StyleSheet } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import NewsList from '../components/news/NewsList';
 import NewsDataAPI from '../data/NewsDataAPI';
-// import SearchBar from '../components/news/SearchBar';
-import { SearchBar } from 'react-native-elements';
+// import { SearchBar } from 'react-native-elements';
+import { Searchbar } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
+import themeContext from '../theme/themeContext';
+
+
 
 
 const NewsScreen = () => {
+  const {t} = useTranslation();
+  const theme = useContext(themeContext);
   const [refreshing, setRefreshing] = useState(false); // State variable to track the refreshing state
 
   const [search, setSearch] = useState('');
@@ -65,13 +71,16 @@ const NewsScreen = () => {
         {/* SearchBar component */}
         {/* <SearchBar searchText={searchText} setSearchText={setSearchText} onSubmit={fetchNewsData}/> */}
 
-        <SearchBar
-          platform={Platform.OS}
-          searchIcon={{ size: 24 }}
+        <Searchbar
+          icon={require('../assets/icons/search.png')}
+          iconColor={theme.imageCol}
           onChangeText={(text) => searchFilterFunction(text)}
-          onClear={(text) => searchFilterFunction('')}
+          onClearIconPress={(text) => searchFilterFunction('')}
           placeholder="Type Here..."
           value={search}
+          style={{backgroundColor:theme.background}}
+          inputStyle={{color:theme.color}}
+          placeholderTextColor={theme.color}
         />
       </View>
       <View style={styles.listContainer}>
@@ -88,13 +97,8 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 2,
-  },
-  header: {
-    flex: 1,
-    color: 'rgba(122, 0, 2, 1)',
-    marginLeft: 20,
-    marginTop: 8,
-    fontWeight: 'bold',
+    paddingTop:5,
+    paddingBottom:10
   },
   listContainer: {
     flex: 18,

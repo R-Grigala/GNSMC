@@ -1,4 +1,4 @@
-import { View, Text, Platform, SafeAreaView, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image, SafeAreaView, StyleSheet } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import NewsList from '../components/news/NewsList';
 import NewsDataAPI from '../data/NewsDataAPI';
@@ -42,6 +42,11 @@ const NewsScreen = () => {
     fetchNewsData(); // Fetch the data when the component mounts
   }, [refreshing]);
 
+  const handleButtonPress = () => {
+    // Your button press logic here
+    console.log('Button pressed!');
+  };
+
   const searchFilterFunction = (text) => {
     // Check if searched text is not blank
     if (text) {
@@ -63,6 +68,32 @@ const NewsScreen = () => {
       setFilteredDataSource(masterDataSource);
       setSearch(text);
     }
+  };
+
+  // Check if data is empty or null
+  if (!filteredDataSource || filteredDataSource.length === 0) {
+    return (
+    <View style={{backgroundColor:'#fff', flex:1}}>
+        {/* You can display a message or component here for when data is empty */}
+
+        <View style={{flex:3}}>
+            <Image
+                source={require('../assets/logos/errorBackground.jpg')}
+                style={{width:'100%', height:'80%'}}
+            />
+        </View>
+        <View style={{flex:1, justifyContent:'flex-start', alignItems:'center'}}>
+            <Text style={{}}>No internet connection</Text>
+            <Text>Check your connection, then refresh the page</Text>
+            <View style={styles.container}>
+                <TouchableOpacity onPress={handleButtonPress} style={styles.button}>
+                    <Text style={styles.buttonText}>Click Me</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+        
+    </View>
+    );
   };
 
   return (
@@ -98,10 +129,23 @@ const styles = StyleSheet.create({
   content: {
     flex: 2,
     paddingTop:5,
-    paddingBottom:10
   },
   listContainer: {
     flex: 18,
+  },
+  container_: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
   },
 });
 

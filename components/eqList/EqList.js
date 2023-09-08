@@ -1,4 +1,4 @@
-import { FlatList, RefreshControl, View, Text } from 'react-native';
+import { FlatList, RefreshControl, StyleSheet,TouchableOpacity, Image, View, Text } from 'react-native';
 import React from 'react';
 import EqItem from './EqItem';
 import { formatData } from '../../utils/formatData';
@@ -18,14 +18,36 @@ function EqList({ data, onRefresh }) {
         />
     );
 
+    const handleButtonPress = () => {
+        // Your button press logic here
+        console.log('Button pressed!');
+      };
+
+
     // Check if data is empty or null
     if (!data || data.length === 0) {
         return (
-        <View>
-            {/* You can display a message or component here for when data is empty */}
-            <Text>No earthquake data available.</Text>
-        </View>
-        );
+            <View style={{backgroundColor:'#FDE9E9', flex:1}}>
+                {/* You can display a message or component here for when data is empty */}
+    
+                <View style={{flex:3}}>
+                    <Image
+                        source={require('../../assets/logos/background.jpg')}
+                        style={{width:'100%', height:'80%'}}
+                    />
+                </View>
+                <View style={{flex:1, justifyContent:'flex-start', alignItems:'center'}}>
+                    <Text style={{}}>No internet connection</Text>
+                    <Text>Check your connection, then refresh the page</Text>
+                    <View style={styles.container}>
+                        <TouchableOpacity onPress={handleButtonPress} style={styles.button}>
+                            <Text style={styles.buttonText}>Click Me</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                
+            </View>
+            );
     }
 
 
@@ -41,5 +63,22 @@ function EqList({ data, onRefresh }) {
         />
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    button: {
+      backgroundColor: 'blue',
+      padding: 10,
+      borderRadius: 5,
+    },
+    buttonText: {
+      color: 'white',
+      fontSize: 16,
+    },
+  });
 
 export default EqList;

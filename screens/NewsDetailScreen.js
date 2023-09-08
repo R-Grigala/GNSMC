@@ -10,7 +10,7 @@ const NewsDetailScreen = () => {
 
   return (
     <SafeAreaView style={styles.screen}>
-      <View style={[styles.content, {backgroundColor:theme.background}]}>
+      <View style={[styles.content, {backgroundColor:theme.headerBackCol}]}>
         <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('news')}</Text>
       </View>
       <View style={styles.newsContainer} >

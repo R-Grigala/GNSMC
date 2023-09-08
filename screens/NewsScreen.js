@@ -75,7 +75,7 @@ const NewsScreen = () => {
           <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('news')}</Text>
         </View>
         {/* You can display a component for when data is empty */}
-        <NoConnection onRefresh={handleRefresh}/>
+        <NoConnection onRefresh={handleRefresh}/> 
       </View>
     );
   };
@@ -83,9 +83,6 @@ const NewsScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        {/* SearchBar component */}
-        {/* <SearchBar searchText={searchText} setSearchText={setSearchText} onSubmit={fetchNewsData}/> */}
-
         <Searchbar
           icon={require('../assets/icons/search.png')}
           iconColor={theme.imageCol}

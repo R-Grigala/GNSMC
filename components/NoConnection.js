@@ -1,9 +1,31 @@
-import { View, Text, StatusBar, Image, TouchableOpacity, StyleSheet } from 'react-native'
-import React from 'react'
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
+import React, { useEffect, useState }  from 'react';
+import NetInfo from '@react-native-community/netinfo';
+
 
 const NoConnection = ({onRefresh}) => {
+    const [isConnected, setIsConnected] = useState(true);
+
+    useEffect(() => {
+      const unsubscribe = NetInfo.addEventListener((state) => {
+        setIsConnected(state.isConnected);
+      });
+  
+      return () => {
+        unsubscribe();
+      };
+    }, []);
+  
+    // Function to handle automatic refresh when the connection is restored
+    const handleConnectionRestored = () => {
+      if (isConnected) {
+        onRefresh(); // Trigger the refresh action
+      }
+    };
+
     return (
         <View style={{backgroundColor:'#F2F2F2', flex:20}}>
+            {/* #acacac, #F2F2F2*/}
             {/* You can display a message or component here for when data is empty */}
 
             <View style={{flex:10, justifyContent:'center', alignItems:'center'}}>
@@ -16,8 +38,8 @@ const NoConnection = ({onRefresh}) => {
                 <Text style={{}}>No internet connection</Text>
                 <Text>Check your connection, then refresh the page</Text>
                 <View style={styles.container_}>
-                    <TouchableOpacity onPress={onRefresh} style={styles.button}>
-                        <Text style={styles.buttonText}>Click Me</Text>
+                    <TouchableOpacity onPress={handleConnectionRestored} style={styles.button}>
+                        <Text style={styles.buttonText}>Try Again</Text>
                     </TouchableOpacity>
                 </View>
             </View>

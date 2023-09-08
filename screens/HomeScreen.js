@@ -4,6 +4,7 @@ import EqList from '../components/eqList/EqList';
 import EventDataAPI from '../data/EventDataAPI';
 import { useTranslation } from 'react-i18next';
 import themeContext from '../theme/themeContext';
+import NoConnection from '../components/NoConnection';
 
 
 const HomeScreen = () => {
@@ -37,6 +38,21 @@ const HomeScreen = () => {
     setRefreshing(true);
     fetchEventData();
   }, [refresh]);
+
+
+  // Check if data is empty or null
+  if (!data || data.length === 0) {
+    return (
+      <View style={styles.container}>
+        <StatusBar barStyle={theme.barStyle} />
+        <View style={[styles.content,  { backgroundColor: theme.headerBackCol}]}>
+          <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('lastest_earthquakes')}</Text>
+        </View>
+          {/* You can display a component for when data is empty */}
+          <NoConnection onRefresh={handleRefresh}/>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>

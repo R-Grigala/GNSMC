@@ -25,16 +25,6 @@ const EqMap = ({data}) => {
     });
   };
 
-  // Check if data is empty or null
-  if (!data || data.length === 0) {
-    return (
-      <View style={{flex:1}}>
-          {/* You can display a component for when data is empty */}
-          <NoConnection />
-      </View>
-    );
-  }
-
   return (
     <MapView 
       style={styles.mapview}

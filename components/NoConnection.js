@@ -1,12 +1,7 @@
 import { View, Text, StatusBar, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
 
-const NoConnection = () => {
-    const handleButtonPress = () => {
-        // Your button press logic here
-        console.log('Button pressed!');
-      };
-
+const NoConnection = ({onRefresh}) => {
     return (
         <View style={{backgroundColor:'#F2F2F2', flex:20}}>
             {/* You can display a message or component here for when data is empty */}
@@ -21,7 +16,7 @@ const NoConnection = () => {
                 <Text style={{}}>No internet connection</Text>
                 <Text>Check your connection, then refresh the page</Text>
                 <View style={styles.container_}>
-                    <TouchableOpacity onPress={handleButtonPress} style={styles.button}>
+                    <TouchableOpacity onPress={onRefresh} style={styles.button}>
                         <Text style={styles.buttonText}>Click Me</Text>
                     </TouchableOpacity>
                 </View>

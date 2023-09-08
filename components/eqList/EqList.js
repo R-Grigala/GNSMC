@@ -1,8 +1,7 @@
-import { FlatList, RefreshControl, StyleSheet,TouchableOpacity, Image, View, Text } from 'react-native';
+import { FlatList, RefreshControl } from 'react-native';
 import React from 'react';
 import EqItem from './EqItem';
 import { formatData } from '../../utils/formatData';
-import NoConnection from '../NoConnection';
 
 function EqList({ data, onRefresh }) {
 
@@ -19,16 +18,6 @@ function EqList({ data, onRefresh }) {
         />
     );
 
-    // Check if data is empty or null
-    if (!data || data.length === 0) {
-        return (
-            <View style={styles.container}>
-                {/* You can display a component for when data is empty */}
-                <NoConnection />
-            </View>
-        );
-    }
-
     return (
         // FlatList component to render the list of earthquake items
         <FlatList
@@ -41,11 +30,5 @@ function EqList({ data, onRefresh }) {
         />
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1
-    }
-  });
 
 export default EqList;

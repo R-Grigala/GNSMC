@@ -1,6 +1,5 @@
-import {SafeAreaView, StyleSheet, TouchableOpacity, Dimensions, Image, View, Text } from 'react-native'
-import React, { useContext } from 'react'
-import { getUrl } from '../../utils/utils';
+import {SafeAreaView, StyleSheet, TouchableOpacity, Dimensions, Image, View, Text } from 'react-native';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import themeContext from '../../theme/themeContext';
 

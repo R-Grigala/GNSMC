@@ -72,10 +72,10 @@ const NewsScreen = () => {
       <View style={styles.container}>
         <StatusBar barStyle={theme.barStyle} />
         <View style={[styles.headerContent,  { backgroundColor: theme.headerBackCol}]}>
-          <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('lastest_earthquakes')}</Text>
+          <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('news')}</Text>
         </View>
         {/* You can display a component for when data is empty */}
-        <NoConnection />
+        <NoConnection onRefresh={handleRefresh}/>
       </View>
     );
   };

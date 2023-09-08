@@ -73,13 +73,13 @@ const NewsScreen = () => {
   // Check if data is empty or null
   if (!filteredDataSource || filteredDataSource.length === 0) {
     return (
-    <View style={{backgroundColor:'#fff', flex:1}}>
+    <View style={{backgroundColor:'#F2F2F2', flex:1}}>
         {/* You can display a message or component here for when data is empty */}
 
-        <View style={{flex:3}}>
+        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
             <Image
-                source={require('../assets/logos/errorBackground.jpg')}
-                style={{width:'100%', height:'80%'}}
+                source={require('../assets/logos/backgroundError.jpg')}
+                style={{width:'70%', height:'80%'}}
             />
         </View>
         <View style={{flex:1, justifyContent:'flex-start', alignItems:'center'}}>

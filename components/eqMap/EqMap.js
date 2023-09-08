@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { formatData } from '../../utils/formatData';
 import { eqColor } from '../../utils/utils';
 import { useTranslation } from 'react-i18next';
+import NoConnection from '../NoConnection';
 
 const EqMap = ({data}) => {
 
@@ -27,9 +28,9 @@ const EqMap = ({data}) => {
   // Check if data is empty or null
   if (!data || data.length === 0) {
     return (
-      <View style={styles.mapview}>
-        {/* You can display a message or component here for when data is empty */}
-        <Text>No earthquake data available.</Text>
+      <View style={{flex:1}}>
+          {/* You can display a component for when data is empty */}
+          <NoConnection />
       </View>
     );
   }

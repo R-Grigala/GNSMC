@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, SafeAreaView, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image, SafeAreaView, StyleSheet, StatusBar } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import NewsList from '../components/news/NewsList';
 import NewsDataAPI from '../data/NewsDataAPI';
@@ -6,6 +6,7 @@ import NewsDataAPI from '../data/NewsDataAPI';
 import { Searchbar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import themeContext from '../theme/themeContext';
+import NoConnection from '../components/NoConnection';
 
 
 
@@ -42,11 +43,6 @@ const NewsScreen = () => {
     fetchNewsData(); // Fetch the data when the component mounts
   }, [refreshing]);
 
-  const handleButtonPress = () => {
-    // Your button press logic here
-    console.log('Button pressed!');
-  };
-
   const searchFilterFunction = (text) => {
     // Check if searched text is not blank
     if (text) {
@@ -73,26 +69,14 @@ const NewsScreen = () => {
   // Check if data is empty or null
   if (!filteredDataSource || filteredDataSource.length === 0) {
     return (
-    <View style={{backgroundColor:'#F2F2F2', flex:1}}>
-        {/* You can display a message or component here for when data is empty */}
-
-        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-            <Image
-                source={require('../assets/logos/backgroundError.jpg')}
-                style={{width:'70%', height:'80%'}}
-            />
+      <View style={styles.container}>
+        <StatusBar barStyle={theme.barStyle} />
+        <View style={[styles.headerContent,  { backgroundColor: theme.headerBackCol}]}>
+          <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('lastest_earthquakes')}</Text>
         </View>
-        <View style={{flex:1, justifyContent:'flex-start', alignItems:'center'}}>
-            <Text style={{}}>No internet connection</Text>
-            <Text>Check your connection, then refresh the page</Text>
-            <View style={styles.container}>
-                <TouchableOpacity onPress={handleButtonPress} style={styles.button}>
-                    <Text style={styles.buttonText}>Click Me</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-        
-    </View>
+        {/* You can display a component for when data is empty */}
+        <NoConnection />
+      </View>
     );
   };
 
@@ -133,19 +117,20 @@ const styles = StyleSheet.create({
   listContainer: {
     flex: 18,
   },
-  container_: {
+  headerContent: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    borderWidth: 0.5,
+    borderColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: 'rgba(0,0,0,0.3)',
   },
-  button: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
+  header: {
+    flex: 1,
+    color: 'rgba(122, 0, 2, 1)',
+    marginLeft: 20,
+    marginTop: 8,
+    fontWeight: 'bold',
   },
 });
 

@@ -24,13 +24,13 @@ const NoConnection = ({onRefresh}) => {
     };
 
     return (
-        <View style={{backgroundColor:'#F2F2F2', flex:20}}>
+        <View style={{backgroundColor:'#ACACAC', flex:20}}>
             {/* #acacac, #F2F2F2*/}
             {/* You can display a message or component here for when data is empty */}
 
             <View style={{flex:10, justifyContent:'center', alignItems:'center'}}>
                 <Image
-                    source={require('../assets/logos/backgroundError.jpg')}
+                    source={require('../assets/logos/backgroundErrorDark.jpg')}
                     style={{width:'70%', height:'80%'}}
                 />
             </View>

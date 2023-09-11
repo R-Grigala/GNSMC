@@ -31,10 +31,11 @@ const MapStack = () => {
             headerTitle: t('map'),
             headerStyle: {
               backgroundColor: theme.stackColor,
-              shadowColor: '#000',
+              borderBottomWidth:0.5,
+              borderColor:'black',
               shadowOpacity: 0.9,
               shadowRadius: 3,
-              elevation: 1
+              elevation: 1,
             },
             headerTitleAlign: 'center',
             headerRight: () => null,

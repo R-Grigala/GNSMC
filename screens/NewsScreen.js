@@ -118,9 +118,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-start',
-    borderWidth: 0.5,
-    borderColor: 'rgba(0,0,0,0.3)',
+    borderTopWidth:0.5,
+    borderBottomWidth: 2,
     backgroundColor: 'rgba(0,0,0,0.3)',
+    borderBottomColor:'black'
   },
   header: {
     flex: 1,

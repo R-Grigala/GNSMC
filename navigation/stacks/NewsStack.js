@@ -31,7 +31,8 @@ const NewsStack = () => {
             headerTitle:t('news'),
             headerStyle: {
               backgroundColor: theme.stackColor,
-              shadowColor: '#000',
+              borderBottomWidth:0.5,
+              borderColor:'black',
               shadowOpacity: 0.9,
               shadowRadius: 3,
               elevation: 1

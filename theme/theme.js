@@ -16,7 +16,7 @@ const theme = {
         color: 'white',
         background: '#404040',
         imageCol: '#cccccc',
-        headerBackCol: '#4d4d4d',
+        headerBackCol: '#404040',
         headerTextCol: '#ff0000',
         stackColor: '#212121',
         barStyle: 'light-content',

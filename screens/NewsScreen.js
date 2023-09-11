@@ -1,8 +1,7 @@
-import { View, Text, TouchableOpacity, Image, SafeAreaView, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, Image, SafeAreaView, StyleSheet, StatusBar } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import NewsList from '../components/news/NewsList';
 import NewsDataAPI from '../data/NewsDataAPI';
-// import { SearchBar } from 'react-native-elements';
 import { Searchbar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import themeContext from '../theme/themeContext';

@@ -33,6 +33,7 @@ const NewsStack = () => {
               backgroundColor: theme.stackColor,
               borderBottomWidth:0.5,
               borderColor:'black',
+              shadowColor: '#000',
               shadowOpacity: 0.9,
               shadowRadius: 3,
               elevation: 1

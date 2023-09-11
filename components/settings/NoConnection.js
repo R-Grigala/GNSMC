@@ -37,9 +37,8 @@ const NoConnection = ({onRefresh}) => {
                     style={{width:'70%', height:'80%'}}
                 />
             </View>
-            <View style={{flex:10, justifyContent:'flex-start', alignItems:'center'}}>
-                <Text style={{paddingBottom:10}}>{t('noInternet')}</Text>
-                <Text>{t('checkConnection')}</Text>
+            <View style={{flex:10, justifyContent:'center', alignItems:'center'}}>
+                <Text style={{paddingBottom:30,color:'black', fontWeight:'bold', textDecorationLine:'underline', textDecorationColor:'red'}}>{t('noInternet')}</Text>
                 <View style={styles.container_}>
                     <TouchableOpacity onPress={handleConnectionRestored} style={styles.button}>
                         <View style={{flexDirection:'row'}}>

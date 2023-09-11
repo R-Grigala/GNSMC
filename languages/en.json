@@ -27,6 +27,7 @@
     "lastestNews":"Lastest News",
 
     "noInternet":"No internet connection",
-    "checkConnection":"Check your connection, then refresh the page"
+    "checkConnection":"Check your connection, then refresh the page",
+    "tryAgain":"Try Again"
 
 }

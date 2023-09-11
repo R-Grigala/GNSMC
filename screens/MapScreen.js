@@ -3,7 +3,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import EqMap from '../components/eqMap/EqMap';
 import EventDataAPI from '../data/EventDataAPI';
 import EqMapLegend from '../components/eqMap/EqMapLegend';
-import NoConnection from '../components/NoConnection';
+import NoConnection from '../components/settings/NoConnection';
 import themeContext from '../theme/themeContext';
 import { useTranslation } from 'react-i18next';
 
@@ -64,7 +64,7 @@ const MapScreen = () => {
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.lg_screen}>
-        <EqMapLegend />
+        <EqMapLegend onRefresh={handleRefresh}/>
       </View>
       <EqMap data={data}/>
       {/* Display "Refreshing" message at the center of the map */}

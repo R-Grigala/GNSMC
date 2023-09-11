@@ -6,9 +6,7 @@ import NewsDataAPI from '../data/NewsDataAPI';
 import { Searchbar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import themeContext from '../theme/themeContext';
-import NoConnection from '../components/NoConnection';
-
-
+import NoConnection from '../components/settings/NoConnection';
 
 
 const NewsScreen = () => {

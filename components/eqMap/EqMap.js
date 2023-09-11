@@ -1,11 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from 'react-native';
-import React, {useEffect, useState}from 'react';
+import React from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import { useNavigation } from '@react-navigation/native';
 import { formatData } from '../../utils/formatData';
 import { eqColor } from '../../utils/utils';
 import { useTranslation } from 'react-i18next';
-import NoConnection from '../NoConnection';
 
 const EqMap = ({data}) => {
 

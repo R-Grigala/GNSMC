@@ -4,7 +4,7 @@ import EqList from '../components/eqList/EqList';
 import EventDataAPI from '../data/EventDataAPI';
 import { useTranslation } from 'react-i18next';
 import themeContext from '../theme/themeContext';
-import NoConnection from '../components/NoConnection';
+import NoConnection from '../components/settings/NoConnection';
 
 
 const HomeScreen = () => {

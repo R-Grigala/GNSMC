@@ -14,34 +14,37 @@ import NoConnection from '../components/NoConnection';
 const NewsScreen = () => {
   const {t} = useTranslation();
   const theme = useContext(themeContext);
-  const [refreshing, setRefreshing] = useState(false); // State variable to track the refreshing state
+  const [refresh, setRefresh] = useState(false);
+  const [isRefreshing, setRefreshing] = useState(false); // State variable to track the refreshing state
 
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
 
-  const fetchNewsData = () => {
-    // Function to fetch data from the API
-    NewsDataAPI()
-      .then(responseData => {
+    // Function to fetch event data from the API
+    const fetchNewsData = async () => {
+      try {
+        const responseData = await NewsDataAPI();
         setFilteredDataSource(responseData);
         setMasterDataSource(responseData);
-      })
-      .catch(error => {
+
+      } catch (error) {
         console.error(error);
-      })
-  };
+      } finally {
+        setRefreshing(false);
+      }
+    };
 
   const handleRefresh = () => {
     // Function to handle the refresh action
     console.log('refreshing NewsData ...');
-    setRefreshing(prevState => !prevState); // Set refreshing state to true
-    fetchNewsData(); // Fetch the data
+    setRefresh(prevState => !prevState); // Set refreshing state to true
   };
 
   useEffect(() => {
+    setRefreshing(true);
     fetchNewsData(); // Fetch the data when the component mounts
-  }, [refreshing]);
+  }, [refresh]);
 
   const searchFilterFunction = (text) => {
     // Check if searched text is not blank
@@ -69,14 +72,21 @@ const NewsScreen = () => {
   // Check if data is empty or null
   if (!filteredDataSource || filteredDataSource.length === 0) {
     return (
-      <View style={styles.container}>
-        <StatusBar barStyle={theme.barStyle} />
-        <View style={[styles.headerContent,  { backgroundColor: theme.headerBackCol}]}>
-          <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('news')}</Text>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+          <StatusBar barStyle={theme.barStyle} />
+          <View style={[styles.headerContent,  { backgroundColor: theme.headerBackCol}]}>
+            <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('lastestNews')}</Text>
+          </View>
+          {/* You can display a component for when data is empty */}
+          <NoConnection onRefresh={handleRefresh}/> 
         </View>
-        {/* You can display a component for when data is empty */}
-        <NoConnection onRefresh={handleRefresh}/> 
-      </View>
+        {isRefreshing && (
+          <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
+            <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
+          </View>
+        )}
+      </SafeAreaView>
     );
   };
 
@@ -99,6 +109,11 @@ const NewsScreen = () => {
         {/* NewsList component */}
         <NewsList data={filteredDataSource} onRefresh={handleRefresh} />
       </View>
+      {isRefreshing && (
+        <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
+          <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
+        </View>
+      )}
     </SafeAreaView>
   );
 };
@@ -129,6 +144,18 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 8,
     fontWeight: 'bold',
+  },
+  refreshingContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
+  refreshingText: {
+    fontSize: 18
   },
 });
 

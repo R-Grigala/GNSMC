@@ -43,14 +43,21 @@ const MapScreen = () => {
   // Check if data is empty or null
   if (!data || data.length === 0) {
     return (
-      <View style={styles.screen}>
-        <StatusBar barStyle={theme.barStyle} />
-        <View style={[styles.headerContent,  { backgroundColor: theme.headerBackCol}]}>
-          <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('map')}</Text>
+      <SafeAreaView style={styles.screen}>
+        <View style={styles.screen}>
+          <StatusBar barStyle={theme.barStyle} />
+          <View style={[styles.headerContent,  { backgroundColor: theme.headerBackCol}]}>
+            <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('map')}</Text>
+          </View>
+          {/* You can display a component for when data is empty */}
+          <NoConnection onRefresh={handleRefresh}/>
         </View>
-        {/* You can display a component for when data is empty */}
-        <NoConnection onRefresh={handleRefresh}/>
-      </View>
+        {isRefreshing && (
+          <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
+            <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
+          </View>
+        )}
+      </SafeAreaView>
     );
   }
 
@@ -62,8 +69,8 @@ const MapScreen = () => {
       <EqMap data={data}/>
       {/* Display "Refreshing" message at the center of the map */}
       {isRefreshing && (
-        <View style={styles.refreshingContainer}>
-          <Text style={styles.refreshingText}>Refreshing...</Text>
+        <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
+          <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
         </View>
       )}
     </SafeAreaView>
@@ -82,7 +89,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background

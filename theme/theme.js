@@ -9,7 +9,9 @@ const theme = {
         stackColor: 'rgb(212, 212, 212)',
         barStyle: 'dark-content',
         refreshColor: 'rgb(120, 120, 120)',
-        logoColor: 'rgb(160, 0, 0)'
+        logoColor: 'rgb(160, 0, 0)',
+        refreshTextCol:'white',
+        refreshBackCol:'rgba(0, 0, 0, 0.7)'
     },
     dark: {
         theme: 'dark',
@@ -21,7 +23,9 @@ const theme = {
         stackColor: '#212121',
         barStyle: 'light-content',
         refreshColor: '#cccccc',
-        logoColor: 'rgb(252, 252, 252)'
+        logoColor: 'rgb(252, 252, 252)',
+        refreshTextCol:'black',
+        refreshBackCol:'rgba(230,230,230,0.8)'
     }
 }
 

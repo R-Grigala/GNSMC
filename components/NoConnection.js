@@ -1,9 +1,13 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
-import React, { useEffect, useState }  from 'react';
+import React, { useContext, useEffect, useState }  from 'react';
 import NetInfo from '@react-native-community/netinfo';
+import { useTranslation } from 'react-i18next';
+import themeContext from '../theme/themeContext';
 
 
 const NoConnection = ({onRefresh}) => {
+    const {t} = useTranslation();
+    const theme = useContext(themeContext);
     const [isConnected, setIsConnected] = useState(true);
 
     useEffect(() => {
@@ -35,8 +39,8 @@ const NoConnection = ({onRefresh}) => {
                 />
             </View>
             <View style={{flex:10, justifyContent:'flex-start', alignItems:'center'}}>
-                <Text style={{}}>No internet connection</Text>
-                <Text>Check your connection, then refresh the page</Text>
+                <Text style={{}}>{t('noInternet')}</Text>
+                <Text>{t('checkConnection')}</Text>
                 <View style={styles.container_}>
                     <TouchableOpacity onPress={handleConnectionRestored} style={styles.button}>
                         <Text style={styles.buttonText}>Try Again</Text>

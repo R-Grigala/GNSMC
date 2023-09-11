@@ -23,6 +23,10 @@
     "7_91_days":"7-91 Days",
     "91_days":"+91 Days",
 
-    "news":"News"
+    "news":"News",
+    "lastestNews":"Lastest News",
+
+    "noInternet":"No internet connection",
+    "checkConnection":"Check your connection, then refresh the page"
 
 }

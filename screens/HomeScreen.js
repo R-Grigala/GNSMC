@@ -43,6 +43,7 @@ const HomeScreen = () => {
   // Check if data is empty or null
   if (!data || data.length === 0) {
     return (
+      <SafeAreaView style={styles.container}>
       <View style={styles.container}>
         <StatusBar barStyle={theme.barStyle} />
         <View style={[styles.content,  { backgroundColor: theme.headerBackCol}]}>
@@ -51,6 +52,12 @@ const HomeScreen = () => {
           {/* You can display a component for when data is empty */}
           <NoConnection onRefresh={handleRefresh}/>
       </View>
+      {isRefreshing && (
+        <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
+          <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
+        </View>
+      )}
+      </SafeAreaView>
     );
   }
 
@@ -65,8 +72,8 @@ const HomeScreen = () => {
         <EqList data={data} onRefresh={handleRefresh} />
       </View>
       {isRefreshing && (
-        <View style={styles.refreshingContainer}>
-          <Text style={styles.refreshingText}>Refreshing...</Text>
+        <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
+          <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
         </View>
       )}
     </SafeAreaView>
@@ -103,12 +110,10 @@ const styles = StyleSheet.create({
     right: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Semi-transparent black background
     padding: 10,
   },
   refreshingText: {
-    fontSize: 18,
-    color: 'white',
+    fontSize: 18
   },
 });
 

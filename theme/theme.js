@@ -11,7 +11,8 @@ const theme = {
         refreshColor: 'rgb(120, 120, 120)',
         logoColor: 'rgb(160, 0, 0)',
         refreshTextCol:'white',
-        refreshBackCol:'rgba(0, 0, 0, 0.7)'
+        refreshBackCol:'rgba(0, 0, 0, 0.7)',
+        connectionBackCol:'#F2F2F2'
     },
     dark: {
         theme: 'dark',
@@ -25,7 +26,8 @@ const theme = {
         refreshColor: '#cccccc',
         logoColor: 'rgb(252, 252, 252)',
         refreshTextCol:'black',
-        refreshBackCol:'rgba(230,230,230,0.8)'
+        refreshBackCol:'rgba(230,230,230,0.8)',
+        connectionBackCol:'#ACACAC'
     }
 }
 

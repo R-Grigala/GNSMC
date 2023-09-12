@@ -28,13 +28,13 @@ const NoConnection = ({onRefresh}) => {
     };
 
     return (
-        <View style={{backgroundColor:'#ACACAC', flex:20}}>
+        <View style={[{flex:20 }, {backgroundColor:'#acacac'}]}>
             {/* #acacac, #F2F2F2*/}
             {/* You can display a message or component here for when data is empty */}
             <View style={{flex:10, justifyContent:'center', alignItems:'center'}}>
                 <Image
-                    source={require('../../assets/logos/backgroundErrorDark.jpg')}
-                    style={{width:'70%', height:'80%'}}
+                    source={require('../../assets/logos/errorBackgroundDark.jpg')}
+                    style={{width:'70%', height:'80%',}}
                 />
             </View>
             <View style={{flex:10, justifyContent:'center', alignItems:'center'}}>
@@ -46,7 +46,7 @@ const NoConnection = ({onRefresh}) => {
                                 source={require('../../assets/icons/refresh-circle-outline.png')}
                                 style={{width: 35, height: 35, resizeMode: 'contain', tintColor:'white'}}
                             />
-                            <View style={{alignItems:'center', justifyContent:'center', marginLeft:15}}>
+                            <View style={{alignItems:'center', justifyContent:'center', marginLeft:15, marginRight:5}}>
                                 <Text style={styles.buttonText}>{t('tryAgain')}</Text>
                             </View>
                         

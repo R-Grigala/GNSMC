@@ -20,7 +20,6 @@ const EqMap = ({data}) => {
       longitude: event.longitude,
       depth: event.depth,
       description: event.description,
-
     });
   };
 

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 const EventDetail = () => {
     const {t} = useTranslation();
     const theme = useContext(themeContext);
-    const route = useRoute()
+    const route = useRoute();
 
     const { origin_time, ml, depth, description } = route.params
 
@@ -22,7 +22,7 @@ const EventDetail = () => {
                 </View>
             </View> 
 
-            <View style={[{flex:1, borderBottomWidth: 0.8, flexDirection: 'row'}, {borderColor:theme.color}]}>
+            <View style={[{flex:1, borderBottomWidth: 0.8, flexDirection: 'row', alignItems: 'center'}, {borderColor:theme.color}]}>
 
                 <View style={{ flex:1, flexDirection: 'column'}}>
                     <Text style={[{ fontSize: 15, fontWeight: 'bold' }, {color:theme.color}]}>{t('magnitude')}</Text>

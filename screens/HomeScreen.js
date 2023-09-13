@@ -5,6 +5,7 @@ import EventDataAPI from '../data/EventDataAPI';
 import { useTranslation } from 'react-i18next';
 import themeContext from '../theme/themeContext';
 import NoConnection from '../components/settings/NoConnection';
+import Refreshing from '../components/settings/Refreshing';
 
 
 const HomeScreen = () => {
@@ -53,9 +54,7 @@ const HomeScreen = () => {
           <NoConnection onRefresh={handleRefresh}/>
       </View>
       {isRefreshing && (
-        <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
-          <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
-        </View>
+        <Refreshing />
       )}
       </SafeAreaView>
     );
@@ -72,9 +71,7 @@ const HomeScreen = () => {
         <EqList data={data} onRefresh={handleRefresh} />
       </View>
       {isRefreshing && (
-        <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
-          <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
-        </View>
+        <Refreshing />
       )}
     </SafeAreaView>
   );
@@ -105,7 +102,8 @@ const styles = StyleSheet.create({
   },
   refreshingContainer: {
     position: 'absolute',
-    bottom: 0,
+    top:0,
+    bottom:0,
     left: 0,
     right: 0,
     alignItems: 'center',

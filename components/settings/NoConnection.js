@@ -28,7 +28,7 @@ const NoConnection = ({onRefresh}) => {
     };
 
     return (
-        <View style={[{flex:20 }, {backgroundColor:'#acacac'}]}>
+        <View style={[{flex:20 }, {backgroundColor:theme.connectionBackCol}]}>
             {/* #acacac, #F2F2F2*/}
             {/* You can display a message or component here for when data is empty */}
             <View style={{flex:10, justifyContent:'center', alignItems:'center'}}>

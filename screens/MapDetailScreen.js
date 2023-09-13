@@ -36,9 +36,12 @@ const MapDetailScreen = () => {
 const styles = StyleSheet.create({
     screen: {
       flex: 1,
+      borderBottomWidth: 2,
+      borderTopWidth:2,
+      borderColor: 'rgba(0,0,0,1)',
     },
     eq_screen :{
-      flex:1,
+      flex:1.2,
     }
   })
 

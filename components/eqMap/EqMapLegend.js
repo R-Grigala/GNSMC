@@ -1,9 +1,9 @@
-import {SafeAreaView, StyleSheet, TouchableOpacity, Dimensions, Image, View, Text } from 'react-native';
+import {SafeAreaView, StyleSheet, Dimensions, Image, View, Text } from 'react-native';
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import themeContext from '../../theme/themeContext';
 
-const EqMapLegend = ({onRefresh}) => {
+const EqMapLegend = () => {
     const theme = useContext(themeContext);
     const {t} = useTranslation();
 
@@ -30,15 +30,6 @@ const EqMapLegend = ({onRefresh}) => {
                 <Text style={[{ fontSize: 12 }, {color:theme.color}]}> {t('91_days')}</Text>
             </View>
         </View>
-        <TouchableOpacity style={styles.lg_touchable} onPress={onRefresh}>
-            <Image 
-                style={[styles.lg_icon, {tintColor:theme.refreshColor}]}
-                source={
-                    require('../../assets/icons/refresh-circle-outline.png')
-                }
-            />
-        </TouchableOpacity>
-
     </SafeAreaView>
   )
 }

@@ -6,6 +6,7 @@ import { Searchbar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import themeContext from '../theme/themeContext';
 import NoConnection from '../components/settings/NoConnection';
+import Refreshing from '../components/settings/Refreshing';
 
 
 const NewsScreen = () => {
@@ -79,9 +80,7 @@ const NewsScreen = () => {
           <NoConnection onRefresh={handleRefresh}/> 
         </View>
         {isRefreshing && (
-          <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
-            <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
-          </View>
+          <Refreshing />
         )}
       </SafeAreaView>
     );
@@ -107,9 +106,7 @@ const NewsScreen = () => {
         <NewsList data={filteredDataSource} onRefresh={handleRefresh} />
       </View>
       {isRefreshing && (
-        <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
-          <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
-        </View>
+        <Refreshing />
       )}
     </SafeAreaView>
   );
@@ -141,19 +138,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 8,
     fontWeight: 'bold',
-  },
-  refreshingContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
-  },
-  refreshingText: {
-    fontSize: 18
-  },
+  }
 });
 
 export default NewsScreen;

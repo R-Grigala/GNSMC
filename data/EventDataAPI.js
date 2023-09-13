@@ -14,7 +14,7 @@ const EventDataAPI = async() =>{
     if (response.ok) {
       const data = await response.json();
       // Process the data received from the server
-      // console.log("Call EventData");
+      console.log("Call EventData");
       return data;
     } else {
       const error = await response.json();

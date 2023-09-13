@@ -28,8 +28,9 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'flex-start',
-      borderWidth: 0.5,
-      borderColor: 'rgba(0,0,0,0.3)',
+      borderBottomWidth: 2,
+      borderTopWidth:2,
+      borderColor: 'rgba(0,0,0,1)',
     },
     header: {
       flex: 1,

@@ -1,11 +1,13 @@
 import { StyleSheet, SafeAreaView, StatusBar, Text, View } from 'react-native'
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useContext, useCallback} from 'react';
 import EqMap from '../components/eqMap/EqMap';
 import EventDataAPI from '../data/EventDataAPI';
 import EqMapLegend from '../components/eqMap/EqMapLegend';
 import NoConnection from '../components/settings/NoConnection';
 import themeContext from '../theme/themeContext';
 import { useTranslation } from 'react-i18next';
+import Refreshing from '../components/settings/Refreshing';
+import { useFocusEffect } from '@react-navigation/native';
 
 
 const MapScreen = () => {
@@ -22,11 +24,13 @@ const MapScreen = () => {
     setRefresh(prevState => !prevState);
   }
 
-  useEffect(() => {
-    // Fetch the event data when the component mounts or when the 'refresh' state changes
-    fetchEventData();
-    setRefreshing(true);
-  }, [refresh]);
+  useFocusEffect(
+    useCallback(() => {
+      // Fetch the event data when the component mounts or when the 'refresh' state changes
+      fetchEventData();
+      setRefreshing(true);
+    }, [refresh])
+  );
 
   // Function to fetch event data from the API
   const fetchEventData = async () => {
@@ -53,9 +57,7 @@ const MapScreen = () => {
           <NoConnection onRefresh={handleRefresh}/>
         </View>
         {isRefreshing && (
-          <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
-            <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
-          </View>
+          <Refreshing />
         )}
       </SafeAreaView>
     );
@@ -64,14 +66,12 @@ const MapScreen = () => {
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.lg_screen}>
-        <EqMapLegend onRefresh={handleRefresh}/>
+        <EqMapLegend/>
       </View>
       <EqMap data={data}/>
       {/* Display "Refreshing" message at the center of the map */}
       {isRefreshing && (
-        <View style={[styles.refreshingContainer,{ backgroundColor: theme.refreshBackCol}]}>
-          <Text style={[styles.refreshingText, {color: theme.refreshTextCol}]}>Refreshing...</Text>
-        </View>
+        <Refreshing />
       )}
     </SafeAreaView>
   )
@@ -83,20 +83,6 @@ const styles = StyleSheet.create({
   },
   lg_screen: {
     flex: 0.08,
-  },
-  refreshingContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
-    padding: 10,
-  },
-  refreshingText: {
-    fontSize: 18,
-    color: 'white',
   },
   headerContent: {
     flex: 1,

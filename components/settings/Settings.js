@@ -1,7 +1,6 @@
-import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList, Image } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Switch, FlatList, Image, Linking } from 'react-native';
 import { Modal, Portal, PaperProvider } from 'react-native-paper';
 import React, { useContext, useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import languagesList from '../../languages/languagesList.json'
 import i18next, { languageResources } from '../../languages/i18next';
@@ -39,6 +38,10 @@ const Settings = () => {
   const changeLng = (lng) => {
     i18next.changeLanguage(lng);
     setVisible(false);
+  }
+
+  const aboutUs = ()=> {
+    Linking.openURL('https://ies.iliauni.edu.ge/?page_id=536')
   }
 
   return (
@@ -131,7 +134,7 @@ const Settings = () => {
       </View>
 
       {/* About Us*/}
-      <View style={[styles.rowContainer, {backgroundColor: theme.background}]}>
+      <TouchableOpacity style={[styles.rowContainer, {backgroundColor: theme.background}]} onPress={aboutUs}>
         <View style={styles.row}>
           <Image
             style={{ width: 30, height: 30, marginRight: 12, tintColor: theme.imageCol}}
@@ -146,10 +149,10 @@ const Settings = () => {
             style={{ width: 25, height: 25, tintColor: theme.imageCol}}
             source={iconPaths['chevron']}
           />
-      </View>
+      </TouchableOpacity>
 
       {/* Contact Us*/}
-      <View style={[styles.rowContainer, {backgroundColor: theme.background}]}>
+      <TouchableOpacity style={[styles.rowContainer, {backgroundColor: theme.background}]}>
         <View style={styles.row}>
           <Image
             style={{ width: 30, height: 30, marginRight: 12, tintColor: theme.imageCol}}
@@ -164,7 +167,7 @@ const Settings = () => {
             style={{ width: 25, height: 25, tintColor: theme.imageCol}}
             source={iconPaths['chevron']}
           />
-      </View>
+      </TouchableOpacity>
     </PaperProvider>
   )
 }

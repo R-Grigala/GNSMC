@@ -21,7 +21,9 @@ const Article = (props) => {
         /> */}
         <View style={{padding: 15}}>
           {/* Title */}
-          <Text style={[styles.title, {color:theme.color}]} numberOfLines={2}>{props.title}</Text>
+          <View style={{justifyContent:'center', alignItems:'center'}}>
+            <Text style={[styles.title, {color:theme.color}]} numberOfLines={2}>{props.title}</Text>
+          </View>
           {/* Description */}
           <Text style={[styles.description, {color:theme.color}]} numberOfLines={7}>{props.description}</Text>
           <View style={styles.data}>

@@ -77,7 +77,7 @@ const NewsScreen = () => {
             <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('lastestNews')}</Text>
           </View>
           {/* You can display a component for when data is empty */}
-          <NoConnection onRefresh={handleRefresh}/> 
+          <NoConnection onRefresh={handleRefresh} pageName={'NewsScreen'}/> 
         </View>
         {isRefreshing && (
           <Refreshing />

@@ -5,10 +5,23 @@ import { useTranslation } from 'react-i18next';
 import themeContext from '../../theme/themeContext';
 
 
-const NoConnection = ({onRefresh}) => {
+const NoConnection = ({onRefresh, pageName}) => {
     const {t} = useTranslation();
     const theme = useContext(themeContext);
     const [isConnected, setIsConnected] = useState(true);
+
+    let imageSource;
+    let imageSourceColor = theme.theme
+
+    if (pageName === 'NewsScreen') {
+        if (imageSourceColor === 'light'){
+            imageSource = require('../../assets/logos/errorBackground.jpg');
+        } else {imageSource = require('../../assets/logos/errorBackgroundDark.jpg');} 
+    } else {
+        if (imageSourceColor === 'light'){
+            imageSource = require('../../assets/logos/backgroundError.jpg');
+        } else {imageSource = require('../../assets/logos/backgroundErrorDark.jpg');}
+    }
 
     useEffect(() => {
       const unsubscribe = NetInfo.addEventListener((state) => {
@@ -29,11 +42,10 @@ const NoConnection = ({onRefresh}) => {
 
     return (
         <View style={[{flex:20 }, {backgroundColor:theme.connectionBackCol}]}>
-            {/* #acacac, #F2F2F2*/}
             {/* You can display a message or component here for when data is empty */}
             <View style={{flex:10, justifyContent:'center', alignItems:'center'}}>
                 <Image
-                    source={require('../../assets/logos/errorBackgroundDark.jpg')}
+                    source={imageSource}
                     style={{width:'70%', height:'80%',}}
                 />
             </View>

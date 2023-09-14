@@ -54,7 +54,7 @@ const MapScreen = () => {
             <Text style={[styles.header, {color:theme.headerTextCol}]}>{t('map')}</Text>
           </View>
           {/* You can display a component for when data is empty */}
-          <NoConnection onRefresh={handleRefresh}/>
+          <NoConnection onRefresh={handleRefresh} pageName={'MapScreen'}/>
         </View>
         {isRefreshing && (
           <Refreshing />

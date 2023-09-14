@@ -47,7 +47,7 @@ const Settings = () => {
   return (
     <PaperProvider>
       <Portal>
-        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={[styles.constainerStyle,{ backgroundColor: theme.background} ]}>
+        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={[styles.constainerStyle,{ backgroundColor: theme.background}]}>
           <View style={[styles.languagesList, { backgroundColor: theme.background}]}>
             <FlatList
               data={Object.keys(languageResources)}

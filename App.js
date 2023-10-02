@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { EventRegister } from 'react-native-event-listeners'
 import theme from './theme/theme';
 import themeContext from './theme/themeContext';
-import { Platform } from 'react-native';
 import * as Location from 'expo-location';
 
 export default function App() {

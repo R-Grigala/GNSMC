@@ -26,7 +26,8 @@
     "react-native-event-listeners": "^1.0.7",
     "react-native-maps": "1.7.1",
     "react-native-paper": "^5.10.1",
-    "react-native-pdf": "^6.6.2"
+    "react-native-pdf": "^6.6.2",
+    "expo-location": "~16.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

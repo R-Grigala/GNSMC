@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, StatusBar, Text, View } from 'react-native'
+import { StyleSheet, SafeAreaView, StatusBar, Text, View } from 'react-native';
 import React, {useState, useContext, useCallback} from 'react';
 import EqMap from '../components/eqMap/EqMap';
 import EventDataAPI from '../data/EventDataAPI';
@@ -8,7 +8,6 @@ import themeContext from '../theme/themeContext';
 import { useTranslation } from 'react-i18next';
 import Refreshing from '../components/settings/Refreshing';
 import { useFocusEffect } from '@react-navigation/native';
-
 
 const MapScreen = () => {
 

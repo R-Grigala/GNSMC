@@ -1,0 +1,7 @@
+# for runserver: 
+npx expo start --tunnel
+
+expo აპლიკაციაში პროექტის დასასტარტად საჭიროა ამ ბრძანების გაშვება 
+
+nvm ls
+nvm list-remote

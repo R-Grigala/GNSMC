@@ -37,5 +37,5 @@ export const eqColor = (eqId, origin_time, Id) => {
 // მთავარი Url-ი რომელიც ჩვენს API-ს უკავშირდება და იღებს მონაცემებს
 export const getUrl = () =>{
   // URL of the earthquake image
-  return 'https://32fa-212-72-141-34.ngrok-free.app'
+  return 'https://divine-foal-promoted.ngrok-free.app/'
 }

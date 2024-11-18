@@ -9,28 +9,28 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo/vector-icons": "^14.0.0",
-    "@react-native-community/netinfo": "11.3.1",
-    "@react-navigation/bottom-tabs": "^6.5.7",
-    "@react-navigation/native": "^6.1.6",
-    "@react-navigation/native-stack": "^6.9.12",
-    "@react-navigation/stack": "^6.3.16",
-    "expo": "^51.0.0",
-    "expo-status-bar": "~1.12.1",
-    "i18next": "^23.4.4",
-    "react": "18.2.0",
-    "react-i18next": "^13.1.2",
-    "react-native": "0.74.1",
-    "react-native-blob-util": "^0.17.3",
+    "@expo/vector-icons": "^14.0.4",
+    "@react-native-community/netinfo": "11.4.1",
+    "@react-navigation/bottom-tabs": "^7.0.4",
+    "@react-navigation/native": "^7.0.3",
+    "@react-navigation/native-stack": "^7.0.3",
+    "@react-navigation/stack": "^7.0.3",
+    "expo": "^52.0.7",
+    "expo-status-bar": "~2.0.0",
+    "i18next": "^23.16.5",
+    "react": "18.3.1",
+    "react-i18next": "^15.1.1",
+    "react-native": "0.76.2",
+    "react-native-blob-util": "^0.19.11",
     "react-native-elements": "^3.4.3",
     "react-native-event-listeners": "^1.0.7",
-    "react-native-maps": "1.14.0",
-    "react-native-paper": "^5.10.1",
-    "react-native-pdf": "^6.6.2",
-    "expo-location": "~17.0.1"
+    "react-native-maps": "1.20.0",
+    "react-native-paper": "^5.12.5",
+    "react-native-pdf": "^6.7.5",
+    "expo-location": "~18.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0"
+    "@babel/core": "^7.26.0"
   },
   "private": true
 }

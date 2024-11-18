@@ -15,11 +15,11 @@ const MapStack = () => {
   const navigation = useNavigation();
 
   const handleLogoPress = () => {
-      navigation.navigate('HomeStack');
+      navigation.navigate('HomeStack', {screen :'HomeScreen'});
   };
 
   const handleBackPress = () => {
-    navigation.navigate('MapScreen');
+    navigation.navigate('MapStack', {screen :'MapScreen'});
   };
 
   return (

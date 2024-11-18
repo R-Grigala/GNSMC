@@ -33,6 +33,7 @@
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
       ]
-    ]
+    ],
+    "newArchEnabled": true
   }
 }

@@ -15,11 +15,11 @@ const NewsStack = () => {
   const navigation = useNavigation();
 
   const handleLogoPress = () => {
-      navigation.navigate('HomeStack');
+      navigation.navigate('HomeStack', {screen :'HomeScreen'});
   };
 
   const handleBackPress = () => {
-    navigation.navigate('NewsScreen');
+    navigation.navigate('NewsStack', {screen :'NewsScreen'});
   };
 
   return (
